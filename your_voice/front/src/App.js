@@ -1,12 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import axios from 'axios'
+import Loading_page from "./loading_page/loading_page";
+import MainPg from "./MainPg/MainPg"
 
 function App() {
   
   return (
     <div>
-      < Loading_page />
+      <Loading_page/>
       <MainPg />
       </div>
   );
