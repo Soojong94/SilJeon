@@ -2,6 +2,8 @@ import '../loading_page/loading_page.css'
 import React from 'react'
 import { RingLoader } from 'react-spinners';
 
+//npm install react-spinners
+
 
 function loading_page() {
   return (
