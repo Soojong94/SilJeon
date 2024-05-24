@@ -13,6 +13,7 @@ services:
       - "5000:5000"
     environment:
       - FLASK_ENV=development
+
 networks:
   default:
     driver: bridge
