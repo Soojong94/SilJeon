@@ -1,6 +1,6 @@
 import './App.css';
-import Loading_page from "./loading_page/loading_page";
-import MainPg from "./MainPg/MainPg"
+import MainPg from "./loading_page/loading_page"
+import Loading_page from "./MainPg/MainPg"
 
 function App() {
   
