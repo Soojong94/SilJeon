@@ -1,4 +1,4 @@
-function MainDg(){
+function MainPg(){
 
     return(
     <div className="main-box">
@@ -25,4 +25,4 @@ function MainDg(){
     );
 }
 
-export default MainDg
+export default MainPg
