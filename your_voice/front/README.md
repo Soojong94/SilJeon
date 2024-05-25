@@ -1,3 +1,3 @@
-npm install react-spinners
-pip install ffmpeg
-npm install react-router-dom
+1. npm install react-spinners
+2. pip install ffmpeg
+3. npm install react-router-dom
