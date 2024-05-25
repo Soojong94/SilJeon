@@ -1,13 +1,13 @@
 import './App.css';
-import MainPg from "./loading_page/loading_page"
-import Loading_page from "./MainPg/MainPg"
+
+import RoutesComponent  from './Route/route.jsx';
 
 function App() {
   
   return (
     <div>
-      <Loading_page/>
-      <MainPg />
+      
+      <RoutesComponent  />
       </div>
   );
 }

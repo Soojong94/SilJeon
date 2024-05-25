@@ -1,18 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import MainPg from './MainPg/MainPg.jsx';
-import loading_page from './loading_page/loading_page.jsx';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import MainPg from '../MainPg/MainPg.jsx';
+import LoadingPage from '../loading_page/loading_page.jsx';
 
-
-const Routes = () => {
+const RoutesComponent  = () => {
     return (
         <Router>
-            <Switch>
-                <Route exact path="/" component={MainPg} />
-                <Route path="/loading_page" component={loading_page} />
-            </Switch>
+            <Routes>
+                <Route path="/" element={<MainPg />} />
+                <Route path="/loading_page" element={<LoadingPage />} />
+            </Routes>
         </Router>
     );
 };
 
-export default Routes;
+export default RoutesComponent ;
