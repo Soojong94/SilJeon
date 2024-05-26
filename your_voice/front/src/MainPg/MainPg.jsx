@@ -8,8 +8,8 @@ function MainPg() {
                 <nav className="navbar">
                     <div className="logo">Your Voice</div>
                     <div className="nav-items">
-                        <button className="nav-button">Button 1</button>
-                        <button className="nav-button">Button 2</button>
+                        <a href='#'><button className="nav-button">Sign in</button></a>
+                        <a href='#'><button className="nav-button">My page</button></a>
                         <div className="hamburger-menu">☰</div>
                     </div>
                 </nav>
