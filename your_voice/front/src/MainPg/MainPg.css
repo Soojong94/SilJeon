@@ -127,8 +127,8 @@ body {
 }
 
 .voiceDg:hover, .covidDg:hover {
-  background-color: rgb(107, 61, 5);
-  color:#f4f4f4;
+  background-color: #f2f3e9;
+  color:#3f4501;
   box-shadow: 5px 5px 20px;
 }
 
