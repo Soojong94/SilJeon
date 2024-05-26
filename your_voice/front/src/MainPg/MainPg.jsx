@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './MainPg.css';
 
 function MainPg() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
     return (
         <div className="main-container">
             <header className="header">
@@ -10,9 +16,19 @@ function MainPg() {
                     <div className="nav-items">
                         <a href='#'><button className="nav-button">Sign in</button></a>
                         <a href='#'><button className="nav-button">My page</button></a>
-                        <div className="hamburger-menu">☰</div>
+                        <div className="hamburger-menu" onClick={toggleMenu}>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
                     </div>
                 </nav>
+                {isMenuOpen && (
+                    <div className="dropdown-menu">
+                        <a href="#">월간 차트</a>
+                        <a href="#">분석결과</a>
+                    </div>
+                )}
             </header>
             <div className="main-box">
                 <div className="voice">
@@ -25,7 +41,7 @@ function MainPg() {
                     <h2 className='voiceDsEg'>COVID-19</h2>
                     <p className="expln">AI가 당신의 기침소리를 분석하여</p>
                     <p className="expln">COVID-19를 진단합니다.</p>
-                    <a href="#"><button className='covidDg'>진단받기</button></a>
+                    <a href="#"><button className='covidDg' >진단받기</button></a>
                 </div>
             </div>
         </div>
