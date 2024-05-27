@@ -60,15 +60,15 @@
 }
 
 .inputbtn {
-    display: inline-block;
-    padding: .5em .75em;
-    color: #999;
-    font-size: inherit;
-    line-height: normal;
-    vertical-align: middle;
-    background-color: #fdfdfd;
+    width: 40% ;
+    height: 80%;
+    background-color: transparent;
+    border: none;
+    padding:auto;
     cursor: pointer;
-    border: 1px solid #ebebeb;
-    border-bottom-color: #e2e2e2;
-    border-radius: .25em;
+    border-radius: 10px;
+    font-size: 1em;
+    
+    color: rgb(104, 68, 9);
+    box-shadow: 5px 5px 20px;
 }
