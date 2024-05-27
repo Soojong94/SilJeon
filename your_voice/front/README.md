@@ -5,4 +5,6 @@
 5. npm install @mui/material
     
 #### npm install -g react-scripts (npm start 안돼서 사용해봤음 원인은 라우팅 잘못해서 였음 Routes와 사용자 정의 변수 Routes 간의 이름 충돌로 발생)
-#### pip install dbutils (백서버 오류)
+#### pip install dbutils (백서버)
+#### pip install pymysql (백서버)
+#### pip install pip install flask_cors (백서버)
