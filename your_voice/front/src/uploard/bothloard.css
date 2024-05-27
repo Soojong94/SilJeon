@@ -5,11 +5,14 @@
 }
 
 .box {
+  
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 80%;
-    margin: 0 auto;
+    height:80%;
+   padding: 50px;
+    margin: 100px auto;
     text-align: center;
 }
 
@@ -60,7 +63,7 @@
 }
 
 .inputbtn {
-    width: 40% ;
+    width: 20% ;
     height: 80%;
     background-color: transparent;
     border: none;

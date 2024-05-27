@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
-import './bothloard.css';
+import axios from 'axios'; // axios를 import합니다.
+import './bothloard.css'
 
 const CoughUd = () => {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -24,19 +25,16 @@ const CoughUd = () => {
         }
 
         const formData = new FormData();
-        if (selectedFile) {
-            formData.append('file', selectedFile);
-        } else if (audioBlob) {
-            formData.append('file', audioBlob, 'recording.webm');
-        }
+        formData.append('file', selectedFile);
 
         try {
-            const response = await fetch('/upload', {
-                method: 'POST',
-                body: formData,
+            const response = await axios.post('http://localhost:5000/api/coughUpload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             });
 
-            if (response.ok) {
+            if (response.status === 200) {
                 alert('파일이 성공적으로 업로드되었습니다.');
             } else {
                 alert('파일 업로드에 실패했습니다.');
