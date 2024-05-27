@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import './MainPg.css';
-
+import CoughUd from '../uploard/coughUd.jsx'
+import Covidbtn from '../Button/Covidbtn.jsx';
 function MainPg() {
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+
+    
+    
 
     return (
         <div className="main-container">
@@ -41,7 +47,7 @@ function MainPg() {
                     <h2 className='voiceDsEg'>COVID-19</h2>
                     <p className="expln">AI가 당신의 기침소리를 분석하여</p>
                     <p className="expln">COVID-19를 진단합니다.</p>
-                    <a href="#"><button className='covidDg' >진단받기</button></a>
+                    <Covidbtn />
                 </div>
             </div>
         </div>

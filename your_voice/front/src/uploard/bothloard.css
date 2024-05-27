@@ -1,0 +1,57 @@
+.parent-box {
+    background-color: rgb(245, 245, 220);
+    width: 100vw;
+    height: 100vh;
+}
+
+.box {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.udH2 {
+    margin-bottom: 30%;
+}
+
+.input-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 25px;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-input {
+    display: none;
+}
+
+.btnUd {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btnUd:hover {
+    background-color: #0056b3;
+}
+
+.inputbtn {
+    display: inline-block;
+    padding: .5em .75em;
+    color: #999;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+}
