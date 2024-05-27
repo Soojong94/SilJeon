@@ -14,7 +14,25 @@
 }
 
 .udH2 {
-    margin-bottom: 30%;
+    margin-bottom: 20px;
+}
+
+.record-container {
+    margin-bottom: 20px;
+}
+
+.record-btn {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.record-btn:hover {
+    background-color: #0056b3;
 }
 
 .input-container {
@@ -22,7 +40,6 @@
     grid-template-columns: 1fr auto;
     gap: 25px;
     align-items: center;
-    justify-content: center;
 }
 
 .file-input {
