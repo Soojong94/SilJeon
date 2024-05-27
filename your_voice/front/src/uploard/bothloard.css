@@ -14,7 +14,25 @@
 }
 
 .udH2 {
-    margin-bottom: 30%;
+    margin-bottom: 20px;
+}
+
+.record-container {
+    margin-bottom: 20px;
+}
+
+.record-btn {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.record-btn:hover {
+    background-color: #0056b3;
 }
 
 .input-container {
@@ -22,7 +40,6 @@
     grid-template-columns: 1fr auto;
     gap: 25px;
     align-items: center;
-    justify-content: center;
 }
 
 .file-input {
@@ -43,15 +60,15 @@
 }
 
 .inputbtn {
-    display: inline-block;
-    padding: .5em .75em;
-    color: #999;
-    font-size: inherit;
-    line-height: normal;
-    vertical-align: middle;
-    background-color: #fdfdfd;
+    width: 40% ;
+    height: 80%;
+    background-color: transparent;
+    border: none;
+    padding:auto;
     cursor: pointer;
-    border: 1px solid #ebebeb;
-    border-bottom-color: #e2e2e2;
-    border-radius: .25em;
+    border-radius: 10px;
+    font-size: 1em;
+    
+    color: rgb(104, 68, 9);
+    box-shadow: 5px 5px 20px;
 }
