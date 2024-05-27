@@ -71,7 +71,8 @@ const CoughUd = () => {
     return (
         <div className='parent-box'>
             <div className='box'>
-                <h2 className='udH2'>기침 소리 업로드</h2>
+                <h1 className='udH1'>Audio Recording & Upload</h1>
+                <h2 className='udh2'> .mp3, .mp4, .weba 확장자 파일만 업로드</h2>
                 <div className="record-container">
                     <button className='record-btn' onClick={recording ? stopRecording : startRecording}>
                         {recording ? '녹음 중지' : '녹음 시작'}
