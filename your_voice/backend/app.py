@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from db.db import connect_db  # DB 커넥션 풀을 가져오는 함수 import
 from flask_cors import CORS
+from upload_and_predict import process_file
 
 app = Flask(__name__)
 CORS(app)
@@ -28,6 +29,16 @@ def test():
 def hello():
     data = "hello"
     return jsonify(data)
+
+
+@app.route('/api/coughUpload', methods=['POST'])
+def coughUpload():
+    result, status = process_file(request.files, app.static_folder)
+    if isinstance(result, dict) and 'error' in result:
+        return jsonify(result), status
+    return jsonify(result), status
+
+
 
     
 if __name__ == '__main__' :
