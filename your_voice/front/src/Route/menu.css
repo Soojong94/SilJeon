@@ -3,12 +3,15 @@
   top: 0px;
   right: 0px;
   max-height: 7%;
+  width: 100%;
+
 }
 
 .menu_bar {
   display: flex;
   align-items: center;
   padding: 2px;
+
 }
 
 .menu_bar .icon {
@@ -23,19 +26,23 @@
   cursor: default;
 }
 
+.logo_img {
+  max-height: 100px;
+
+}
+
 .navbar {
-  width: 100vw;
-  padding-left: 2vw;
-  padding-right: 2vw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-left: 2vw;
+  padding-right: 2vw;
 }
 
 .logo {
-  width: 50%;
-  height: auto;
- maring:0 0 10px 10px;
+  margin-left: 10px;
+
 }
 
 .nav-items {
@@ -55,7 +62,6 @@
 }
 
 .nav_header {
-
   padding: 1.5vh 2.5vh;
   color: white;
 }

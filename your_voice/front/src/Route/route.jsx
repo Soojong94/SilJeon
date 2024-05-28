@@ -15,7 +15,7 @@ const RoutesComponent = () => {
                 <Route path='/diagnosis_page' element={<Diagnosis_page />} />
                 <Route path="/coughUd" element={<CoughUd />} />
                 <Route path="/NewMainPg" element={<NewMainPg />} />
-             
+                <Route path="/MyPage" element={<MyPage />} />
             </Routes>
         </Router>
     );
