@@ -1,6 +1,8 @@
 import './loading_page.css'
 import React from 'react'
 import { RingLoader } from 'react-spinners';
+import MenuBar from '../Route/menu';
+
 
 //npm install react-spinners
 
@@ -8,6 +10,7 @@ import { RingLoader } from 'react-spinners';
 function loading_page() {
   return (
     <div className='ringLoader'>
+      <MenuBar />
       <RingLoader
         color="#36d7b7"
         cssOverride={{}}

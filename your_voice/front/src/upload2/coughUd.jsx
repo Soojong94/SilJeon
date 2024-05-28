@@ -2,6 +2,9 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import Recorder from 'recorder-js';
 import './bothload.css';
+import MenuBar from '../Route/menu';
+
+
 
 const CoughUd = () => {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -92,6 +95,7 @@ const CoughUd = () => {
 
     return (
         <div className='parent-box'>
+            <MenuBar />
             <div className='box'>
                 {message && <p className='message'>{message}</p>}
                 <h1 className='udH1'>Audio Recording & Upload</h1>
