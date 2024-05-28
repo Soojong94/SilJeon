@@ -6,7 +6,6 @@ body {
   
   .main-container {
     display: flex;
-    grid-template-rows: auto 1fr;
     height: 100vh;
   }
   
