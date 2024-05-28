@@ -25,7 +25,7 @@ const CoughUd = () => {
     const handleFileUpload = async (blob) => {
         const formData = new FormData();
         if (blob) {
-            formData.append('file', blob, 'recording.webm');  // webm 형식으로 변경
+            formData.append('file', blob, 'recording.wav');
         } else if (selectedFile) {
             formData.append('file', selectedFile);
         }
@@ -95,7 +95,7 @@ const CoughUd = () => {
             <div className='box'>
                 {message && <p className='message'>{message}</p>}
                 <h1 className='udH1'>Audio Recording & Upload</h1>
-                <h2 className='udh2'>녹음 후 음성 파일을 업로드 해주세요.</h2>
+                <h2 className='udh2'>.mp3, .mp4, .weba 확장자 파일만 업로드</h2>
                 <div className="record-container">
                     <button className='record-btn' onClick={recording ? stopRecording : startRecording}>
                         {recording ? '녹음 중지' : '녹음 시작'}
