@@ -1,0 +1,98 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .main-container {
+    display: flex;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+  }
+  
+ 
+
+  
+
+  .nav-items {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-button {
+    background-color: transparent;
+    border: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    color: antiquewhite;
+  }
+  
+  
+  
+
+  
+  .main-box {
+    width: 100%;
+    height: 100%;
+ 
+    
+    background-color: rgb(245, 245, 220);
+  }
+  
+  .voice {
+    justify-self: center;
+    width: 100%;
+    height: 92%;
+    background: #f4f4f4;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+  
+  .voiceDsEg {
+    font-size: 1.5em;
+    margin-bottom: 90px;
+    margin-top: 15%;
+    font-size: 3em;
+    color: rgb(104, 68, 9);
+  }
+  
+  .expln {
+    font-size: 1.4em;
+    margin: 20px 0;
+    color: rgb(104, 68, 9);
+  }
+  
+  .voiceDg {
+    background-color: transparent;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1em;
+    margin-top: 100px;
+    color: rgb(104, 68, 9);
+    box-shadow: 5px 5px 20px;
+  }
+  
+  .voiceDg:hover {
+    background-color: #f2f3e9;
+    color:#3f4501;
+    box-shadow: 5px 5px 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .nav-button {
+      display: none; /* 버튼 숨김 */
+    }
+  
+  
+    
+  }
+  
