@@ -33,8 +33,9 @@
 }
 
 .logo {
-  font-size: 1.5em;
-  margin-left: 5vw;
+  width: 50%;
+  height: auto;
+ maring:0 0 10px 10px;
 }
 
 .nav-items {
