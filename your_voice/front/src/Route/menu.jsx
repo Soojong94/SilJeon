@@ -4,7 +4,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import LoginIcon from '@mui/icons-material/Login';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import './menu.css';
-import logo from '../Route/yourVoice_log.png'; // 이미지 파일을 import
+import logo from '../Route/Your voice.png'; // 이미지 파일을 import
 
 function MenuBar() {
 
