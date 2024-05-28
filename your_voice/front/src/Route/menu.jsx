@@ -12,7 +12,7 @@ function MenuBar() {
 
     <div className='menu_bar_container nav_header'>
       <nav className="navbar">
-        <div className="logo">Your Voice</div>
+        <div className="logo"></div>
         <div className="nav-items">
           <div className='menu_bar'>
             <a href='#'><button className="nav-button">
