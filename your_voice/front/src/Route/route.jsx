@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MainPg from '../MainPg/MainPg.jsx';
 import LoadingPage from '../loading_page/loading_page.jsx';
 import Diagnosis_page from '../diagnosis_page/diagnosis_page.jsx'
-import CoughUd from '../uploard/coughUd.jsx'
+import CoughUd from '../upload2/coughUd.jsx'
 
 const RoutesComponent = () => {
     return (

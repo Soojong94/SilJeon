@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './MainPg.css';
-import CoughUd from '../uploard/coughUd.jsx'
+import CoughUd from '../upload2/coughUd.jsx'
 import Covidbtn from '../Button/Covidbtn.jsx';
 function MainPg() {
 

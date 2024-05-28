@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios'; // axios를 import합니다.
-import './bothloard.css'
+import './bothload.css'
 
 const CoughUd = () => {
     const [selectedFile, setSelectedFile] = useState(null);
