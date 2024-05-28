@@ -2,9 +2,11 @@ from flask import Flask, request, jsonify
 from db.db import connect_db  # DB 커넥션 풀을 가져오는 함수 import
 from flask_cors import CORS
 from upload_and_predict import process_file
+from werkzeug.utils import secure_filename
+import os
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
 @app.route('/')
 def home():
@@ -33,10 +35,19 @@ def hello():
 
 @app.route('/api/coughUpload', methods=['POST'])
 def coughUpload():
-    result, status = process_file(request.files, app.static_folder)
-    if isinstance(result, dict) and 'error' in result:
-        return jsonify(result), status
-    return jsonify(result), status
+    if 'file' not in request.files:
+        return jsonify({'error': '파일이 전송되지 않았습니다.'}), 400
+
+    file = request.files['file']
+    filename = secure_filename(file.filename)
+    filepath = os.path.join(app.static_folder, filename)
+
+    # 디렉토리가 존재하는지 확인하고, 없으면 생성
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+
+    # 파일 저장
+    file.save(filepath)
+    return jsonify({'message': f'{filename} 파일이 {filepath}에 저장되었습니다.'}), 200
 
 
 
