@@ -1,6 +1,8 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .mainPG_box {
@@ -13,8 +15,10 @@ body {
 }
 
 .voice {
-    display: flex; /* 자식 요소들을 수평으로 배치 */
-    justify-content: space-between; /* 공간을 균등하게 배분 */
+    display: flex;
+    /* 자식 요소들을 수평으로 배치 */
+    justify-content: space-between;
+    /* 공간을 균등하게 배분 */
     align-items: center;
     width: 60%;
     height: 70%;
@@ -26,8 +30,10 @@ body {
 }
 
 .MainImg {
-    flex: 1; /* 이미지가 차지할 공간 */
-    text-align: center; /* 이미지 중앙 정렬 */
+    flex: 1;
+    /* 이미지가 차지할 공간 */
+    text-align: center;
+    /* 이미지 중앙 정렬 */
 }
 
 .MainImg img {
@@ -37,8 +43,9 @@ body {
 }
 
 .voiceContent {
-    flex: 2; 
-    text-align: center; /* 텍스트 왼쪽 정렬 */
+    flex: 2;
+    text-align: center;
+    /* 텍스트 왼쪽 정렬 */
 }
 
 .voiceDsEg {
