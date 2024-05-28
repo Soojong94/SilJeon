@@ -1,76 +1,49 @@
 import os
 from werkzeug.utils import secure_filename
 from db.db import connect_db
-# from ml_model import predict  # 머신러닝 모델 import
 from pydub import AudioSegment
+from datetime import datetime
 
 def handle_upload(file, static_folder_path):
-    # 파일을 저장할 경로 생성
-    filepath = os.path.join(static_folder_path, file.filename)
-    
-    # 디렉토리가 존재하는지 확인하고, 없으면 생성
-    os.makedirs(os.path.dirname(filepath), exist_ok=True)
-    
-    # 파일 저장
-    file.save(filepath)
-    print(f"{file.filename} 파일이 {filepath}에 저장되었습니다.")  # 파일 저장 확인을 위한 프린트 문 추가
-    return filepath
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+    filename = secure_filename(file.filename)
+    unique_filename = f"{timestamp}_{filename}"
+    original_filepath = os.path.join(static_folder_path, unique_filename)
+    print(f"원본 파일 경로: {original_filepath}")
+    try:
+        file.save(original_filepath)
+        print(f"파일이 성공적으로 저장되었습니다: {original_filepath}")
+    except Exception as e:
+        print(f"파일 저장에 실패했습니다: {e}")
+        raise
+    wav_filepath = convert_to_wav(original_filepath)
+    return wav_filepath
 
 def process_file(file, static_folder_path):
     if 'file' not in file:
         return '파일이 전송되지 않았습니다.', 400
-    saved_file = handle_upload(file['file'], static_folder_path)
-    if isinstance(saved_file, tuple):  # 에러 메시지와 상태 코드를 반환하는 경우
-        return saved_file
+    wav_filepath = handle_upload(file['file'], static_folder_path)
+    if isinstance(wav_filepath, tuple):
+        return wav_filepath
 
-    # 파일을 WAV로 변환
-    wav_file = convert_to_wav(saved_file)
-    
-    # 머신러닝 모델로 결과 예측
-    result = predict(wav_file)
-    print(result)
+    return {'filepath': wav_filepath}, 200
 
-    # 데이터베이스에 결과 저장
+# ffmpeg 경로 설정
+AudioSegment.converter = "C:/Program Files/ffmpeg/ffmpeg-7.0.1-full_build/ffmpeg-7.0.1-full_build/bin/ffmpeg"
+
+def convert_to_wav(source_path):
     try:
-        conn = connect_db()
-        cursor = conn.cursor()
-        cursor.execute("INSERT INTO results (score) VALUES (%s)", (result['score'],))
-        conn.commit()
+        file_extension = source_path.split('.')[-1]
+        supported_formats = ["mp3", "m4a", "mp4", "webm", "ogg", "flac", "wav"]  # 지원하는 파일 형식 추가
+        if file_extension in supported_formats:
+            audio = AudioSegment.from_file(source_path, format=file_extension)
+        else:
+            raise ValueError(f"지원하지 않는 파일 형식: {file_extension}")
+        
+        target_path = source_path.rsplit('.', 1)[0] + '.wav'
+        audio.export(target_path, format='wav')
+        os.remove(source_path)  # 원본 파일 삭제
+        return target_path
     except Exception as e:
-        print(f"DB 저장 중 오류 발생: {e}")
-        return {'error': 'DB 처리 중 오류 발생'}, 500
-    finally:
-        cursor.close()
-        conn.close()
+        raise Exception(f"파일 변환 중 오류 발생: {e}")
 
-    return result, 200
-
-def convert_to_wav(source_path):
-    # 파일 확장자 추출
-    file_extension = source_path.split('.')[-1]
-    
-    # 지원하는 파일 형식에 따라 적절한 포맷을 사용
-    if file_extension in ["mp3", "m4a", "mp4", "webm"]:
-        audio = AudioSegment.from_file(source_path, format=file_extension)
-    else:
-        return f"지원하지 않는 파일 형식: {file_extension}", 400
-    
-    target_path = source_path.rsplit('.', 1)[0] + '.wav'
-    audio.export(target_path, format='wav')
-    print(f"{source_path} 파일이 {target_path}로 변환되었습니다.")
-    return target_path
-
-def convert_to_wav(source_path):
-    # 파일 확장자 추출
-    file_extension = source_path.split('.')[-1]
-    
-    # 지원하는 파일 형식에 따라 적절한 포맷을 사용
-    if file_extension in ["mp3", "m4a", "mp4", "webm"]:
-        audio = AudioSegment.from_file(source_path, format=file_extension)
-    else:
-        return f"지원하지 않는 파일 형식: {file_extension}", 400
-    
-    target_path = source_path.rsplit('.', 1)[0] + '.wav'
-    audio.export(target_path, format='wav')
-    print(f"{source_path} 파일이 {target_path}로 변환되었습니다.")
-    return target_path

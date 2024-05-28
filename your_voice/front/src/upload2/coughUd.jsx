@@ -36,6 +36,8 @@ const CoughUd = () => {
 
             if (response.status === 200) {
                 setMessage('파일이 성공적으로 업로드되었습니다.');
+                const result = response.data
+                console.log(result)
             } else {
                 alert('파일 업로드에 실패했습니다.');
             }

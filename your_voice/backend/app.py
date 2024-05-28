@@ -4,13 +4,19 @@ from flask_cors import CORS
 from upload_and_predict import process_file
 from werkzeug.utils import secure_filename
 import os
+import logging
+from joblib import load
+import librosa
+import numpy as np
+import joblib
+from models.model import AudioModel  # AudioModel 클래스를 가져옵니다.
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
 @app.route('/')
 def home():
-    return '<h>ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ</h>'
+    return '<h>ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ</h>'
 
 @app.route('/test')
 def test():
@@ -27,28 +33,42 @@ def test():
         conn.close()    
     return f'<h1>Data:{data}</h1>'
 
-@app.route('/api/hello')
-def hello():
-    data = "hello"
-    return jsonify(data)
 
 
 @app.route('/api/coughUpload', methods=['POST'])
 def coughUpload():
-    if 'file' not in request.files:
-        return jsonify({'error': '파일이 전송되지 않았습니다.'}), 400
+    try:
+        if 'file' not in request.files:
+            return jsonify({'error': '파일이 전송되지 않았습니다.'}), 400
 
-    file = request.files['file']
-    filename = secure_filename(file.filename)
-    filepath = os.path.join(app.static_folder, filename)
+        file = request.files['file']
+        filename = secure_filename(file.filename)
+        static_folder_path = app.static_folder
 
-    # 디렉토리가 존재하는지 확인하고, 없으면 생성
-    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+        # 파일 처리 및 WAV 변환
+        result, status_code = process_file({'file': file}, static_folder_path)
+        if status_code != 200:
+            logging.error(f"File processing failed with status {status_code}: {result}")
+            return jsonify(result), status_code
 
-    # 파일 저장
-    file.save(filepath)
-    return jsonify({'message': f'{filename} 파일이 {filepath}에 저장되었습니다.'}), 200
+        # 변��된 WAV 파일 경로
+        wav_filepath = result['filepath']
+        wav_file = wav_filepath
 
+        # 로그 추가
+        logging.info(f"Processed file saved at {wav_filepath}")
+
+        # 모델 불러오기 및 예측
+        # 모델 경로 업데이트
+        loaded_model = joblib.load('./models/model2.joblib')
+        prediction = loaded_model.process_audio_file(wav_file)  # 모델 사용 방식은 모델에 따라 다를 수 있음
+        prediction = float(prediction)
+        print(prediction)
+
+        return jsonify({'prediction': prediction}), 200
+    except Exception as e:
+        logging.exception("An error occurred during file upload.")
+        return jsonify({'error': str(e)}), 500
 
 
     
