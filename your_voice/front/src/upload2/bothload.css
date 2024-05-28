@@ -1,5 +1,6 @@
 .parent-box {
-    background-color: rgb(245, 245, 220);
+    background: linear-gradient(to right, #b6ddee, whitesmoke);
+    transition: background 0.3s ease;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -10,17 +11,19 @@
 
 .up_box {
     border-radius: 5px;
-    width: 80%;
-    height: 80%;
+    width: 75%;
+    height: 75%;
     background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* 부드러운 그림자 */
-    padding: 20px;
-    /* 내부 패딩을 추가하여 내용과 경계를 띄움 */
+    box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
+   
+    
+   
     box-sizing: border-box;
-    /* 패딩을 포함하여 크기 계산 */
+ 
     text-align: center;
     justify-content: center;
+    padding: 30px 0; 
+    margin-top: 40px;
 }
 
 .udH1 {
