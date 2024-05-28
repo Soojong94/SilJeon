@@ -1,16 +1,18 @@
 import React, { useState, useRef } from 'react';
-import axios from 'axios'; // axios를 import합니다.
-import './bothload.css'
+import axios from 'axios';
+import Recorder from 'recorder-js';
+import './bothload.css';
 
 const CoughUd = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [recording, setRecording] = useState(false);
-    const [mediaRecorder, setMediaRecorder] = useState(null);
+    const [recorder, setRecorder] = useState(null);
     const [audioBlob, setAudioBlob] = useState(null);
     const [message, setMessage] = useState('');
     const inputBtn = useRef(null);
     const audioRef = useRef(null);
     const timerRef = useRef(null);
+    const audioContextRef = useRef(new (window.AudioContext || window.webkitAudioContext)());
 
     const inputbtn = () => {
         inputBtn.current.click();
@@ -23,7 +25,7 @@ const CoughUd = () => {
     const handleFileUpload = async (blob) => {
         const formData = new FormData();
         if (blob) {
-            formData.append('file', blob, 'recording.webm');
+            formData.append('file', blob, 'recording.wav');
         } else if (selectedFile) {
             formData.append('file', selectedFile);
         }
@@ -46,35 +48,34 @@ const CoughUd = () => {
         }
     };
 
-    const startRecording = () => {
+    const startRecording = async () => {
         setMessage('');
-        navigator.mediaDevices.getUserMedia({ audio: true })
-            .then(stream => {
-                const recorder = new MediaRecorder(stream);
-                recorder.ondataavailable = (e) => {
-                    setAudioBlob(e.data);
-                };
-                recorder.onstop = () => {
-                    const audioURL = URL.createObjectURL(audioBlob);
-                    audioRef.current.src = audioURL;
-                    setMessage('녹음이 종료되었습니다.');
-                    handleFileUpload(audioBlob); // 녹음이 종료되면 자동으로 업로드
-                };
-                recorder.start();
-                setMediaRecorder(recorder);
-                setRecording(true);
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const recorder = new Recorder(audioContextRef.current, {
+            onAnalysed: data => console.log(data)
+        });
 
-                // 5초 후에 녹음을 자동으로 중지
-                timerRef.current = setTimeout(() => {
-                    stopRecording();
-                }, 5000);
-            })
-            .catch(err => console.error('음성 녹음 중 오류가 발생했습니다:', err));
+        recorder.init(stream);
+        recorder.start().then(() => {
+            setRecording(true);
+            setRecorder(recorder);
+
+            // 5초 후에 녹음을 자동으로 중지
+            timerRef.current = setTimeout(() => {
+                stopRecording();
+            }, 5000);
+        });
     };
 
     const stopRecording = () => {
-        if (mediaRecorder && recording) {
-            mediaRecorder.stop();
+        if (recorder && recording) {
+            recorder.stop().then(({blob}) => {
+                setAudioBlob(blob);
+                const audioURL = URL.createObjectURL(blob);
+                audioRef.current.src = audioURL;
+                setMessage('녹음이 종료되었습니다.');
+                handleFileUpload(blob);
+            });
             setRecording(false);
             clearTimeout(timerRef.current); // 타이머 클리어
         }
