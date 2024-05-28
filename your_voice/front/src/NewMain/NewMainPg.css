@@ -7,22 +7,27 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
+    margin: 20px 0 0 0 ;
+    
     justify-content: center;
     align-items: center;
-    background-color: rgb(245, 245, 220);
+    background: linear-gradient(to right, #b6ddee, whitesmoke);
+  transition: background 0.3s ease;
+
 }
 
 .voice {
-    display: flex; /* 자식 요소들을 수평으로 배치 */
-    justify-content: space-between; /* 공간을 균등하게 배분 */
+    display: flex; 
+    justify-content: space-between; 
     align-items: center;
     width: 60%;
-    height: 70%;
+    height: 60%;
     background: #f4f4f4;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
     text-align: center;
+   
 }
 
 .MainImg {
