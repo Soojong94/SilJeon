@@ -1,41 +1,10 @@
 import React, { useState } from 'react';
 import './MainPg.css';
-import CoughUd from '../upload2/coughUd.jsx'
 import Covidbtn from '../Button/Covidbtn.jsx';
 function MainPg() {
 
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
-
-
-    
-    
-
     return (
         <div className="main-container">
-            <header className="header">
-                <nav className="navbar">
-                    <div className="logo">Your Voice</div>
-                    <div className="nav-items">
-                        <a href='#'><button className="nav-button">Sign in</button></a>
-                        <a href='#'><button className="nav-button">My page</button></a>
-                        <div className="hamburger-menu" onClick={toggleMenu}>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                </nav>
-                {isMenuOpen && (
-                    <div className="dropdown-menu">
-                        <a href="#">월간 차트</a>
-                        <a href="#">분석결과</a>
-                    </div>
-                )}
-            </header>
             <div className="main-box">
                 <div className="voice">
                     <h2 className='voiceDsEg'>Disease in voice</h2>
