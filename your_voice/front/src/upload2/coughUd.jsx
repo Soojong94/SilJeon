@@ -101,6 +101,9 @@ const CoughUd = () => {
         }
     };
 
+    // 녹음 중이 아닐 때는 마이크 사용하지 않도록 설정
+    const constraints = recording ? { audio: true } : false;
+
     return (
         <div className='parent-box'>
             <MenuBar />
@@ -112,13 +115,13 @@ const CoughUd = () => {
                     <button className='record-btn' onClick={recording ? stopRecording : startRecording}>
                         {recording ? '녹음 중지' : '녹음 시작'}
                     </button>
-                    <button className='btnUd' onClick={uploadRecordedAudio}>녹음 파일 업로드</button>
+                    <button className='btnUd' onClick={uploadRecordedAudio} disabled={!audioBlob}>녹음 파일 업로드</button>
                 </div>
                 <audio ref={audioRef} controls />
                 <div className="input-container">
                     <button className="inputbtn" onClick={inputbtn}>파일 선택</button>
                     <input type="file" onChange={handleFileChange} ref={inputBtn} className="file-input" />
-                    <button className='btnUd' onClick={uploadSelectedFile}>파일 업로드</button>
+                    <button className='btnUd' onClick={uploadSelectedFile} disabled={!selectedFile}>파일 업로드</button>
                 </div>
             </div>
         </div>
