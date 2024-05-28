@@ -6,7 +6,7 @@ import MenuBar from '../Route/menu';
 function DiagnosisPage() {
   return (
     <div className='diagnosis_page'>
-      <MenuBar /> 
+      <MenuBar />
       <div className='diagnosis_head'>
         <h1>진단 제목(서버에서 데이터를 받아서
           <br />
