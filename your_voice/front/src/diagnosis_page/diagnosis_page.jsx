@@ -5,28 +5,20 @@ import MenuBar from '../Route/menu';
 
 const DiagnosisPage = () => {
   const location = useLocation();
-  const { analysisResult } = location.state || { analysisResult: null }; // 기본 값 설정
-
-  if (!analysisResult) {
-    return (
-      <div className='diagnosis_page'>
-        <MenuBar />
-        <div className='diagnosis_head'>
-          <h1>No analysis result found</h1>
-        </div>
-      </div>
-    );
-  }
+  const { analysisResult } = location.state;
 
   return (
     <div className='diagnosis_page'>
       <MenuBar />
       <div className='diagnosis_head'>
-        <h1>{analysisResult.description}</h1>
+        <h1>넘어오는지 확인
+          <br />
+        </h1>
       </div>
       <div className='diagnosis_body_container'>
         <div className='diagnosis_body'>
-          <h3>{analysisResult.description}</h3>
+          <h3> 주파수 평균 <br />
+            {analysisResult.prediction}</h3>
         </div>
       </div>
     </div>
