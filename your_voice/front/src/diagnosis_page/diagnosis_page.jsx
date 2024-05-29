@@ -5,7 +5,18 @@ import MenuBar from '../Route/menu';
 
 const DiagnosisPage = () => {
   const location = useLocation();
-  const { analysisResult } = location.state;
+  const { analysisResult } = location.state || { analysisResult: null }; // 기본 값 설정
+
+  if (!analysisResult) {
+    return (
+      <div className='diagnosis_page'>
+        <MenuBar />
+        <div className='diagnosis_head'>
+          <h1>No analysis result found</h1>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className='diagnosis_page'>

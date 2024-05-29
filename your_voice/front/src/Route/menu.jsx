@@ -27,10 +27,10 @@ function MenuBar() {
               <Tooltip title="회원가입">
                 <AccountCircleIcon className='icon' />
               </Tooltip></button></a>
-            <a href='#'><button className="nav-button">
+          <button className="nav-button" onClick={() => navigate('/diagnosis_page')}>
               <Tooltip title="진단페이지">
                 <BarChartIcon className='icon' />
-              </Tooltip></button></a>
+              </Tooltip></button>
           </div>
         </div>
       </nav>

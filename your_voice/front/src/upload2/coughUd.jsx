@@ -39,9 +39,8 @@ const CoughUd = () => {
 
             if (response.status === 200) {
                 setMessage('파일이 성공적으로 업로드되었습니다.');
-                // const result = response.data
-                // console.log(result)
-                navigate('/loading_page', { state: { file: file } });
+                const result = response.data; // 서버에서 반환된 결과를 받아옵니다.
+                navigate('/loading_page', { state: { analysisResult: result } }); // 분석 결과를 상태로 전달합니다.
             } else {
                 alert('파일 업로드에 실패했습니다.');
             }
@@ -97,16 +96,9 @@ const CoughUd = () => {
         }
     };
 
-    const downloadRecordedAudio = () => {
+    const uploadRecordedAudio = () => {
         if (audioBlob) {
-            const url = URL.createObjectURL(audioBlob);
-            const a = document.createElement('a');
-            a.style.display = 'none';
-            a.href = url;
-            a.download = 'recording.wav';
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
+            handleFileUpload(audioBlob);
         } else {
             alert('녹음된 파일이 없습니다.');
         }
@@ -131,7 +123,7 @@ const CoughUd = () => {
                     <button className='record-btn' onClick={recording ? stopRecording : startRecording}>
                         {recording ? '녹음 중지' : '녹음 시작'}
                     </button>
-                    <button className='btnUd' onClick={downloadRecordedAudio} disabled={!audioBlob}>녹음 파일 다운로드</button>
+                    <button className='btnUd' onClick={uploadRecordedAudio} disabled={!audioBlob}>녹음 파일 업로드</button>
                 </div>
                 <audio ref={audioRef} controls />
                 <div className="input-container">
