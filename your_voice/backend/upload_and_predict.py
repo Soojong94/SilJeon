@@ -3,6 +3,7 @@ from werkzeug.utils import secure_filename
 from db.db import connect_db
 from pydub import AudioSegment
 from datetime import datetime
+import subprocess
 
 def handle_upload(file, static_folder_path):
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
@@ -28,22 +29,24 @@ def process_file(file, static_folder_path):
 
     return {'filepath': wav_filepath}, 200
 
-# ffmpeg 경로 설정
-AudioSegment.converter = "C:/Program Files/ffmpeg/ffmpeg-7.0.1-full_build/ffmpeg-7.0.1-full_build/bin/ffmpeg"
-
 def convert_to_wav(source_path):
     try:
         file_extension = source_path.split('.')[-1]
-        supported_formats = ["mp3", "m4a", "mp4", "webm", "ogg", "flac", "wav"]  # 지원하는 파일 형식 추가
+        supported_formats = ["mp3", "m4a", "mp4", "webm", "ogg", "flac", "wav", "weba"]  # 'weba' added
         if file_extension in supported_formats:
-            audio = AudioSegment.from_file(source_path, format=file_extension)
-        else:
-            raise ValueError(f"지원하지 않는 파일 형식: {file_extension}")
-        
-        target_path = source_path.rsplit('.', 1)[0] + '.wav'
-        audio.export(target_path, format='wav')
-        os.remove(source_path)  # 원본 파일 삭제
-        return target_path
+            if file_extension in ["webm", "weba"]:  # Handle 'webm' and 'weba' files
+                target_path = source_path.rsplit('.', 1)[0] + '.wav'
+                command = ['ffmpeg', '-i', source_path, target_path]
+                subprocess.run(command, check=True)
+            else:
+                audio = AudioSegment.from_file(source_path, format=file_extension)
+                target_path = source_path.rsplit('.', 1)[0] + '.wav'
+                audio.export(target_path, format='wav')
+            os.remove(source_path)  # Delete original file
+            return target_path
     except Exception as e:
-        raise Exception(f"파일 변환 중 오류 발생: {e}")
+        raise Exception(f"Error occurred during file conversion: {e}")
 
+def convert_weba_to_wav(weba_filepath, output_wav_filepath):
+    command = ['ffmpeg', '-i', weba_filepath, output_wav_filepath]
+    subprocess.run(command, check=True)

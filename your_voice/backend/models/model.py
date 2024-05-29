@@ -19,3 +19,9 @@ class AudioModel:
         extracted_audio = audio_data[start_idx:end_idx]
 
         return extracted_audio.mean()
+
+# 모델 인스턴스 생성
+model_instance = AudioModel()
+
+# 모델을 파일로 저장
+joblib.dump(model_instance, 'model3.joblib')
