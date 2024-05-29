@@ -7,6 +7,7 @@
 
 }
 
+
 .menu_bar {
   display: flex;
   align-items: center;
@@ -30,7 +31,11 @@
   max-height: 100px;
 
 }
+.logo_img:hover{
 
+
+  
+}
 .navbar {
   width: 100%;
   display: flex;

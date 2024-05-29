@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LoginIcon from '@mui/icons-material/Login';
@@ -8,10 +9,14 @@ import logo from '../Route/Your voice.png'; // 이미지 파일을 import
 
 function MenuBar() {
 
+  const navigate = useNavigate();
+
   return (
     <div className='menu_bar_container nav_header'>
       <nav className="navbar">
-        <div className="logo"><img src={logo} alt="Your Voice Logo" className="logo_img" /></div>
+      <div className="logo" onClick={() => navigate('/NewMainPg')}>
+          <img src={logo} alt="Your Voice Logo" className="logo_img" />
+        </div>
         <div className="nav-items">
           <div className='menu_bar'>
             <a href='#'><button className="nav-button">
