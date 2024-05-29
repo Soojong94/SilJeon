@@ -23,10 +23,10 @@ function MenuBar() {
               <Tooltip title="로그인">
                 <LoginIcon className='icon' />
               </Tooltip></button></a>
-            <button className="nav-button"onClick={() => navigate('/MyPage')}>
+            <a href='#'><button className="nav-button">
               <Tooltip title="회원가입">
                 <AccountCircleIcon className='icon' />
-              </Tooltip></button>
+              </Tooltip></button></a>
           <button className="nav-button" onClick={() => navigate('/diagnosis_page')}>
               <Tooltip title="진단페이지">
                 <BarChartIcon className='icon' />
