@@ -12,6 +12,8 @@ def handle_upload(file, static_folder_path):
     filename = secure_filename(file.filename)
     unique_filename = f"{timestamp}_{filename}"
     original_filepath = os.path.join(static_folder_path, unique_filename)
+    # 디렉토리가 존재하는지 확인하고, 없으면 생성
+    os.makedirs(os.path.dirname(original_filepath), exist_ok=True)
     print(f"원본 파일 경로: {original_filepath}")
     try:
         file.save(original_filepath)
@@ -63,4 +65,5 @@ def convert_to_wav(source_path):
         os.remove(source_path)  # 원본 파일 삭제
         return target_path
     except Exception as e:
+        raise Exception(f"파일 변환 중 오류 발생: {e}")
         raise Exception(f"파일 변환 중 오류 발생: {e}")
