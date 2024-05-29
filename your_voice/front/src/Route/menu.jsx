@@ -14,7 +14,7 @@ function MenuBar() {
   return (
     <div className='menu_bar_container nav_header'>
       <nav className="navbar">
-      <div className="logo" onClick={() => navigate('/NewMainPg')}>
+        <div className="logo" onClick={() => navigate('/NewMainPg')}>
           <img src={logo} alt="Your Voice Logo" className="logo_img" />
         </div>
         <div className="nav-items">
