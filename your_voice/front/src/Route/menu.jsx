@@ -14,7 +14,7 @@ function MenuBar() {
   return (
     <div className='menu_bar_container nav_header'>
       <nav className="navbar">
-      <div className="logo" onClick={() => navigate('/NewMainPg')}>
+        <div className="logo" onClick={() => navigate('/NewMainPg')}>
           <img src={logo} alt="Your Voice Logo" className="logo_img" />
         </div>
         <div className="nav-items">
@@ -23,12 +23,12 @@ function MenuBar() {
               <Tooltip title="로그인">
                 <LoginIcon className='icon' />
               </Tooltip></button></a>
-            <a href='#'><button className="nav-button">
+            <button className="nav-button" >
               <Tooltip title="회원가입">
                 <AccountCircleIcon className='icon' />
-              </Tooltip></button></a>
-          <button className="nav-button" onClick={() => navigate('/diagnosis_page')}>
-              <Tooltip title="진단페이지">
+              </Tooltip></button>
+            <button className="nav-button" onClick={() => navigate('/MyPage')}>
+              <Tooltip title="마이페이지">
                 <BarChartIcon className='icon' />
               </Tooltip></button>
           </div>
