@@ -57,6 +57,9 @@
 .input-container{
 
     margin-top: 4%;
+    display: flex;      
+    gap: 23px; 
+    justify-content: center;
 
 }
 .record-container {
