@@ -32,12 +32,6 @@ def process_file(file, static_folder_path):
     return {"filepath": wav_filepath}, 200
 
 
-# ffmpeg 경로 설정
-AudioSegment.converter = (
-    "C:/Program Files/ffmpeg/ffmpeg-7.0.1-full_build/ffmpeg-7.0.1-full_build/bin/ffmpeg"
-)
-
-
 def convert_to_wav(source_path):
     try:
         file_extension = source_path.split(".")[-1]
