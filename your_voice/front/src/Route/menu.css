@@ -32,9 +32,10 @@
 
 }
 .logo_img:hover{
+  cursor: pointer;
 
 
-  
+
 }
 .navbar {
   width: 100%;
