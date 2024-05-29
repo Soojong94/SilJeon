@@ -14,6 +14,10 @@ from models.model import AudioModel  # AudioModel 클래스를 가져옵니다.
 app = Flask(__name__, static_folder='static')
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
+# 모델 로드
+model_path = os.path.join(app.root_path, './models/model3.joblib')
+model = load(model_path)
+
 @app.route('/')
 def home():
     return '<h>ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ</h>'
@@ -33,8 +37,6 @@ def test():
         conn.close()    
     return f'<h1>Data:{data}</h1>'
 
-
-
 @app.route('/api/coughUpload', methods=['POST'])
 def coughUpload():
     try:
@@ -51,7 +53,7 @@ def coughUpload():
             logging.error(f"File processing failed with status {status_code}: {result}")
             return jsonify(result), status_code
 
-        # 변��된 WAV 파일 경로
+        # 변된 WAV 파일 경로
         wav_filepath = result['filepath']
         wav_file = wav_filepath
 
@@ -59,9 +61,8 @@ def coughUpload():
         logging.info(f"Processed file saved at {wav_filepath}")
 
         # 모델 불러오기 및 예측
-        # 모델 경로 업데이트
-        loaded_model = joblib.load('./models/model2.joblib')
-        prediction = loaded_model.process_audio_file(wav_file)  # 모델 사용 방식은 모델에 따라 다를 수 있음
+        audio_model = load(model_path)  # model3.joblib에서 모델 로드
+        prediction = audio_model.process_audio_file(wav_file)  # 오디오 파일 처리
         prediction = float(prediction)
         print(prediction)
 
