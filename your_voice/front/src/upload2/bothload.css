@@ -46,8 +46,7 @@
  
 }
 
-.record-container,
-.input-container {
+.record-container {
 
 
   
@@ -55,7 +54,11 @@
     align-items: center;
     margin-bottom: 2%;
 }
+.input-container{
 
+    margin-top: 4%;
+
+}
 .record-container {
     display: flex;
     flex-direction: row;
@@ -76,7 +79,7 @@
     color: rgb(104, 68, 9);
     text-align: center;
     width: 10vw;
-    margin: 30px;
+    padding: 5px;
     background-color: transparent;
     color: black;
     border: none;
