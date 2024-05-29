@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Recorder from 'recorder-js';
+import WavEncoder from 'wav-encoder';
 import './bothload.css';
 import MenuBar from '../Route/menu';
 
@@ -38,6 +39,8 @@ const CoughUd = () => {
 
             if (response.status === 200) {
                 setMessage('파일이 성공적으로 업로드되었습니다.');
+                // const result = response.data
+                // console.log(result)
                 navigate('/loading_page', { state: { file: file } });
             } else {
                 alert('파일 업로드에 실패했습니다.');
@@ -71,26 +74,39 @@ const CoughUd = () => {
         }
     };
 
-    const stopRecording = () => {
+    const stopRecording = async () => {
         if (recorder && recording) {
-            recorder.stop().then(({ blob }) => {
-                setAudioBlob(blob);
-                const audioURL = URL.createObjectURL(blob);
+            try {
+                const { blob, buffer } = await recorder.stop();
+                const wavData = await WavEncoder.encode({
+                    sampleRate: audioContextRef.current.sampleRate,
+                    channelData: buffer
+                });
+                const wavBlob = new Blob([new DataView(wavData)], { type: 'audio/wav' });
+                setAudioBlob(wavBlob);
+                const audioURL = URL.createObjectURL(wavBlob);
                 audioRef.current.src = audioURL;
                 setMessage('녹음이 종료되었습니다.');
-            }).catch(err => {
+            } catch (err) {
                 console.error('녹음 중지 오류가 발생했습니다:', err);
                 alert('녹음 중지 오류가 발생했습니다.');
-            }).finally(() => {
+            } finally {
                 setRecording(false);
                 clearTimeout(timerRef.current);
-            });
+            }
         }
     };
 
-    const uploadRecordedAudio = () => {
+    const downloadRecordedAudio = () => {
         if (audioBlob) {
-            handleFileUpload(audioBlob);
+            const url = URL.createObjectURL(audioBlob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'recording.wav';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
         } else {
             alert('녹음된 파일이 없습니다.');
         }
@@ -115,7 +131,7 @@ const CoughUd = () => {
                     <button className='record-btn' onClick={recording ? stopRecording : startRecording}>
                         {recording ? '녹음 중지' : '녹음 시작'}
                     </button>
-                    <button className='btnUd' onClick={uploadRecordedAudio} disabled={!audioBlob}>녹음 파일 업로드</button>
+                    <button className='btnUd' onClick={downloadRecordedAudio} disabled={!audioBlob}>녹음 파일 다운로드</button>
                 </div>
                 <audio ref={audioRef} controls />
                 <div className="input-container">
