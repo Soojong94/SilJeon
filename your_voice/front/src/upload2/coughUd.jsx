@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import Recorder from 'recorder-js';
 import './bothload.css';
 import MenuBar from '../Route/menu';
@@ -14,6 +15,7 @@ const CoughUd = () => {
     const audioRef = useRef(null);
     const timerRef = useRef(null);
     const audioContextRef = useRef(new (window.AudioContext || window.webkitAudioContext)());
+    const navigate = useNavigate();
 
     const inputbtn = () => {
         inputBtn.current.click();
@@ -36,8 +38,7 @@ const CoughUd = () => {
 
             if (response.status === 200) {
                 setMessage('파일이 성공적으로 업로드되었습니다.');
-                const result = response.data
-                console.log(result)
+                navigate('/loading_page', { state: { file: file } });
             } else {
                 alert('파일 업로드에 실패했습니다.');
             }
@@ -102,9 +103,6 @@ const CoughUd = () => {
             alert('선택된 파일이 없습니다.');
         }
     };
-
-    // 녹음 중이 아닐 때는 마이크 사용하지 않도록 설정
-    const constraints = recording ? { audio: true } : false;
 
     return (
         <div className='parent-box'>
