@@ -7,6 +7,8 @@ const DiagnosisPage = () => {
   const location = useLocation();
   const { analysisResult } = location.state || { analysisResult: null }; // 기본 값 설정
 
+  console.log(analysisResult)
+
   if (!analysisResult) {
     return (
       <div className='diagnosis_page'>
