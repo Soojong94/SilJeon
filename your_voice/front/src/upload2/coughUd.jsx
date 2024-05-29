@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import Recorder from 'recorder-js';
 import WavEncoder from 'wav-encoder';
 import './bothload.css';
@@ -15,6 +16,7 @@ const CoughUd = () => {
     const audioRef = useRef(null);
     const timerRef = useRef(null);
     const audioContextRef = useRef(new (window.AudioContext || window.webkitAudioContext)());
+    const navigate = useNavigate();
 
     const inputbtn = () => {
         inputBtn.current.click();
@@ -39,6 +41,7 @@ const CoughUd = () => {
                 setMessage('파일이 성공적으로 업로드되었습니다.');
                 // const result = response.data
                 // console.log(result)
+                navigate('/loading_page', { state: { file: file } });
             } else {
                 alert('파일 업로드에 실패했습니다.');
             }
