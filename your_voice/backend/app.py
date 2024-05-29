@@ -18,11 +18,8 @@ CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 model_path = os.path.join(app.root_path, './models/model3.joblib')
 model = load(model_path)
 
-@app.route('/')
-def home():
-    return '<h>ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ</h>'
 
-@app.route('/test')
+@app.route('/api/test')
 def test():
     try:
         conn = connect_db()
@@ -35,7 +32,7 @@ def test():
     finally:
         cursor.close()
         conn.close()    
-    return f'<h1>Data:{data}</h1>'
+    return jsonify({'data': data}), 200
 
 @app.route('/api/coughUpload', methods=['POST'])
 def coughUpload():
