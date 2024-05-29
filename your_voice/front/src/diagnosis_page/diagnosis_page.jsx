@@ -17,6 +17,7 @@ function DiagnosisPage() {
           <img className='Sample1' src={Sample1} alt="Sample" />
         </div>
         <div className='diagnosis_body'>
+
           <h3>
             당신의 목상태는 현재 매우 건강합니다
             <br />
