@@ -103,7 +103,7 @@ const CoughUd = () => {
                     <button className='record-btn' onClick={recording ? stopRecording : startRecording}>
                         {recording ? '녹음 중지' : '녹음 시작'}
                     </button>
-                    <button className='btnUd' onClick={downloadAudio} disabled={!audioBlob}>녹음 파일 다운로드</button>
+                    <button className='btnUd' onClick={downloadAudio} disabled={!audioBlob}>파일 다운</button>
                 </div>
                 <audio ref={audioRef} controls />
                 <div className="input-container">

@@ -22,7 +22,7 @@
  
     text-align: center;
     justify-content: center;
-    padding: 30px 0; 
+    padding: 10px 0; 
     margin-top: 40px;
 }
 
@@ -41,16 +41,16 @@
 
 .message {
     margin-top: 10px;
-    /* 메시지와 상단 내용 사이에 약간의 마진을 추가 */
+   
     color: #6b5716;
-    /* 메시지 텍스트 색상 */
+ 
 }
 
 .record-container,
 .input-container {
 
-    margin-top: 5%;
-    /* 각 컨테이너 상단에 마진을 추가하여 구분 */
+
+  
     justify-content: center;
     align-items: center;
     margin-bottom: 2%;
@@ -72,10 +72,12 @@
 .record-btn,
 .inputbtn,
 .btnUd {
+
+    color: rgb(104, 68, 9);
     text-align: center;
-    width: 15vw;
+    width: 10vw;
     margin: 30px;
-    background-color: lightgray;
+    background-color: transparent;
     color: black;
     border: none;
     border-radius: 5px;
