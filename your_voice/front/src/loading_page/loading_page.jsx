@@ -24,6 +24,7 @@ function LoadingPage() {
 
         if (response.status === 200) {
           const analysisResult = response.data;
+          console.log(analysisResult)
           navigate('/diagnosis_page', { state: { analysisResult } });
         } else {
           alert('파일 분석에 실패했습니다.');
@@ -32,7 +33,7 @@ function LoadingPage() {
       } catch (error) {
         console.error('파일 분석 중 오류가 발생했습니다:', error);
         alert('파일 분석 중 오류가 발생했습니다.');
-        navigate('#');
+        navigate('/');
       }
     };
 
