@@ -1,6 +1,6 @@
 .dgBtn {
     background-color: transparent;
-    border: 1px solid;
+    border: none;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 10px;
