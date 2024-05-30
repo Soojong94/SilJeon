@@ -9,13 +9,13 @@ body {
 }
 
 .my_page {
- 
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 80vh;
-  width:60vw;
+  width: 60vw;
   background-color: rgb(255, 254, 242);
   /* 약간 투명한 배경색으로 조정 */
   margin: 2vw auto;
@@ -25,19 +25,20 @@ body {
   padding: 3%;
   border-radius: 10px;
   color: rgb(9, 28, 104);
-  
+
 }
 
-.myH2{
+.myH2 {
 
   font-size: 1.7vw;
 }
+
 .my_page_head {
   color: rgb(9, 28, 104);
-    font-size: 1vw;
-   
-  
- 
+  font-size: 1vw;
+
+
+
 }
 
 .my_page_container {
@@ -76,19 +77,22 @@ body {
   border: none;
   border-radius: 5vw;
   cursor: pointer;
- 
+
   color: rgb(9, 28, 104);
-  
+
 
   cursor: pointer;
- 
+
   font-size: 0.9vw;
 
- 
-  
+
+
   box-shadow: 3px 3px 10px;
- 
+<<<<<<< HEAD
+
+}
 } */
+
 
 button:hover {
   background-color: transparent;

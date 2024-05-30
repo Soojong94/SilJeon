@@ -62,3 +62,7 @@
   margin-bottom: 8%;
 
 }
+
+.logo :hover {
+  cursor: pointer;
+}
