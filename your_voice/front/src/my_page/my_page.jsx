@@ -2,13 +2,14 @@ import './my_page.css';
 import React from 'react';
 import MenuBar from '../Route/menu';
 import ChartComponent from './ChartComponent';
+import { RingLoader } from 'react-spinners';
 
 function my_page() {
   return (
     <div className='my_page'>
       <MenuBar />
       <div className='my_page_head'>
-        <h1>차트 제목</h1>
+        <h1>Your voice state is..</h1>
       </div>
       <div className='my_page_container'>
         <div className='my_page_chart'>

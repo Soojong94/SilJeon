@@ -1,19 +1,19 @@
 .dgBtn {
-    background-color: transparent;
+  background-color: rgb(203, 240, 254);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 10px;
     font-size: 1em;
-    margin-top: 100px;
-    color: rgb(104, 68, 9);
+    margin-top: 50px;
+    color:#090d5c;
     box-shadow: 5px 5px 20px;
     
   }
   
   .dgBtn:hover {
     background-color: #f2f3e9;
-    color:#3f4501;
+    color:#090d5c;
     box-shadow: 5px 5px 20px;
   }
   

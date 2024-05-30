@@ -28,13 +28,13 @@
 
 .udH1 {
 
-    color: rgb(104, 68, 9);
+    color: rgb(9, 28, 104);
     font-size: 2.6vw;
     margin: 30px 0 10px 0;
 }
 
 .udh2 {
-    color: rgb(104, 68, 9);
+    color: rgb(9, 28, 104);
     font-size: 1.3vw;
 
 }
@@ -82,7 +82,7 @@
 
 .inputbtn
 {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(203, 240, 254);
     border: none;
     padding: 7px 15px;
     cursor: pointer;
@@ -90,14 +90,14 @@
     font-size: 0.9em;
     width: 26%;
    
-    color: rgb(104, 68, 9);
+    color: rgb(9, 28, 104);
     box-shadow: 3px 3px 10px;
 
 }
 
 .record-btn,.btnUd {
 
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(203, 240, 254);
     border: none;
     padding: 7px 15px;
     cursor: pointer;
@@ -105,7 +105,7 @@
     font-size: 0.9em;
     width: 15%;
    
-    color: rgb(104, 68, 9);
+    color: rgb(9, 28, 104);
     box-shadow: 3px 3px 10px;
 
 }
@@ -113,8 +113,8 @@
 .record-btn:hover,
 .inputbtn:hover,
 .btnUd:hover {
-    background-color: #453a08;
-    color: antiquewhite;
+    background-color: transparent;
+    color: rgb(9, 28, 104);
 }
 
 .file-input {
@@ -127,7 +127,7 @@ audio {
     border: none;
     padding: 10px 15px;
     border-radius: 30px;
-    width: 70%;
+    width: 60%;
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 3);
