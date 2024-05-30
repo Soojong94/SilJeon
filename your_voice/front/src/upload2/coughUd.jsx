@@ -34,6 +34,9 @@ const CoughUd = () => {
                     <input type="file" onChange={handleFileChange} ref={inputBtn} className="file-input" />
                     {selectedFile && <p className='selectedfileName'>선택한 파일: {selectedFile.name}</p>}
                     <button className='inputbtn' onClick={navigateToLoadingPage} disabled={!selectedFile}>파일 업로드</button>
+                    <div>
+                        <button>녹음 페이지로 이동 </button>
+                    </div>
                 </div>
             </div>
         </div>
