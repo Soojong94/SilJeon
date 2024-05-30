@@ -12,7 +12,7 @@
 .up_box {
     border-radius: 5px;
     width: 75%;
-    height: 75%;
+    height: 80%;
     background-color: rgb(255, 254, 242);
     box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
    
@@ -52,14 +52,16 @@
   
     justify-content: center;
     align-items: center;
-    margin-bottom: 2%;
+  
 }
 .input-container{
 
     margin-top: 4%;
     display: flex;      
-    gap: 8%; 
+   
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
 
 }
 .record-container {
@@ -67,6 +69,8 @@
     flex-direction: row;
     margin-top: 5%;
     gap: 10%;
+    margin-bottom: 2%;
+   
 
 }
 
@@ -76,18 +80,33 @@
     margin-top: 10px;
 }
 
-.record-btn,
-.inputbtn,
-.btnUd {
+.inputbtn
+{
     background-color: rgb(255, 255, 255);
     border: none;
     padding: 7px 15px;
     cursor: pointer;
     border-radius: 10px;
     font-size: 0.9em;
-    
+    width: 26%;
+   
     color: rgb(104, 68, 9);
-    box-shadow: 5px 5px 20px;
+    box-shadow: 3px 3px 10px;
+
+}
+
+.record-btn,.btnUd {
+
+    background-color: rgb(255, 255, 255);
+    border: none;
+    padding: 7px 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 0.9em;
+    width: 15%;
+   
+    color: rgb(104, 68, 9);
+    box-shadow: 3px 3px 10px;
 
 }
 
@@ -102,15 +121,13 @@
     display: none;
 }
 
-.inputbtn {
-    margin-left: 0;
-}
 
 audio {
     background-color: whitesmoke;
     border: none;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 30px;
+    width: 70%;
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 3);
