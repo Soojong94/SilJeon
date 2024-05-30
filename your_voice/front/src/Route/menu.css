@@ -7,37 +7,23 @@
 
 }
 
-
 .menu_bar {
   display: flex;
   align-items: center;
   padding: 2px;
-
+  gap: 3%;
 }
 
 .menu_bar .icon {
-  width: 1.5vw;
   cursor: pointer;
-  font-size: 1.5vw;
   color: black;
-  transition: color 0.3s ease;
 }
 
 .menu_bar .icon:hover {
-  color: lightyellow;
-  cursor: default;
-}
-
-.logo_img {
-  max-height: 100px;
-
-}
-.logo_img:hover{
+  color: lightcoral;
   cursor: pointer;
-
-
-
 }
+
 .navbar {
   width: 100%;
   display: flex;
@@ -52,6 +38,7 @@
 .nav-items {
   display: flex;
   align-items: center;
+  margin-right: 3%;
 }
 
 .nav-button {
@@ -62,10 +49,20 @@
   cursor: pointer;
   border-radius: 5px;
   font-size: 1em;
-  color: antiquewhite;
+  color: pink;
+
 }
 
 .nav_header {
   padding: 1.5vh 2.5vh;
   color: white;
+}
+
+.login_menu {
+  margin-bottom: 8%;
+
+}
+
+.logo :hover {
+  cursor: pointer;
 }

@@ -2,31 +2,9 @@ import './my_page.css';
 import React, { useState, useEffect } from 'react';
 import MenuBar from '../Route/menu';
 import ChartComponent from './ChartComponent';
-import axios from 'axios';
+
 
 function My_page() {
-  const [userInfo, setUserInfo] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      try {
-        const session = localStorage.getItem('session');
-        const response = await axios.get('http://localhost:5000/api/userInfo', {
-          headers: { 'Authorization': `Bearer ${session}` },
-          withCredentials: true
-        });
-        setUserInfo(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.error('API 요청 중 오류 발생', error);
-        setError('An error occurred while fetching session data');
-      }
-    };
-
-    fetchUserInfo();
-  }, []);
-
   return (
     <div className='my_page'>
       <MenuBar />

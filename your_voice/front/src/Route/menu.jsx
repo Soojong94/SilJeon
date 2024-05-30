@@ -2,10 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import BarChartIcon from '@mui/icons-material/BarChart';
-import LoginIcon from '@mui/icons-material/Login';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import './menu.css';
-import logo from '../Route/Your voice.png'; // 이미지 파일을 import
+import logo from '../Route/YourVoice.png';
 import axios from 'axios';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
@@ -45,33 +43,19 @@ function MenuBar() {
         </div>
         <div className="nav-items">
           <div className='menu_bar'>
-            <button className="nav-button" onClick={() => navigate('/Login')}>
-              <Tooltip title="로그인">
-                <LoginIcon className='icon' />
-              </Tooltip>
-            </button>
-            <button className="nav-button" onClick={() => navigate('/SignUp')}>
-              <Tooltip title="회원가입">
-                <AccountCircleIcon className='icon' />
-              </Tooltip>
-            </button>
+            <div className='login_menu'>
+              <GoogleOAuthProvider clientId={CLIENT_ID}>
+                <GoogleLogin
+                  onSuccess={handleLoginSuccess}
+                />
+              </GoogleOAuthProvider>
+            </div>
             <button className="nav-button" onClick={() => navigate('/MyPage')}>
               <Tooltip title="마이페이지">
                 <BarChartIcon className='icon' />
               </Tooltip>
             </button>
-            <GoogleOAuthProvider clientId={CLIENT_ID}>
-              <GoogleLogin
-                onSuccess={handleLoginSuccess}
-                render={({ onClick }) => (
-                  <button className="nav-button" onClick={onClick}>
-                    <Tooltip title="구글 로그인">
-                      <LoginIcon className='icon' />
-                    </Tooltip>
-                  </button>
-                )}
-              />
-            </GoogleOAuthProvider>
+
           </div>
         </div>
       </nav>
