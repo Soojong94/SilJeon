@@ -2,7 +2,7 @@ import './my_page.css';
 import React from 'react';
 import MenuBar from '../Route/menu';
 import ChartComponent from './ChartComponent';
-import { RingLoader } from 'react-spinners';
+
 
 function my_page() {
   return (

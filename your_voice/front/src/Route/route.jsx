@@ -12,7 +12,7 @@ const RoutesComponent = () => {
             <Routes>
                 <Route path="/" element={<NewMainPg />} />
                 <Route path="/loading_page" element={<LoadingPage />} />
-                <Route path='/diagnosis_page' element={<Diagnosis_page />} />
+                <Route path='/Diagnosis_page' element={<Diagnosis_page />} />
                 <Route path="/coughUd" element={<CoughUd />} />
                 <Route path="/NewMainPg" element={<NewMainPg />} />
                 <Route path="/MyPage" element={<MyPage />} />
