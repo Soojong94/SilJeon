@@ -68,7 +68,7 @@
 .record-container {
     display: flex;
     flex-direction: row;
-    margin-top: 5%;
+    margin-top: 4%;
     gap: 10%;
     margin-bottom: 2%;
    
@@ -97,6 +97,7 @@
     width: 26%;
     color: rgb(9, 28, 104);
     box-shadow: 3px 3px 10px;
+    margin: 20px 0 20px 0;
 
 }
 
