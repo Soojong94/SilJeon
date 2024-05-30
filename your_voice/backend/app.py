@@ -14,17 +14,11 @@ from google.oauth2 import id_token
 from google.auth.transport import requests
 import secrets
 
-from google.oauth2 import id_token
-from google.auth.transport import requests
-import secrets
-
-
 app = Flask(__name__, static_folder='static')
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 secret_key = secrets.token_hex(32)
 app.secret_key = secret_key  # Flask 애플리케이션에 secret_key 설정
-secret_key = secrets.token_hex(32)
-app.secret_key = secret_key  # Flask 애플리케이션에 secret_key 설정
+
 
 # 모델 로드
 model_path = os.path.join(app.root_path, './models/model3.joblib')
@@ -63,7 +57,6 @@ def coughUpload():
         wav_filepath = result['filepath']
 
         # 모델 불러오기 및 예측
-        prediction = model.process_audio_file(wav_filepath)  # 오디오 파일 처리
         prediction = model.process_audio_file(wav_filepath)  # 오디오 파일 처리
         prediction = float(prediction)
 
