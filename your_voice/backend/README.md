@@ -1,8 +1,8 @@
-pip install flask
-pip install dbutils
-pip install pymysql
-pip install flask-cors
-pip install pydub
+1. pip install flask
+2. pip install dbutils
+3. pip install pymysql
+4. pip install flask-cors
+5. pip install pydub
 pip install librosa
 pip install google-auth google-auth-oauthlib
 

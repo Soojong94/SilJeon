@@ -12,30 +12,30 @@
 .up_box {
     border-radius: 5px;
     width: 75%;
-    height: 75%;
-    background-color: white;
+    height: 80%;
+    background-color: rgb(255, 254, 242);
     box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
    
-    
+    margin-top: 5vw;
    
     box-sizing: border-box;
  
     text-align: center;
     justify-content: center;
-    padding: 10px 0; 
-    margin-top: 40px;
+    padding: 2vw 0; 
+    
 }
 
 .udH1 {
 
-    color: rgb(104, 68, 9);
-    font-size: 3vw;
+    color: rgb(9, 28, 104);
+    font-size: 2.6vw;
     margin: 30px 0 10px 0;
 }
 
 .udh2 {
-    color: rgb(104, 68, 9);
-    font-size: 1.5vw;
+    color: rgb(9, 28, 104);
+    font-size: 1.3vw;
 
 }
 
@@ -46,20 +46,31 @@
  
 }
 
-.record-container,
-.input-container {
+.record-container {
 
 
   
     justify-content: center;
     align-items: center;
-    margin-bottom: 2%;
+  
 }
+.input-container{
 
+    margin-top: 4%;
+    display: flex;      
+   
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
 .record-container {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    margin-top: 5%;
+    gap: 10%;
+    margin-bottom: 2%;
+   
 
 }
 
@@ -69,42 +80,54 @@
     margin-top: 10px;
 }
 
-.record-btn,
-.inputbtn,
-.btnUd {
-
-    color: rgb(104, 68, 9);
-    text-align: center;
-    width: 10vw;
-    margin: 30px;
-    background-color: transparent;
-    color: black;
+.inputbtn
+{
+    background-color: rgb(203, 240, 254);
     border: none;
-    border-radius: 5px;
+    padding: 7px 15px;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 3);
+    border-radius: 5vw;
+    font-size: 0.9wv;
+    width: 26%;
+   
+    color: rgb(9, 28, 104);
+    box-shadow: 3px 3px 10px;
+
+}
+
+.record-btn,.btnUd {
+
+    background-color: rgb(203, 240, 254);
+    border: none;
+    padding: 7px 15px;
+    cursor: pointer;
+    border-radius: 5vw;
+    font-size: 0.9vw;
+    width: 15%;
+   
+    color: rgb(9, 28, 104);
+    box-shadow: 3px 3px 10px;
 
 }
 
 .record-btn:hover,
 .inputbtn:hover,
 .btnUd:hover {
-    background-color: #eadfab;
+    background-color: transparent;
+    color: rgb(9, 28, 104);
 }
 
 .file-input {
     display: none;
 }
 
-.inputbtn {
-    margin-left: 0;
-}
 
 audio {
     background-color: whitesmoke;
     border: none;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 5vw;
+    width: 55vw;
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 3);

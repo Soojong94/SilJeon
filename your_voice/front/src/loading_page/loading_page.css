@@ -8,6 +8,8 @@
 }
 
 .loaderText {
-  margin-left: 5%;
-  font-size: larger;
+  text-align: center;
+  margin: 5vw 0vw 0vw 18vw;
+  font-size: 2vw;
+  color: rgb(9, 28, 104);
 }
