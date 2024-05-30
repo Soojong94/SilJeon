@@ -27,7 +27,7 @@ body {
     align-items: center;
     width: 75%;
     height: 75%;
-    background: #f4f4f4;
+    background-color: rgb(255, 254, 242);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
