@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, session
+from flask import Flask, request, jsonify, session, make_response
 from db.db import connect_db  # DB 커넥션 풀을 가져오는 함수 import
 from flask_cors import CORS
 from upload_and_predict import process_file
@@ -13,11 +13,17 @@ from models.model import AudioModel  # AudioModel 클래스를 가져옵니다.
 from google.oauth2 import id_token
 from google.auth.transport import requests
 import secrets
+from flask_session import Session
 
 app = Flask(__name__, static_folder='static')
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 secret_key = secrets.token_hex(32)
-app.secret_key = secret_key  # Flask 애플리케이션에 secret_key 설정
+app.secret_key = secret_key
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SESSION_COOKIE_HTTPONLY'] = False
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'
+app.config['SESSION_COOKIE_SECURE'] = False  # 로컬 환경에서 사용
+Session(app)
 
 
 # 모델 로드
@@ -82,7 +88,6 @@ def login():
         full_name = id_info.get('name')
         profile_picture_url = id_info.get('picture')
         
-        
         # 데이터베이스 연결
         conn = connect_db()
         cursor = conn.cursor()
@@ -95,16 +100,16 @@ def login():
             cursor.execute("INSERT INTO user_info VALUES (%s, %s, %s, %s)", (social_user_id, social_provider, full_name, profile_picture_url))
             conn.commit()
           
-            session['user_info'] = {'id': social_user_id, 'iss': social_provider, 'name': full_name, 'profile': profile_picture_url}
-            return jsonify({'message': '새로운 사용자 등록 및 로그인 성공', 'user': {'id': social_user_id, 'name': social_provider}}), 200
+            user_info = {'id': social_user_id, 'iss': social_provider, 'name': full_name, 'profile': profile_picture_url}
+            session['user_info'] = user_info
+            response = make_response(jsonify({'user': user_info, 'session': session.sid}))
+            return response, 200
         else:
-            session['user_info'] = {
-                                    'id': user[0],  
-                                    'iss': user[1],
-                                    'name': user[2],
-                                    'profile': user[3]
-                                }
-            return jsonify({'message': '로그인 성공', 'user': {'id': user[0], 'name': user[2]}}), 200
+            user_info = {'id': user[0], 'iss': user[1], 'name': user[2], 'profile': user[3]}
+            session['user_info'] = user_info
+            print('Session value:', session.get('user_info'))  # 세션 값을 출력
+            response = make_response(jsonify({'user': user_info, 'session': session.sid}))
+            return response, 200
     except ValueError as e:
         logging.exception("Invalid token")
         return jsonify({'error': '유효하지 않은 토큰입니다.'}), 400
@@ -114,7 +119,12 @@ def login():
     finally:
         cursor.close()
         conn.close()
+        
+@app.route('/api/logout')
+def logout():
+    session.pop('user_info')
+    return jsonify({'message':'로그아웃 성공 수고링'})
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000, host='0.0.0.0')
-
