@@ -4,7 +4,7 @@ import MenuBar from '../Route/menu';
 import ChartComponent from './ChartComponent';
 
 
-function my_page() {
+function My_page() {
   return (
     <div className='my_page'>
       <MenuBar />
@@ -46,4 +46,4 @@ function my_page() {
   );
 }
 
-export default my_page;
+export default My_page;
