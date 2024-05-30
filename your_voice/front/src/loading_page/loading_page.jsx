@@ -45,11 +45,11 @@ function LoadingPage() {
       <MenuBar />
       <RingLoader
         color="#36d7b7"
-        size={200}
+        size={400}
         speedMultiplier={0.8}
       />
       <div className='loaderText'>
-        <h1>소리를 분석중입니다</h1>
+        <h1>분석중..</h1>
       </div>
     </div>
   );

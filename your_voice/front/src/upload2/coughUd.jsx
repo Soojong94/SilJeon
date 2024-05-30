@@ -103,13 +103,13 @@ const CoughUd = () => {
                     <button className='record-btn' onClick={recording ? stopRecording : startRecording}>
                         {recording ? '녹음 중지' : '녹음 시작'}
                     </button>
-                    <button className='btnUd' onClick={downloadAudio} disabled={!audioBlob}>녹음 파일 다운로드</button>
+                    <button className='btnUd' onClick={downloadAudio} disabled={!audioBlob}>파일 다운</button>
                 </div>
                 <audio ref={audioRef} controls />
                 <div className="input-container">
                     <button className="inputbtn" onClick={() => inputBtn.current.click()}>파일 선택</button>
                     <input type="file" onChange={handleFileChange} ref={inputBtn} className="file-input" />
-                    <button className='btnUd' onClick={navigateToLoadingPage} disabled={!selectedFile}>파일 업로드</button>
+                    <button className='inputbtn' onClick={navigateToLoadingPage} disabled={!selectedFile}>파일 업로드</button>
                 </div>
             </div>
         </div>
