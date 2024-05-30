@@ -21,7 +21,7 @@ function NewMainPg() {
                 <div className='MainImg'>
                 <RingLoader
         color="#36d7b7"
-        size={200}
+        size={250}
         speedMultiplier={0.8}
       />
                 </div>

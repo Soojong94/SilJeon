@@ -16,14 +16,14 @@
     background-color: rgb(255, 254, 242);
     box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
    
-    
+    margin-top: 5vw;
    
     box-sizing: border-box;
  
     text-align: center;
     justify-content: center;
-    padding: 10px 0; 
-    margin-top: 40px;
+    padding: 2vw 0; 
+    
 }
 
 .udH1 {
@@ -86,8 +86,8 @@
     border: none;
     padding: 7px 15px;
     cursor: pointer;
-    border-radius: 10px;
-    font-size: 0.9em;
+    border-radius: 5vw;
+    font-size: 0.9wv;
     width: 26%;
    
     color: rgb(9, 28, 104);
@@ -101,8 +101,8 @@
     border: none;
     padding: 7px 15px;
     cursor: pointer;
-    border-radius: 10px;
-    font-size: 0.9em;
+    border-radius: 5vw;
+    font-size: 0.9vw;
     width: 15%;
    
     color: rgb(9, 28, 104);
@@ -126,8 +126,8 @@ audio {
     background-color: whitesmoke;
     border: none;
     padding: 10px 15px;
-    border-radius: 30px;
-    width: 60%;
+    border-radius: 5vw;
+    width: 55vw;
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 3);

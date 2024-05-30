@@ -16,8 +16,9 @@
 }
 
 .menu_bar .icon {
+  width: 1.5vw;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 1.5vw;
   color: black;
   transition: color 0.3s ease;
 }
@@ -42,14 +43,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 2vw;
+  padding-left: 3vw;
   padding-right: 2vw;
 }
 
-.logo {
-  margin-left: 10px;
 
-}
 
 .nav-items {
   display: flex;
