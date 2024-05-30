@@ -13,13 +13,13 @@
 .diagnosis_body_container {
   display: flex;
   flex-direction: column;
-  width: 55%;
-  height: 70%;
+  width: 70%;
+  height: 80%;
   background-color: rgb(255, 254, 242);
   border: 3px double lightblue;
-  padding: 1vw;
+  padding: 2 2.5vw  ;
   border-radius: 10px;
-  flex: 0 0 60%;
+  /* flex: 0 0 60%; */
  
   text-align: center;
   margin: 3vw 0 0 0;
@@ -29,18 +29,43 @@
 
 
 .contentDg{
-  margin: 4vw 0 0 0;
+  margin: 1.7vw 0 0 0;
   font-size: 2vw;
   color: rgb(9, 28, 104);
+  
   
 
 
 }
 .resultDg{
-  margin: 7vw 0 0 0;
-  font-size: 5vw;
+  margin: 1.5vw 0 0 0;
+  font-size: 2.8vw;
   color: rgb(9, 28, 104);
  
 
 
+}
+.Dgcontent_box{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 2vw 0 0 4vw;
+  gap: 3vw
+
+}
+
+.spinnerDg{
+
+ margin-left: 3vw;
+
+}
+.Dg{
+
+  flex: 3;
+  font-size: 1vw;
+  padding: 3vw;
+  color: rgb(9, 28, 104);;
+  
 }

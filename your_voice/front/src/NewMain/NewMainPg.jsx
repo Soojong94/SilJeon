@@ -22,8 +22,7 @@ function NewMainPg() {
                 <RingLoader
         color="#36d7b7"
         size={250}
-        speedMultiplier={0.8}
-      />
+        speedMultiplier={0.8}/>
                 </div>
                 <div className='voiceContent'>
                     <h2 className='voiceDsEg'>Voice disorder</h2>
