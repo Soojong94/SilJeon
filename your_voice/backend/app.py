@@ -100,15 +100,21 @@ def login():
             cursor.execute("INSERT INTO user_info VALUES (%s, %s, %s, %s)", (social_user_id, social_provider, full_name, profile_picture_url))
             conn.commit()
           
-            user_info = {'id': social_user_id, 'iss': social_provider, 'name': full_name, 'profile': profile_picture_url}
-            session['user_info'] = user_info
-            response = make_response(jsonify({'user': user_info, 'session': session.sid}))
+            session['user_info'] = {'id': social_user_id, 'iss': social_provider, 'name': full_name, 'profile': profile_picture_url}
+            response = make_response(jsonify({'message': '새로운 사용자 등록 및 로그인 성공', 'user': {'id': social_user_id, 'name': social_provider,'profile':profile_picture_url}}))
+            response.set_cookie('session', session.sid, domain='localhost', samesite='None', secure=True)
             return response, 200
         else:
-            user_info = {'id': user[0], 'iss': user[1], 'name': user[2], 'profile': user[3]}
-            session['user_info'] = user_info
+            session['user_info'] = {
+                                    'id': user[0],  
+                                    'iss': user[1],
+                                    'name': user[2],
+                                    'profile': user[3]
+                                }
             print('Session value:', session.get('user_info'))  # 세션 값을 출력
-            response = make_response(jsonify({'user': user_info, 'session': session.sid}))
+            response = make_response(jsonify({'message': '로그인 성공', 'user': {'id': user[0], 'name': user[2],'profile':user[3]
+                                                                            }}))
+            response.set_cookie('session', session.sid, domain='localhost', samesite='None', secure=True)
             return response, 200
     except ValueError as e:
         logging.exception("Invalid token")
@@ -120,6 +126,15 @@ def login():
         cursor.close()
         conn.close()
         
+@app.route('/api/userInfo', methods=['GET'])
+def user_info():
+    user_info = session.get('user_info')
+    print('session : ', user_info)
+    if user_info :
+        return jsonify(user_info), 200
+    else :
+        return jsonify({'error': '세션에 사용자 정보가 없습니다.'}), 404
+            
 @app.route('/api/logout')
 def logout():
     session.pop('user_info')
