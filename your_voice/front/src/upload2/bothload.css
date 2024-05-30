@@ -28,9 +28,10 @@
 
 .udH1 {
 
+
     color: rgb(9, 28, 104);
     font-size: 2.6vw;
-    margin: 30px 0 10px 0;
+    margin: 50px 0 10px 0;
 }
 
 .udh2 {
@@ -56,7 +57,7 @@
 }
 .input-container{
 
-    margin-top: 4%;
+    margin-top: 10%;
     display: flex;      
    
     align-items: center;
@@ -67,13 +68,18 @@
 .record-container {
     display: flex;
     flex-direction: row;
-    margin-top: 5%;
+    margin-top: 4%;
     gap: 10%;
     margin-bottom: 2%;
    
 
 }
+.selectedfileName{
 
+    color: rgb(9, 28, 104);
+    font-size: 1vw;
+
+}
 .error-message {
     color: rgb(98, 6, 6);
     font-weight: bold;
@@ -89,26 +95,13 @@
     border-radius: 5vw;
     font-size: 0.9wv;
     width: 26%;
-   
     color: rgb(9, 28, 104);
     box-shadow: 3px 3px 10px;
+    margin: 20px 0 20px 0;
 
 }
 
-.record-btn,.btnUd {
 
-    background-color: rgb(203, 240, 254);
-    border: none;
-    padding: 7px 15px;
-    cursor: pointer;
-    border-radius: 5vw;
-    font-size: 0.9vw;
-    width: 15%;
-   
-    color: rgb(9, 28, 104);
-    box-shadow: 3px 3px 10px;
-
-}
 
 .record-btn:hover,
 .inputbtn:hover,
