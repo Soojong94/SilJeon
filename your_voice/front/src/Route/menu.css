@@ -17,11 +17,13 @@
 .menu_bar .icon {
   cursor: pointer;
   color: black;
+  font-size: 40px;
 }
 
 .menu_bar .icon:hover {
   color: lightcoral;
   cursor: pointer;
+
 }
 
 .navbar {
@@ -32,8 +34,6 @@
   padding-left: 3vw;
   padding-right: 2vw;
 }
-
-
 
 .nav-items {
   display: flex;
@@ -49,8 +49,7 @@
   cursor: pointer;
   border-radius: 5px;
   font-size: 1em;
-  color: pink;
-
+  margin-bottom: 6%;
 }
 
 .nav_header {
@@ -61,8 +60,4 @@
 .login_menu {
   margin-bottom: 8%;
 
-}
-
-.logo :hover {
-  cursor: pointer;
 }

@@ -1,0 +1,25 @@
+/* 기본 커서 숨기기 */
+* {
+  cursor: none;
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursor-inner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-image: url('../images/mouse_cursor.png');
+  /* 커서 이미지 경로 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  left: 0;
+  top: 0;
+
+}

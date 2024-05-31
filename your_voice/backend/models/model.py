@@ -24,4 +24,4 @@ class AudioModel:
 model_instance = AudioModel()
 
 # 모델을 파일로 저장
-joblib.dump(model_instance, 'model3.joblib')
+# joblib.dump(model_instance, 'model3.joblib')

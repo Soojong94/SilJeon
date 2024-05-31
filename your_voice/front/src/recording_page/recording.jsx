@@ -91,7 +91,7 @@ const Record_voice = () => {
 
         <div className='divided_body'>
           <div className='left_box'>
-            <h3 className='udh2'>녹음 후 음성 파일을 <br />꼭!! 다운로드 해주세요</h3>
+            <h3 className='udh2'>'기침' 녹음 후 음성 파일을 <br />꼭!! 다운로드 해주세요</h3>
             <span>Please download File!</span>
           </div>
           <div className='right_box'>
@@ -107,11 +107,11 @@ const Record_voice = () => {
                       cssOverride={{ display: 'inline-block', marginBottom: '7px', marginLeft: '10px' }}
                     />
                   </>
-                ) : '녹음 시작   ▶'}
+                ) : '1. 기침 녹음 시작   ▶'}
               </button>
               {audioBlob && <p className='file-name'>녹음 파일: {fileName}</p>}
-              <button className='btnUd' onClick={downloadAudio} disabled={!audioBlob}>녹음 파일 다운</button>
-              <button className='btnBack' onClick={() => navigate('/coughUd')}>녹음 파일 업로드⬆️</button>
+              <button className='btnUd' onClick={downloadAudio} disabled={!audioBlob}>2. 녹음 파일 다운로드</button>
+              <button className='btnBack' onClick={() => navigate('/coughUd')}>3. 녹음 파일 업로드⬆️</button>
             </div>
           </div>
         </div>
