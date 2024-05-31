@@ -1,10 +1,8 @@
 import os
 from werkzeug.utils import secure_filename
-from db.db import connect_db
 from pydub import AudioSegment
 from datetime import datetime
-import subprocess
-from concurrent.futures import ThreadPoolExecutor
+
 
 def handle_upload(file, static_folder_path):
     print("handle_upload 함수 호출됨")
