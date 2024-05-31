@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
-import BarChartIcon from '@mui/icons-material/BarChart';
+import MedicalServicesOutlinedIcon from '@mui/icons-material/MedicalServicesOutlined';
 import './menu.css';
 import logo from '../Route/YourVoice.png';
 import axios from 'axios';
@@ -36,7 +36,7 @@ function MenuBar() {
   };
 
 
-  
+
 
   return (
     <div className='menu_bar_container nav_header'>
@@ -55,7 +55,7 @@ function MenuBar() {
             </div>
             <button className="nav-button" onClick={() => navigate('/MyPage')}>
               <Tooltip title="마이페이지">
-                <BarChartIcon className='icon' />
+                <MedicalServicesOutlinedIcon className='icon' />
               </Tooltip>
             </button>
 

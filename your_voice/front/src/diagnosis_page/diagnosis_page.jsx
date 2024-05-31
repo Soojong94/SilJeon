@@ -31,7 +31,7 @@ const DiagnosisPage = () => {
       ) : (
         <div className='diagnosis_body_container'>
           <h3 className='contentDg'> Your voice state is.. <br /></h3>
-          <h1 className='resultDg'>{analysisResult.prediction.toFixed(2)}%</h1>
+          <h1 className='resultDg'>{(analysisResult.prediction * 10 ** 8).toFixed(2)}</h1>
           <div className='Dgcontent_box'>
             {windowWidth > 600 && (
               <div className='spinnerDg'>
