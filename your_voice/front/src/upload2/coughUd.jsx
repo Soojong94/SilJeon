@@ -33,7 +33,7 @@ const CoughUd = () => {
             <MenuBar />
             <div className='up_box'>
                 {message && <p className='message'>{message}</p>}
-                <h1 className='udH1'>Audio Recording & Upload</h1>
+                <h1 className='udH1'>Audio file upload</h1>
                 <div className="inputFile-box">
                     <div className='left_content'>
                         <BounceLoader className='bounce' size={230} color="#6375ff" />
@@ -46,6 +46,7 @@ const CoughUd = () => {
                             <input type="file" onChange={handleFileChange} ref={inputBtn} className="file-input" />
 
                             <button className='inputbtn' onClick={navigateToLoadingPage} disabled={!selectedFile}>파일 분석</button>
+                            <button className='inputbtn' id='CovidGo' onClick={navigateToLoadingPage} disabled={!selectedFile}>코로나 진단</button>
                         </div>
                     </div>
                     <div className='recordPg_Move_box'>
