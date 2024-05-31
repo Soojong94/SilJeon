@@ -14,16 +14,16 @@
     width: 75%;
     height: 80%;
     background-color: rgb(255, 254, 242);
-    box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
-   
+    /* box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5); */
+
     margin-top: 5vw;
-   
+
     box-sizing: border-box;
- 
+
     text-align: center;
     justify-content: center;
-    padding: 2vw 0; 
-    
+    padding: 2vw 0;
+
 }
 
 .udH1 {
@@ -42,52 +42,55 @@
 
 .message {
     margin-top: 10px;
-   
+
     color: #6b5716;
- 
+
 }
 
 .record-container {
 
 
-  
+
     justify-content: center;
     align-items: center;
-  
+
 }
-.input-container{
+
+.input-container {
 
     margin-top: 5%;
-    display: flex;      
-   
+    display: flex;
+
     align-items: center;
     justify-content: center;
     flex-direction: column;
 
 }
+
 .record-container {
     display: flex;
     flex-direction: row;
     margin-top: 4%;
     gap: 10%;
     margin-bottom: 2%;
-   
+
 
 }
-.selectedfileName{
+
+.selectedfileName {
 
     color: rgb(9, 28, 104);
     font-size: 1vw;
 
 }
+
 .error-message {
     color: rgb(98, 6, 6);
     font-weight: bold;
     margin-top: 10px;
 }
 
-.inputbtn
-{
+.inputbtn {
     background-color: rgb(203, 240, 254);
     border: none;
     padding: 7px 15px;

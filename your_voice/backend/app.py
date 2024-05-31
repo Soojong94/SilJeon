@@ -1,13 +1,19 @@
-from flask import Flask, request, jsonify, make_response
+from flask import Flask, request, jsonify, session, make_response
 from db.db import connect_db  # DB 커넥션 풀을 가져오는 함수 import
 from flask_cors import CORS
+from upload_and_predict import process_file
+from werkzeug.utils import secure_filename
 import os
 import logging
 from joblib import load
+import librosa
+import numpy as np
+import joblib
+from models.model import AudioModel  # AudioModel 클래스를 가져옵니다.
 from google.oauth2 import id_token
 from google.auth.transport import requests
 import secrets
-from models.model import AudioModel
+from flask_session import Session
 
 app = Flask(__name__, static_folder="static")
 CORS(
