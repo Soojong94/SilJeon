@@ -7,6 +7,7 @@ import NewMainPg from '../NewMain/NewMainPg.jsx'
 import MyPage from '../my_page/my_page.jsx'
 import Record_voice from '../recording_page/recording.jsx';
 
+
 const RoutesComponent = () => {
     return (
         <Router>

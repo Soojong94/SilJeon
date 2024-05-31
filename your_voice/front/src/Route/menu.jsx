@@ -23,17 +23,20 @@ function MenuBar() {
       });
 
       console.log('Server response:', response.data);
-      
+
       // 세션 스토리지에 user_info 저장
       if (response.data.user) {
         sessionStorage.setItem('user_info', JSON.stringify(response.data.user));
       }
-      
+
       // 필요에 따라 추가 작업 수행
     } catch (error) {
       console.error('Error sending token to backend:', error);
     }
   };
+
+
+  
 
   return (
     <div className='menu_bar_container nav_header'>
