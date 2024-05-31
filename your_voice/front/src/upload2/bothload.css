@@ -1,4 +1,4 @@
-/* bothload.css */
+
 .parent-box {
     background: linear-gradient(to right, #b6ddee, whitesmoke);
     transition: background 0.3s ease;
@@ -12,14 +12,15 @@
 
 .up_box {
     border-radius: 5px;
-    width: 75%;
+    width: 70%;
     height: 80%;
     background-color: rgb(255, 254, 242);
     box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
     box-sizing: border-box;
     text-align: center;
     justify-content: center;
-    padding: 2vw 0;
+    padding: 2vw 5vh;
+    overflow: hidden;
 }
 
 .udH1 {
@@ -38,10 +39,6 @@
     color: #6b5716;
 }
 
-.record-container {
-    justify-content: center;
-    align-items: center;
-}
 
 .input-container {
     display: flex;
@@ -50,6 +47,7 @@
     justify-content: space-between;
     align-items: flex-end;
     gap: 20px;
+    overflow: hidden;
 }
 
 .file-buttons {
@@ -71,16 +69,16 @@
 }
 
 .inputbtn {
+    margin: 20px 0 20px 0;
     background-color: rgb(203, 240, 254);
     border: none;
-    padding: 7px 15px;
+    padding: 7px 25px;
     cursor: pointer;
     border-radius: 5vw;
     font-size: 0.9wv;
     width: 100%;
     color: rgb(9, 28, 104);
     box-shadow: 3px 3px 10px;
-    margin: 20px 0 20px 0;
 }
 
 .recordPg_Move_box {
@@ -109,38 +107,4 @@
 
 .file-input {
     display: none;
-}
-
-audio {
-    background-color: whitesmoke;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5vw;
-    width: 55vw;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 3);
-}
-
-.audio-player :hover {
-    color: black;
-}
-
-.audio-player {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: #333;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.play-pause-btn {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
