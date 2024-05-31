@@ -68,22 +68,6 @@
   margin-top: 10px;
 }
 
-.inputbtn {
-  background-color: rgb(203, 240, 254);
-  border: none;
-  padding: 7px 15px;
-  cursor: pointer;
-  border-radius: 5px;
-  /* 수정: vw 대신 px 단위 사용 */
-  font-size: 15px;
-  /* 고정된 폰트 크기 */
-  width: 26%;
-  color: rgb(9, 28, 104);
-  box-shadow: 3px 3px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .record-btn,
 .btnUd {
@@ -104,7 +88,6 @@
 }
 
 .record-btn:hover,
-.inputbtn:hover,
 .btnUd:hover {
   background-color: transparent;
   color: rgb(9, 28, 104);
