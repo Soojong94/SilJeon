@@ -33,34 +33,24 @@ const CoughUd = () => {
             <MenuBar />
             <div className='up_box'>
                 {message && <p className='message'>{message}</p>}
-                <h1 className='udH1'>File Uploading</h1>
+                <h1 className='udH1'>Audio Recording & Upload</h1>
                 <div className="inputFile-box">
-
-                    <div className='left-box'>
-                       <p>호호 이건 왼쪽 컨텐츠야</p>
+                    <div className='left_content'>
+                        <BounceLoader className='bounce' size={230} color="#6375ff" />
                     </div>
-                    <div className='middle_content'>
-                        <BounceLoader
-                            className='bounce'
-                            size={100}
-                            color="#6375ff"
-                        />
-                        </div>
-                        <div className="right-box">
-                        <h2 className='ExplnUd'>파일 선택 후 </h2>
-                        <h2 className='ExplnUd'>업로드 버튼을 눌러주세요. </h2>
+                    <div className="middle_content">
+                        <h2 className='ExplnUd'>파일 선택 후 업로드 버튼을 눌러주세요.</h2>
                         <div className="file-buttons">
                         {selectedFile && <p className='selectedfileName'>{selectedFile.name}</p>}
                             <button className="inputbtn" onClick={() => inputBtn.current.click()}>파일 선택</button>
                             <input type="file" onChange={handleFileChange} ref={inputBtn} className="file-input" />
-                            
+                           
                             <button className='inputbtn' onClick={navigateToLoadingPage} disabled={!selectedFile}>파일 업로드</button>
                         </div>
-                        </div>
-                    
-                </div>
-                <div className='recordPg_Move_box'>
-                    <button className="recordPg_Btb" onClick={ToRecordVoice}>녹음 페이지로 이동➡️</button>
+                    </div>
+                    <div className='recordPg_Move_box'>
+                        <button className="recordPg_Btb" onClick={ToRecordVoice}>녹음 페이지로 이동➡️</button>
+                    </div>
                 </div>
             </div>
         </div>
