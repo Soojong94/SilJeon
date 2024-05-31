@@ -80,10 +80,11 @@ audio {
   padding: 10px 15px;
   border-radius: 50px;
   width: 20vw;
-  cursor: pointer;
   transition: background-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 5);
+  margin-bottom: 5%;
 }
+
 
 
 .left_box {
@@ -136,6 +137,7 @@ audio {
   box-shadow: 3px 3px 10px;
   align-items: center;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .file-name {
