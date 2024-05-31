@@ -21,19 +21,28 @@
   justify-content: center;
   padding: 2vw 0;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .udH1 {
   color: rgb(9, 28, 104);
-  font-size: 24px;
-  /* 고정된 폰트 크기 */
-  margin: 30px 0 10px 0;
+  font-size: 3vw;
+  margin: 5px 10px 10px 50px;
+
+}
+
+.PropagateLoader-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+
 }
 
 .udh2 {
   color: rgb(9, 28, 104);
-  font-size: 16px;
-  /* 고정된 폰트 크기 */
+  font-size: 2.5vw;
 }
 
 .message {
@@ -42,24 +51,10 @@
 }
 
 .record-container {
-  justify-content: center;
-  align-items: center;
-}
-
-.input-container {
-  margin-top: 4%;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-}
+  align-items: center;
 
-.record-container {
-  display: flex;
-  flex-direction: row;
-  margin-top: 5%;
-  gap: 10%;
-  margin-bottom: 2%;
 }
 
 .error-message {
@@ -68,33 +63,30 @@
   margin-top: 10px;
 }
 
-
 .record-btn,
-.btnUd {
+.btnUd,
+.btnBack {
   background-color: rgb(203, 240, 254);
   border: none;
   padding: 7px 15px;
   cursor: pointer;
   border-radius: 5px;
-  /* 수정: vw 대신 px 단위 사용 */
   font-size: 14px;
-  /* 고정된 폰트 크기 */
-  width: 15%;
+  min-width: 50%;
+  min-height: 15%;
   color: rgb(9, 28, 104);
   box-shadow: 3px 3px 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 30px;
 }
 
 .record-btn:hover,
-.btnUd:hover {
+.btnUd:hover,
+.btnBack:hover {
   background-color: transparent;
   color: rgb(9, 28, 104);
-}
-
-.file-input {
-  display: none;
 }
 
 audio {
@@ -102,35 +94,12 @@ audio {
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
-  /* 수정: vw 대신 px 단위 사용 */
-  width: 30vw;
+  width: 20vw;
   cursor: pointer;
   transition: background-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 5);
 }
 
-.audio-player :hover {
-  color: black;
-}
-
-.audio-player {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background-color: #333;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.play-pause-btn {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
 
 .left_box {
   flex: 0 0 40%;
@@ -148,6 +117,18 @@ audio {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 10%;
+  margin-top: 5%;
   flex-grow: 1;
+  gap: 20%;
+}
+
+.PropagateLoader_container {
+  margin-top: 20px;
+  margin-right: 80px;
+}
+
+@media (max-width: 768px) {
+  .PropagateLoader_container {
+    display: none;
+  }
 }
