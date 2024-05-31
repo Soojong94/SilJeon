@@ -1,3 +1,4 @@
+/* bothload.css */
 .parent-box {
     background: linear-gradient(to right, #b6ddee, whitesmoke);
     transition: background 0.3s ease;
@@ -15,20 +16,13 @@
     height: 80%;
     background-color: rgb(255, 254, 242);
     box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
-   
-    margin-top: 5vw;
-   
     box-sizing: border-box;
- 
     text-align: center;
     justify-content: center;
-    padding: 2vw 0; 
-    
+    padding: 2vw 0;
 }
 
 .udH1 {
-
-
     color: rgb(9, 28, 104);
     font-size: 2.6vw;
     margin: 50px 0 10px 0;
@@ -37,73 +31,75 @@
 .udh2 {
     color: rgb(9, 28, 104);
     font-size: 1.3vw;
-
 }
 
 .message {
     margin-top: 10px;
-   
     color: #6b5716;
- 
 }
 
 .record-container {
-
-
-  
     justify-content: center;
     align-items: center;
-  
 }
-.input-container{
 
-    margin-top: 5%;
-    display: flex;      
-   
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-}
-.record-container {
+.input-container {
     display: flex;
     flex-direction: row;
-    margin-top: 4%;
-    gap: 10%;
-    margin-bottom: 2%;
-   
-
+    margin-top: 5%;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
 }
-.selectedfileName{
 
+.file-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.selectedfileName {
     color: rgb(9, 28, 104);
     font-size: 1vw;
-
 }
+
 .error-message {
     color: rgb(98, 6, 6);
     font-weight: bold;
     margin-top: 10px;
 }
 
-.inputbtn
-{
+.inputbtn {
     background-color: rgb(203, 240, 254);
     border: none;
     padding: 7px 15px;
     cursor: pointer;
     border-radius: 5vw;
     font-size: 0.9wv;
-    width: 26%;
+    width: 100%;
     color: rgb(9, 28, 104);
     box-shadow: 3px 3px 10px;
     margin: 20px 0 20px 0;
-
 }
 
+.recordPg_Move_box {
+    align-self: flex-end;
+}
 
+.recordPg_Btb {
+    background-color: rgb(203, 240, 254);
+    border: none;
+    padding: 7px 15px;
+    cursor: pointer;
+    border-radius: 5vw;
+    font-size: 0.9wv;
+    width: 100%;
+    color: rgb(9, 28, 104);
+    box-shadow: 3px 3px 10px;
+}
 
-.record-btn:hover,
+.recordPg_Btb:hover,
 .inputbtn:hover,
 .btnUd:hover {
     background-color: transparent;
@@ -113,7 +109,6 @@
 .file-input {
     display: none;
 }
-
 
 audio {
     background-color: whitesmoke;

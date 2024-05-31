@@ -30,12 +30,14 @@ const CoughUd = () => {
                 {message && <p className='message'>{message}</p>}
                 <h1 className='udH1'>Audio Recording & Upload</h1>
                 <div className="input-container">
-                    <button className="inputbtn" onClick={() => inputBtn.current.click()}>파일 선택</button>
-                    <input type="file" onChange={handleFileChange} ref={inputBtn} className="file-input" />
-                    {selectedFile && <p className='selectedfileName'>선택한 파일: {selectedFile.name}</p>}
-                    <button className='inputbtn' onClick={navigateToLoadingPage} disabled={!selectedFile}>파일 업로드</button>
-                    <div>
-                        <button>녹음 페이지로 이동 </button>
+                    <div className="file-buttons">
+                        <button className="inputbtn" onClick={() => inputBtn.current.click()}>파일 선택</button>
+                        <input type="file" onChange={handleFileChange} ref={inputBtn} className="file-input" />
+                        {selectedFile && <p className='selectedfileName'>선택한 파일: {selectedFile.name}</p>}
+                        <button className='inputbtn' onClick={navigateToLoadingPage} disabled={!selectedFile}>파일 업로드</button>
+                    </div>
+                    <div className='recordPg_Move_box'>
+                        <button className="recordPg_Btb">녹음 페이지로 이동</button>
                     </div>
                 </div>
             </div>
