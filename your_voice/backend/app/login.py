@@ -48,9 +48,3 @@ def login():
     finally:
         cursor.close()
         conn.close()
-
-@login_bp.route('/api/logout', methods=['GET'])
-def logout():
-    response = make_response(jsonify({'message': '로그아웃 성공'}))
-    response.set_cookie('user_info', '', expires=0)
-    return response
