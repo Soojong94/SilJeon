@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import MedicalServicesOutlinedIcon from '@mui/icons-material/MedicalServicesOutlined';
@@ -7,10 +7,16 @@ import logo from '../Route/YourVoice.png';
 import axios from 'axios';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
-const CLIENT_ID = '848922845081-tubjkh6u80t5lleilc4r4bts1rrc1na6.apps.googleusercontent.com'
+const CLIENT_ID = '848922845081-tubjkh6u80t5lleilc4r4bts1rrc1na6.apps.googleusercontent.com';
 
 function MenuBar() {
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const userInfo = sessionStorage.getItem('user_info');
+    setIsLoggedIn(!!userInfo);
+  }, []);
 
   const handleLoginSuccess = async (credentialResponse) => {
     console.log('Login Success:', credentialResponse);
@@ -18,15 +24,14 @@ function MenuBar() {
 
     try {
       // 인증 토큰을 백엔드로 전달
-      const response = await axios.post('http://localhost:5000/api/login', {
-        token,
-      });
+      const response = await axios.post('http://localhost:5000/api/login', { token });
 
       console.log('Server response:', response.data);
 
       // 세션 스토리지에 user_info 저장
       if (response.data.user) {
         sessionStorage.setItem('user_info', JSON.stringify(response.data.user));
+        setIsLoggedIn(true);
       }
 
       // 필요에 따라 추가 작업 수행
@@ -35,8 +40,11 @@ function MenuBar() {
     }
   };
 
-
-
+  const handleLogout = () => {
+    sessionStorage.removeItem('user_info');
+    setIsLoggedIn(false);
+    navigate('/');  // 로그아웃 후 리디렉션
+  };
 
   return (
     <div className='menu_bar_container nav_header'>
@@ -48,9 +56,15 @@ function MenuBar() {
           <div className='menu_bar'>
             <div className='login_menu'>
               <GoogleOAuthProvider clientId={CLIENT_ID}>
-                <GoogleLogin
-                  onSuccess={handleLoginSuccess}
-                />
+                {isLoggedIn ? (
+                  <button className="nav-button" onClick={handleLogout}>
+                    <Tooltip title="로그아웃">
+                      <span className="icon">Logout</span>
+                    </Tooltip>
+                  </button>
+                ) : (
+                  <GoogleLogin onSuccess={handleLoginSuccess} />
+                )}
               </GoogleOAuthProvider>
             </div>
             <button className="nav-button" onClick={() => navigate('/MyPage')}>
@@ -58,7 +72,6 @@ function MenuBar() {
                 <MedicalServicesOutlinedIcon className='icon' />
               </Tooltip>
             </button>
-
           </div>
         </div>
       </nav>
