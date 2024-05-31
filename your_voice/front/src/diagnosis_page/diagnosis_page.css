@@ -5,7 +5,7 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
- 
+
   background: linear-gradient(to right, #b6ddee, whitesmoke);
 }
 
@@ -15,37 +15,37 @@
   flex-direction: column;
   width: 70%;
   height: 80%;
-  background-color: rgb(255, 254, 242);
   border: 3px double lightblue;
-  padding: 2 2.5vw  ;
+  padding: 2 2.5vw;
   border-radius: 10px;
-  /* flex: 0 0 60%; */
- 
+  background: linear-gradient(to right, #fdcccc, #fff1f1);
+  box-shadow: 0px 0px 10px lightslategray;
   text-align: center;
   margin: 3vw 0 0 0;
-  box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
- 
+
 }
 
 
-.contentDg{
+.contentDg {
   margin: 1.7vw 0 0 0;
   font-size: 2vw;
   color: rgb(9, 28, 104);
-  
-  
+
+
 
 
 }
-.resultDg{
+
+.resultDg {
   margin: 1.5vw 0 0 0;
   font-size: 2.8vw;
   color: rgb(9, 28, 104);
- 
+
 
 
 }
-.Dgcontent_box{
+
+.Dgcontent_box {
 
   display: flex;
   flex-direction: row;
@@ -53,19 +53,20 @@
   align-items: center;
   margin: 2vw 0 0 4vw;
   gap: 3vw
+}
+
+.spinnerDg {
+
+  margin-left: 3vw;
 
 }
 
-.spinnerDg{
-
- margin-left: 3vw;
-
-}
-.Dg{
+.Dg {
 
   flex: 3;
   font-size: 1vw;
   padding: 3vw;
-  color: rgb(9, 28, 104);;
-  
+  color: rgb(9, 28, 104);
+  ;
+
 }

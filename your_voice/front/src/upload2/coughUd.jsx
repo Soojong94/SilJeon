@@ -41,11 +41,11 @@ const CoughUd = () => {
                     <div className="middle_content">
                         <h2 className='ExplnUd'>파일 선택 후 업로드 버튼을 눌러주세요.</h2>
                         <div className="file-buttons">
-                        {selectedFile && <p className='selectedfileName'>{selectedFile.name}</p>}
+                            {selectedFile && <p className='selectedfileName'>{selectedFile.name}</p>}
                             <button className="inputbtn" onClick={() => inputBtn.current.click()}>파일 선택</button>
                             <input type="file" onChange={handleFileChange} ref={inputBtn} className="file-input" />
-                           
-                            <button className='inputbtn' onClick={navigateToLoadingPage} disabled={!selectedFile}>파일 업로드</button>
+
+                            <button className='inputbtn' onClick={navigateToLoadingPage} disabled={!selectedFile}>파일 분석</button>
                         </div>
                     </div>
                     <div className='recordPg_Move_box'>

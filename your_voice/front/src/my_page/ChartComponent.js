@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto';
 import moment from 'moment';
+import './my_page.css'
 
 const getLast7Days = () => {
   const days = [];
@@ -58,7 +59,7 @@ const ChartComponent = () => {
 
   return (
     <div>
-      <button onClick={toggleChart}>
+      <button className="chart-button" onClick={toggleChart}>
         {showWeekly ? '일간 차트 보기' : '주간 차트 보기'}
       </button>
       <div style={{ height: '60vh', width: '30vw' }}>
