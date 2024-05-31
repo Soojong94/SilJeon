@@ -15,55 +15,43 @@
   height: 80%;
   background-color: rgb(255, 254, 242);
   box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
-
   margin-top: 5vw;
-
   box-sizing: border-box;
-
   text-align: center;
   justify-content: center;
   padding: 2vw 0;
-
+  overflow: auto;
 }
 
 .udH1 {
-
   color: rgb(9, 28, 104);
-  font-size: 2.6vw;
+  font-size: 24px;
+  /* 고정된 폰트 크기 */
   margin: 30px 0 10px 0;
 }
 
 .udh2 {
   color: rgb(9, 28, 104);
-  font-size: 1.3vw;
-
+  font-size: 16px;
+  /* 고정된 폰트 크기 */
 }
 
 .message {
   margin-top: 10px;
-
   color: #6b5716;
-
 }
 
 .record-container {
-
-
-
   justify-content: center;
   align-items: center;
-
 }
 
 .input-container {
-
   margin-top: 4%;
   display: flex;
-
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
 }
 
 .record-container {
@@ -72,8 +60,6 @@
   margin-top: 5%;
   gap: 10%;
   margin-bottom: 2%;
-
-
 }
 
 .error-message {
@@ -82,38 +68,26 @@
   margin-top: 10px;
 }
 
-.inputbtn {
-  background-color: rgb(203, 240, 254);
-  border: none;
-  padding: 7px 15px;
-  cursor: pointer;
-  border-radius: 5vw;
-  font-size: 0.9wv;
-  width: 26%;
-
-  color: rgb(9, 28, 104);
-  box-shadow: 3px 3px 10px;
-
-}
 
 .record-btn,
 .btnUd {
-
   background-color: rgb(203, 240, 254);
   border: none;
   padding: 7px 15px;
   cursor: pointer;
-  border-radius: 5vw;
-  font-size: 0.9vw;
+  border-radius: 5px;
+  /* 수정: vw 대신 px 단위 사용 */
+  font-size: 14px;
+  /* 고정된 폰트 크기 */
   width: 15%;
-
   color: rgb(9, 28, 104);
   box-shadow: 3px 3px 10px;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .record-btn:hover,
-.inputbtn:hover,
 .btnUd:hover {
   background-color: transparent;
   color: rgb(9, 28, 104);
@@ -123,16 +97,16 @@
   display: none;
 }
 
-
 audio {
   background-color: whitesmoke;
   border: none;
   padding: 10px 15px;
-  border-radius: 5vw;
-  width: 55vw;
+  border-radius: 5px;
+  /* 수정: vw 대신 px 단위 사용 */
+  width: 30vw;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 5);
 }
 
 .audio-player :hover {
@@ -156,4 +130,24 @@ audio {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.left_box {
+  flex: 0 0 40%;
+  align-items: center;
+  justify-content: center;
+}
+
+.right_box {
+  flex: 0 0 60%;
+  align-items: center;
+  justify-content: center;
+}
+
+.divided_body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10%;
+  flex-grow: 1;
 }

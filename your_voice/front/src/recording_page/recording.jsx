@@ -72,19 +72,26 @@ const Record_voice = () => {
 
   return (
     <div className='parent-box'>
+
       <MenuBar />
       <div className='up_box'>
-        <button className='btnBack' onClick={() => navigate('/coughUd')}>업로드 페이지로 돌아가기</button>
+        <button className='btnBack' onClick={() => navigate('/coughUd')}>업로드 페이지로 가기</button>
         <h1 className='udH1'>Audio Recording</h1>
-        <h3 className='udh2'>녹음 후 음성 파일을</h3> <h2>꼭!! 다운로드 해주세요</h2>
-        <span>Please download GGOK!!</span>
-        <div className="record-container">
-          <button className='record-btn' onClick={recording ? stopRecording : startRecording}>
-            {recording ? '녹음 중지' : '녹음 시작'}
-          </button>
-          <button className='btnUd' onClick={downloadAudio} disabled={!audioBlob}>파일 다운</button>
+        <div className='divided_body'>
+          <div className='left_box'>
+            <h3 className='udh2'>녹음 후 음성 파일을</h3> <h2>꼭!! 다운로드 해주세요</h2>
+            <span>Please download GGOK!!</span>
+          </div>
+          <div className='right_box'>
+            <audio ref={audioRef} controls />
+            <div className="record-container">
+              <button className='record-btn' onClick={recording ? stopRecording : startRecording}>
+                {recording ? '녹음 중지' : '녹음 시작'}
+              </button>
+              <button className='btnUd' onClick={downloadAudio} disabled={!audioBlob}>파일 다운</button>
+            </div>
+          </div>
         </div>
-        <audio ref={audioRef} controls />
       </div>
     </div>
   );
