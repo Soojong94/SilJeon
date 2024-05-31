@@ -1,19 +1,25 @@
 .dgBtn {
-  background-color: rgb(203, 240, 254);
+    background-color: rgb(243, 252, 255);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5vw;
-    font-size: 1vw;
+    font-size: 20px;
     margin-top: 50px;
-    color:#090d5c;
+    color: rgb(9, 28, 104);
     box-shadow: 5px 5px 20px;
+    width: 15vw;
+   
+    font-size: 20px;
+
+ 
     
   }
   
   .dgBtn:hover {
-    background-color: #f2f3e9;
-    color:#090d5c;
-    box-shadow: 5px 5px 20px;
+    background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
+    color: rgb(9, 28, 104);
+    transform: scale(1.15);
+    transition: transform 0.8s ease;
   }
   

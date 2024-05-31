@@ -27,10 +27,10 @@ body {
     align-items: center;
     width: 75%;
     height: 80%;
-    background-color: rgb(255, 254, 242);
+    background: linear-gradient(to right, #fdcccc, #fff1f1);
     border: 3px double lightblue;
     padding: 10px 20px;
-    border-radius: 10px;
+    border-radius: 30px;
     box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
     text-align: center;
 }
@@ -79,8 +79,4 @@ body {
     box-shadow: 5px 5px 20px;
 }
 
-.voiceDg:hover {
-    background-color: #f2f3e9;
-    color: rgb(9, 28, 104);
-    box-shadow: 5px 5px 20px;
-}
+
