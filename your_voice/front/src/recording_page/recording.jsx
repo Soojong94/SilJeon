@@ -5,6 +5,7 @@ import WavEncoder from 'wav-encoder';
 import './recording.css';
 import MenuBar from '../Route/menu';
 import { PropagateLoader } from 'react-spinners';
+import { PuffLoader } from 'react-spinners';
 
 const Record_voice = () => {
 
@@ -12,6 +13,7 @@ const Record_voice = () => {
   const [recording, setRecording] = useState(false);
   const [recorder, setRecorder] = useState(null);
   const [message, setMessage] = useState('');
+  const [fileName, setFileName] = useState('');
   const audioRef = useRef(null);
   const timerRef = useRef(null);
   const audioContextRef = useRef(new (window.AudioContext || window.webkitAudioContext)());
@@ -49,6 +51,7 @@ const Record_voice = () => {
         });
         const wavBlob = new Blob([new DataView(wavData)], { type: 'audio/wav' });
         setAudioBlob(wavBlob);
+        setFileName('record.wav');
         const audioURL = URL.createObjectURL(wavBlob);
         audioRef.current.src = audioURL;
       } catch (err) {
@@ -65,7 +68,7 @@ const Record_voice = () => {
     const url = URL.createObjectURL(audioBlob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'audio.wav';
+    a.download = fileName;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -76,29 +79,39 @@ const Record_voice = () => {
       <MenuBar />
       <div className='up_box'>
         <div className='PropagateLoader-container'>
+          <h1 className='udH1'>Recording</h1>
           <div className='PropagateLoader_container'>
             <PropagateLoader
-              color="#36d7b7"
-              size={20}
-              speedMultiplier={1.2}
+              color="#1cb4f5"
+              size={10}
+              speedMultiplier={1}
             />
           </div>
-          <h1 className='udH1'>녹음 페이지</h1>
         </div>
-        <span>Audio Recording</span>
+
         <div className='divided_body'>
           <div className='left_box'>
-            <h3 className='udh2'>녹음 후 음성 파일을</h3> <h1>꼭!! 다운로드 해주세요</h1>
-            <span>Please download GGOK!!</span>
+            <h3 className='udh2'>녹음 후 음성 파일을 <br />꼭!! 다운로드 해주세요</h3>
+            <span>Please download File!</span>
           </div>
           <div className='right_box'>
             <audio ref={audioRef} controls />
             <div className="record-container">
               <button className='record-btn' onClick={recording ? stopRecording : startRecording}>
-                {recording ? '녹음 중지' : '녹음 시작'}
+                {recording ? (
+                  <>녹음 중지
+                    <PuffLoader
+                      color="black"
+                      size={10}
+                      speedMultiplier={1}
+                      cssOverride={{ display: 'inline-block', marginBottom: '7px', marginLeft: '10px' }}
+                    />
+                  </>
+                ) : '녹음 시작   ▶'}
               </button>
-              <button className='btnUd' onClick={downloadAudio} disabled={!audioBlob}>파일 다운</button>
-              <button className='btnBack' onClick={() => navigate('/coughUd')}>파일 업로드➡️➡️</button>
+              {audioBlob && <p className='file-name'>녹음 파일: {fileName}</p>}
+              <button className='btnUd' onClick={downloadAudio} disabled={!audioBlob}>녹음 파일 다운</button>
+              <button className='btnBack' onClick={() => navigate('/coughUd')}>녹음 파일 업로드⬆️</button>
             </div>
           </div>
         </div>

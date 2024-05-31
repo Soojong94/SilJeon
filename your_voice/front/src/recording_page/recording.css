@@ -13,17 +13,16 @@
   border-radius: 5px;
   width: 75%;
   height: 80%;
-  background-color: rgb(255, 254, 242);
-  box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
+  background: linear-gradient(to right, #fdcccc, #fff1f1);
+  box-shadow: 0px 0px 10px lightslategray;
   margin-top: 5vw;
-  box-sizing: border-box;
   text-align: center;
-  justify-content: center;
   padding: 2vw 0;
   overflow: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 30px;
 }
 
 .udH1 {
@@ -33,16 +32,9 @@
 
 }
 
-.PropagateLoader-container {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-
-}
-
 .udh2 {
   color: rgb(9, 28, 104);
-  font-size: 2.5vw;
+  font-size: 2vw;
 }
 
 .message {
@@ -63,17 +55,16 @@
   margin-top: 10px;
 }
 
-.record-btn,
 .btnUd,
 .btnBack {
-  background-color: rgb(203, 240, 254);
+  background-color: rgb(255, 255, 255);
   border: none;
   padding: 7px 15px;
   cursor: pointer;
-  border-radius: 5px;
-  font-size: 14px;
+  border-radius: 50px;
+  font-size: 20px;
   min-width: 50%;
-  min-height: 15%;
+  min-height: 20%;
   color: rgb(9, 28, 104);
   box-shadow: 3px 3px 10px;
   display: flex;
@@ -82,18 +73,12 @@
   margin-top: 30px;
 }
 
-.record-btn:hover,
-.btnUd:hover,
-.btnBack:hover {
-  background-color: transparent;
-  color: rgb(9, 28, 104);
-}
 
 audio {
   background-color: whitesmoke;
   border: none;
   padding: 10px 15px;
-  border-radius: 5px;
+  border-radius: 50px;
   width: 20vw;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -104,13 +89,19 @@ audio {
 .left_box {
   flex: 0 0 40%;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  min-width: 45%;
+  position: relative;
+  font-size: 1.5vw;
+  margin-bottom: 10%;
 }
 
 .right_box {
   flex: 0 0 60%;
   align-items: center;
   justify-content: center;
+  min-width: 45%;
+  position: relative;
 }
 
 .divided_body {
@@ -119,16 +110,44 @@ audio {
   align-items: center;
   margin-top: 5%;
   flex-grow: 1;
-  gap: 20%;
+  min-width: 90%;
 }
 
 .PropagateLoader_container {
-  margin-top: 20px;
-  margin-right: 80px;
+  margin-top: 30px;
 }
 
 @media (max-width: 768px) {
   .PropagateLoader_container {
     display: none;
   }
+}
+
+.record-btn {
+  background-color: rgb(255, 255, 255);
+  border: none;
+  padding: 7px 15px;
+  cursor: pointer;
+  border-radius: 50px;
+  font-size: 20px;
+  min-width: 50%;
+  min-height: 30%;
+  color: rgb(9, 28, 104);
+  box-shadow: 3px 3px 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-name {
+  margin-top: 20px;
+}
+
+.record-btn:hover,
+.btnUd:hover,
+.btnBack:hover {
+  background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
+  color: rgb(9, 28, 104);
+  transform: scale(1.15);
+  transition: transform 0.8s ease;
+
 }
