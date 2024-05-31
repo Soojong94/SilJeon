@@ -35,7 +35,7 @@ const ChartComponent = () => {
     datasets: [
       {
         label: showWeekly ? '주간 차트' : '일간 차트',
-        data: showWeekly ? [90, 70, 65, 45] : [5, 30, 40, 50, 20, 80, 100], // 예시 데이터
+        data: showWeekly ? [90, 70, 65, 45] : [5, 30, 40, 50, 20, 80, 90], // 예시 데이터
         backgroundColor: 'coral',
         borderColor: 'coral',
         borderWidth: 1,
@@ -51,7 +51,7 @@ const ChartComponent = () => {
         min: 0,
         max: 100,
         ticks: {
-          stepSize: 10,
+          stepSize: 20,
         },
       },
     },

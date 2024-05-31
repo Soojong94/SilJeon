@@ -15,18 +15,17 @@ body {
   justify-content: center;
   align-items: center;
   height: 50%;
-  width: 60%;
+  width: 70%;
   background: linear-gradient(to right, #fdcccc, #fff1f1);
   box-shadow: 0px 0px 10px lightslategray;
   margin: 2vw auto;
   position: relative;
   border: 3px double lightblue;
-  padding: 3%;
   border-radius: 10px;
   color: rgb(9, 28, 104);
-  margin-top: 4%;
+  margin-top: 6%;
   position: relative;
-
+  padding: 1%;
 }
 
 .myH2 {
@@ -50,7 +49,7 @@ body {
 }
 
 .my_page_chart {
-  flex: 0 0 65%;
+  flex: 0 0 50%;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
@@ -59,13 +58,13 @@ body {
 }
 
 .my_page_body {
-  flex: 0 0 35%;
+  flex: 0 0 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: auto;
+  font-size: 20px;
 }
 
 
@@ -86,9 +85,10 @@ body {
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-radius: 20px;
-  padding: 5px;
+  padding: 10px;
 }
 
 .chart-button:hover {
-  background-color: skyblue;
+  background-color: rgb(255, 255, 255);
+  background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
 }
