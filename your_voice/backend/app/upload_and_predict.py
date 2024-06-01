@@ -72,11 +72,17 @@ def preprocess_audio(file_bytes, duration=5, sr=44100, n_mfcc=20, n_fft=2048, ho
 
     return mfcc
 
+
+
 def load_model1():
-    model_path = 'SilJeon/your_voice/backend/models/my_model.keras'
+    # 현재 파일의 디렉토리 경로를 기준으로 모델 경로 설정
+    base_dir = os.path.dirname(__file__)
+    model_path = os.path.join(base_dir, '..', 'models', 'my_model.keras')
+    
     try:
         model = tf.keras.models.load_model(model_path)
         print("모델 로딩 성공")
         return model
     except Exception as e:
         raise RuntimeError("모델을 로드하는 중 오류 발생") from e
+
