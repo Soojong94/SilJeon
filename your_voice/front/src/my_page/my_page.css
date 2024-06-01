@@ -16,7 +16,7 @@ body {
   align-items: center;
   height: 50%;
   width: 70%;
-  background: linear-gradient(to right, #fdcccc, #fff1f1);
+  background: linear-gradient(to right, whitesmoke, #fff1f1);
   box-shadow: 0px 0px 10px lightslategray;
   margin: 2vw auto;
   position: relative;

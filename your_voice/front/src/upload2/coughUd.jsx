@@ -39,7 +39,7 @@ const CoughUd = () => {
                         <BounceLoader className='bounce' size={230} color="#6375ff" />
                     </div>
                     <div className="middle_content">
-                        <h2 className='ExplnUd'>파일 선택 후 업로드 버튼을 눌러주세요.</h2>
+                        <h2 className='ExplnUd'>파일 선택 후 분석 버튼을 눌러주세요.</h2>
                         <div className="file-buttons">
                             {selectedFile && <p className='selectedfileName'>{selectedFile.name}</p>}
                             <button className="inputbtn" onClick={() => inputBtn.current.click()}>파일 선택</button>

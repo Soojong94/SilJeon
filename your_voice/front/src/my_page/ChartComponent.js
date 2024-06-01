@@ -36,9 +36,9 @@ const ChartComponent = () => {
       {
         label: showWeekly ? '주간 차트' : '일간 차트',
         data: showWeekly ? [90, 70, 65, 45] : [5, 30, 40, 50, 20, 80, 90], // 예시 데이터
-        backgroundColor: 'coral',
-        borderColor: 'coral',
-        borderWidth: 1,
+        backgroundColor: 'red',
+        borderColor: 'red',
+        borderWidth: 4,
 
       },
     ],
