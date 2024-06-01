@@ -1,50 +1,28 @@
 import os
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 from werkzeug.utils import secure_filename
 from pydub import AudioSegment
-from datetime import datetime
+import io
+import tensorflow as tf
+import numpy as np
+import librosa
+import soundfile as sf
 
+def process_file(file):
+    print("process_file 함수 호출됨")
 
-def handle_upload(file, static_folder_path):
-    print("handle_upload 함수 호출됨")
-    timestamp = datetime.now().strftime("%Y%m%d%H%M%S%f")  # 밀리초까지 포함
-    filename = secure_filename(file.filename)
-    unique_filename = f"{timestamp}_{filename}"
-    original_filepath = os.path.join(static_folder_path, unique_filename)
-    # 디렉토리가 존재하는지 확인하고, 없으면 생성
-    os.makedirs(os.path.dirname(original_filepath), exist_ok=True)
-    print(f"원본 파일 경로: {original_filepath}")
-    try:
-        file.save(original_filepath)
-        print(f"파일 저장 완료: {original_filepath}")
-    except Exception as e:
-        print(f"파일 저장에 실패했습니다: {e}")
-        raise
-    
-    # 이미 WAV로 변환된 파일인지 확인
-    wav_filepath = original_filepath.rsplit(".", 1)[0] + ".wav"
-    if os.path.exists(wav_filepath):
-        print("이미 WAV로 변환된 파일입니다.")
-        return wav_filepath
-    
-    # WAV 파일이 아니면 변환 작업 수행
-    return convert_to_wav(original_filepath)
+    # 파일을 메모리로 읽어들임
+    file_bytes = io.BytesIO(file.read())
+    file_extension = secure_filename(file.filename).split(".")[-1].lower()
 
-
-
-def process_file(file, static_folder_path):
-    if "file" not in file:
-        return "파일이 전송되지 않았습니다.", 400
-    wav_filepath = handle_upload(file["file"], static_folder_path)
-    if isinstance(wav_filepath, tuple):
-        return wav_filepath
-
-    return {"filepath": wav_filepath}, 200
-
-def convert_to_wav(source_path):
-    file_extension = source_path.split(".")[-1]
+    # 파일 확장자가 WAV인 경우 바로 반환
     if file_extension == "wav":
-        return source_path  # 이미 wav 파일이면 변환 없이 경로 반환
+        return file_bytes
 
+    # WAV 파일이 아니면 변환 작업 수행
+    return convert_to_wav(file_bytes, file_extension)
+
+def convert_to_wav(file_bytes, file_extension):
     supported_formats = [
         "mp3", "m4a", "mp4", "webm", "ogg", "flac", "weba"
     ]
@@ -54,13 +32,51 @@ def convert_to_wav(source_path):
     try:
         # 'weba' 파일은 'webm' 형식으로 처리
         if file_extension == "weba":
-            audio = AudioSegment.from_file(source_path, format="webm")
+            audio = AudioSegment.from_file(file_bytes, format="webm")
         else:
-            audio = AudioSegment.from_file(source_path, format=file_extension)
+            audio = AudioSegment.from_file(file_bytes, format=file_extension)
         
-        target_path = source_path.rsplit(".", 1)[0] + ".wav"
-        audio.export(target_path, format="wav")
-        os.remove(source_path)  # 원본 파일 삭제
-        return target_path
+        wav_bytes = io.BytesIO()
+        audio.export(wav_bytes, format="wav")
+        wav_bytes.seek(0)  # 시작 위치로 되돌림
+        print(f"WAV 파일 변환 완료")
+        return wav_bytes
     except Exception as e:
         raise Exception(f"파일 변환 중 오류 발생: {e}")
+
+def preprocess_audio(file_bytes, duration=5, sr=44100, n_mfcc=20, n_fft=2048, hop_length=512):
+    print(f"preprocess_audio 함수 호출됨")
+    audio_data, samplerate = sf.read(file_bytes)
+    
+    # 입력 신호 길이가 n_fft보다 짧은 경우 처리하지 않음
+    if len(audio_data) < n_fft:
+        raise ValueError(f"입력 신호 길이가 너무 짧습니다: {len(audio_data)}")
+
+    # 오디오 데이터를 모노로 변환
+    if audio_data.ndim == 2:
+        audio_data = librosa.to_mono(audio_data.T)
+
+    audio = librosa.resample(audio_data, orig_sr=samplerate, target_sr=sr)
+    mfcc = librosa.feature.mfcc(y=audio, sr=sr, n_mfcc=n_mfcc, n_fft=n_fft, hop_length=hop_length)
+    
+    # mfcc 배열의 차원 확인
+    if mfcc.ndim != 2:
+        raise ValueError(f"MFCC 배열의 차원이 올바르지 않습니다: {mfcc.ndim}차원")
+
+    fixed_shape = [n_mfcc, 431]  # 모델 입력 차원에 맞춰 수정
+    if mfcc.shape[1] < fixed_shape[1]:
+        pad_width = fixed_shape[1] - mfcc.shape[1]
+        mfcc = np.pad(mfcc, ((0, 0), (0, pad_width)), mode='constant')
+    elif mfcc.shape[1] > fixed_shape[1]:
+        mfcc = mfcc[:, :fixed_shape[1]]
+
+    return mfcc
+
+def load_model1():
+    model_path = 'SilJeon/your_voice/backend/models/my_model.keras'
+    try:
+        model = tf.keras.models.load_model(model_path)
+        print("모델 로딩 성공")
+        return model
+    except Exception as e:
+        raise RuntimeError("모델을 로드하는 중 오류 발생") from e

@@ -1,16 +1,13 @@
-from flask import Blueprint, request, jsonify
-from app.upload_and_predict import process_file
-import logging
 import os
-from joblib import load
-from models.model import AudioModel  # AudioModel 클래스를 가져옵니다.
+from flask import Blueprint, request, jsonify
+from app.upload_and_predict import process_file, load_model1, preprocess_audio
+import logging
+import numpy as np
 
 coughUpload_bp = Blueprint('coughUpload', __name__)
 
-# 모델 로드
-model_path = os.path.join(os.path.dirname(__file__), '../models/model3.joblib')
-model = load(model_path)
-
+# TensorFlow 모델 로드
+model = load_model1()
 
 @coughUpload_bp.route('/api/coughUpload', methods=['POST'])
 def coughUpload():
@@ -19,19 +16,19 @@ def coughUpload():
             return jsonify({'error': '파일이 전송되지 않았습니다.'}), 400
 
         file = request.files['file']
-        static_folder_path = os.path.join(os.path.dirname(__file__), '../static')
 
-        # 파일 처리 및 WAV 변환
-        result, status_code = process_file({'file': file}, static_folder_path)
-        if status_code != 200:
-            return jsonify(result), status_code
-
-        # 변환된 WAV 파일 경로
-        wav_filepath = result['filepath']
+        # 파일 처리 및 WAV 변환 (메모리에서 직접 처리)
+        wav_data = process_file(file)
+        if isinstance(wav_data, tuple):
+            return wav_data
 
         # 모델 불러오기 및 예측
-        prediction = model.process_audio_file(wav_filepath)  # 오디오 파일 처리
-        prediction = float(prediction)
+        mfcc = preprocess_audio(wav_data)
+        mfcc = np.expand_dims(mfcc, axis=0)  # Add batch dimension
+        mfcc = np.expand_dims(mfcc, axis=-1)  # Add channel dimension if necessary
+
+        prediction = model.predict(mfcc)  # 수정: mfcc 데이터를 사용
+        prediction = float(prediction[0][0])  # 수정: prediction 결과가 배열 형태일 수 있으므로 첫 번째 요소를 float로 변환
 
         return jsonify({'prediction': prediction}), 200
     except Exception as e:
