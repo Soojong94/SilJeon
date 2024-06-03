@@ -12,7 +12,7 @@ CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": "http://l
 secret_key = secrets.token_hex(32)
 app.secret_key = secret_key
 
-app.register_blueprint(login_bp)  # login Blueprint를 등록합니다.
+app.register_blueprint(login_bp)
 app.register_blueprint(coughUpload_bp)
 
 if __name__ == '__main__':
