@@ -32,6 +32,7 @@ def coughUpload():
         prediction = float(
             prediction[0][0]
         )  # 수정: prediction 결과가 배열 형태일 수 있으므로 첫 번째 요소를 float로 변환
+        print("모델 예측 결과에용 : ", prediction)
 
         return jsonify({"prediction": prediction}), 200
     except Exception as e:
