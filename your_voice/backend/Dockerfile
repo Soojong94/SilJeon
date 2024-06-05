@@ -10,12 +10,10 @@ WORKDIR /app
 
 # 종속성 설치
 COPY requirements.txt requirements.txt
-
 RUN pip install --no-cache-dir -r requirements.txt
-
 
 # 소스 코드 복사
 COPY . .
 
-# 컨테이너 실행 시 Flask 서버 실행
-CMD ["python", "app.py"]
+# Flask 애플리케이션을 Gunicorn으로 실행
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:create_app()"]
