@@ -13,7 +13,6 @@ function LoadingPage() {
   const userInfo = sessionStorage.getItem('user_info');
   const { id: userId } = userInfo ? JSON.parse(userInfo) : {};
 
-
   useEffect(() => {
     const uploadAndAnalyzeFile = async () => {
       const formData = new FormData();

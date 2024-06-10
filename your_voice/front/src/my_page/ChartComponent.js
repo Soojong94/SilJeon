@@ -2,111 +2,116 @@ import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto';
 import moment from 'moment';
-import './my_page.css'
+import './my_page.css';
 import axios from 'axios';
 
-
-// 세션 스토리지에서 id 값만 불러오는 코드
 const userInfo = sessionStorage.getItem('user_info');
 const { id } = userInfo ? JSON.parse(userInfo) : {};
-const userId = id
+const userId = id;
 
-// 서버에서 일간 및 주간 데이터를 가져오는 함수
 const fetchDailyChart = async () => {
-  try {
-    const response = await axios.post('http://localhost:5000/api/dailyChart', { 'id' : userId});
-    console.log(response.data);
+  try {
+    const response = await axios.post('http://localhost:5000/api/dailyChart', { id: userId });
+    console.log(response.data);
     return response.data;
-  } catch (error) {
-    console.error('Error fetching daily chart data:', error);
-    return null;
-  }
+  } catch (error) {
+    console.error('Error fetching daily chart data:', error);
+    return null;
+  }
 };
 
-
-
-
 const fetchWeeklyChart = async () => {
-  try {
-    const response = await axios.post('http://localhost:5000/api/weeklyChart', { 'id' : userId });
-    console.log(response.data);
+  try {
+    const response = await axios.post('http://localhost:5000/api/weeklyChart', { id: userId });
+    console.log(response.data);
     return response.data;
-  } catch (error) {
-    console.error('Error fetching weekly chart data:', error);
-    return null;
-  }
+  } catch (error) {
+    console.error('Error fetching weekly chart data:', error);
+    return null;
+  }
 };
 
 const getLast7Days = () => {
-  const days = [];
-  for (let i = 6; i >= 0; i--) {
-    days.push(moment().subtract(i, 'days').format('MM-DD'));
-  }
-  return days;
-};
-
-const getLast4Weeks = () => {
-  const weeks = [];
-  for (let i = 3; i >= 0; i--) {
-    weeks.push(moment().subtract(i, 'weeks').format('MM-DD'));
-  }
-  return weeks;
+  const days = [];
+  for (let i = 6; i >= 0; i--) {
+    days.push(moment().subtract(i, 'days').format('YYYY-MM-DD'));
+  }
+  return days;
 };
 
 const ChartComponent = () => {
-  const [showWeekly, setShowWeekly] = useState(true);
-  const [chartData, setChartData] = useState([]);
+  const [showWeekly, setShowWeekly] = useState(false);  // Default to daily chart
+  const [chartData, setChartData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = showWeekly ? await fetchWeeklyChart() : await fetchDailyChart();
-      setChartData(data);
-    };
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = showWeekly ? await fetchWeeklyChart() : await fetchDailyChart();
+      if (data) {
+        if (showWeekly) {
+        }
+        setChartData(data);
+      }
+    };
 
-    fetchData();
-  }, [showWeekly]);
+    fetchData();
+  }, [showWeekly]);
 
-  const toggleChart = () => {
-    setShowWeekly(!showWeekly);
-  };
+  const toggleChart = () => {
+    setShowWeekly(!showWeekly);
+  };
 
-  const labels = showWeekly ? getLast4Weeks() : getLast7Days();
-  const data = {
-    labels,
-    datasets: [
-      {
-        label: showWeekly ? '주간 차트' : '일간 차트',
-        data: chartData, 
-        backgroundColor: 'red',
-        borderColor: 'red',
-        borderWidth: 4,
-      },
-    ],
-  };
+  const labels = showWeekly ? chartData.map(data => data.week).reverse() : getLast7Days();
 
-  const options = {
-    maintainAspectRatio: false,
-    scales: {
-      y: {
-        min: 0,
-        max: 100,
-        ticks: {
-          stepSize: 20,
-        },
-      },
-    },
-  };
+  const diseases = [1, 2, 3, 4]; // 질병 번호 리스트 // 1. 정상 2. 심부전, 3.천식, 4.코로나
+  const datasets = diseases.map(disease_id => {
+    return {
+      label: `Disease ${disease_id}`,
+      data: labels.map(label => {
+        const record = chartData.find(d => (showWeekly ? d.week : d.date) === label);
+        if (record) {
+          const diseaseRecord = record.data.find(r => r.disease_id === disease_id);
+          return diseaseRecord ? diseaseRecord.average_cough_status : 0;
+        }
+        return 0;
+      }),
+      borderColor: getColorForDisease(disease_id), // 각 질병 번호에 대해 고유한 색상 지정
+      fill: false
+    };
+  });
 
-  return (
-    <div>
-      <button className="chart-button" onClick={toggleChart}>
-        {showWeekly ? '일간 차트 보기' : '주간 차트 보기'}
-      </button>
-      <div style={{ height: '60vh', width: '30vw' }}>
-        <Line data={data} options={options} />
-      </div>
-    </div>
-  );
+  const data = {
+    labels,
+    datasets
+  };
+
+  const options = {
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        min: 0,
+        max: 1,
+        ticks: {
+          stepSize: 0.1,
+        },
+      },
+    },
+  };
+
+  return (
+    <div>
+      <button className="chart-button" onClick={toggleChart}>
+        {showWeekly ? '일간 차트 보기' : '주간 차트 보기'}
+      </button>
+      <div style={{ height: '60vh', width: '60vw' }}>
+        <Line data={data} options={options} />
+      </div>
+    </div>
+  );
+};
+
+const getColorForDisease = (disease_id) => {
+  const colors = ['red', 'blue', 'green', 'orange'];
+  return colors[disease_id - 1] || 'black';
 };
 
 export default ChartComponent;
