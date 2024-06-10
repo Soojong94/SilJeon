@@ -3,12 +3,12 @@ from flask import Blueprint, request, jsonify
 from app.upload_and_predict import process_file, load_model1, preprocess_audio
 import logging
 import numpy as np
+from db.db import connect_db
 
 coughUpload_bp = Blueprint("coughUpload", __name__)
 
 # TensorFlow 모델 로드
 model = load_model1()
-
 
 @coughUpload_bp.route("/api/coughUpload", methods=["POST"])
 def coughUpload():
@@ -17,24 +17,38 @@ def coughUpload():
             return jsonify({"error": "파일이 전송되지 않았습니다."}), 400
 
         file = request.files["file"]
+        user_id = request.form.get('userId')  # 사용자 아이디 받기
+        print(f"파일 이름: {file.filename}, 사용자 아이디: {user_id}")
 
         # 파일 처리 및 WAV 변환 (메모리에서 직접 처리)
         wav_data = process_file(file)
         if isinstance(wav_data, tuple):
             return wav_data
 
-        # 모델 불러오기 및 예측
+        # 전처리 과정 수정된 부분 반영
         mfcc = preprocess_audio(wav_data)
-        mfcc = np.expand_dims(mfcc, axis=0)  # Add batch dimension
-        mfcc = np.expand_dims(mfcc, axis=-1)  # Add channel dimension if necessary
 
-        prediction = model.predict(mfcc)  # 수정: mfcc 데이터를 사용
-        prediction = float(
-            prediction[0][0]
-        )  # 수정: prediction 결과가 배열 형태일 수 있으므로 첫 번째 요소를 float로 변환
-        print("모델 예측 결과에용 : ", prediction)
+        # 모델 예측
+        prediction = model.predict(mfcc)
+        predicted_class = np.argmax(prediction, axis=1)
+        class_labels = ['정상', '심부전', '천식', '코로나']
+        predicted_label = class_labels[predicted_class[0]]
+        
+        # conn = connect_db()
+        # cursor = conn.cursor()
+        # cursor.execute("SELECT disease_id FROM cough_disease WHERE disease_name = %s", (predicted_label,))
+        # disease_id = cursor.fetchone()
+        
+        # cursor.execute(
+        #     "INSERT INTO cough_status (social_user_id, cough_status, input_date, disease_id) VALUES (%s, %s, NOW(), %s)",
+        #     (user_id, predicted_label, disease_id)
+        # )
+        # conn.commit()
 
-        return jsonify({"prediction": prediction}), 200
+        # 각 클래스에 대한 예측 확률을 포함한 결과 반환
+        prediction_probabilities = {class_labels[i]: float(prediction[0][i]) for i in range(len(class_labels))}
+        
+        return jsonify({"prediction": predicted_label, "probabilities": prediction_probabilities}), 200
     except Exception as e:
         logging.exception("An error occurred during file upload.")
         return jsonify({"error": str(e)}), 500

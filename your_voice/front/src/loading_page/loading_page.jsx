@@ -10,13 +10,18 @@ function LoadingPage() {
   const navigate = useNavigate();
   const { file } = location.state;
 
+  const userInfo = sessionStorage.getItem('user_info');
+  const { id: userId } = userInfo ? JSON.parse(userInfo) : {};
+
+
   useEffect(() => {
     const uploadAndAnalyzeFile = async () => {
       const formData = new FormData();
       formData.append('file', file);
+      formData.append('userId', userId);
 
       try {
-        const response = await axios.post('adb8fb3ea6d6345ceafded3f4e5082aa-1453830109.ap-northeast-1.elb.amazonaws.com/api/coughUpload', formData, {
+        const response = await axios.post('http://localhost:5000/api/coughUpload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -38,7 +43,7 @@ function LoadingPage() {
     };
 
     uploadAndAnalyzeFile();
-  }, [file, navigate]);
+  }, [file, navigate, userId]);
 
   return (
     <div className='ringLoader'>
