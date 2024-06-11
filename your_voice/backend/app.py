@@ -34,4 +34,12 @@ def login():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000, host="0.0.0.0", ssl_context=("cert.pem", "key.pem"))
+    app.run(
+        debug=True,
+        port=5000,
+        host="0.0.0.0",
+        ssl_context=(
+            "/etc/letsencrypt/live/yourcough.site-0002/fullchain.pem",
+            "/etc/letsencrypt/live/yourcough.site-0002/privkey.pem",
+        ),
+    )
