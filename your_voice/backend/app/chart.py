@@ -79,5 +79,4 @@ def weeklyChart():
     # 데이터 형식 맞추기
     weekly_averages = [{'week': week_str, 'data': data} for week_str, data in grouped_data.items()]
 
-    print('주간 평균 출력 : ', weekly_averages)
     return jsonify(weekly_averages), 200

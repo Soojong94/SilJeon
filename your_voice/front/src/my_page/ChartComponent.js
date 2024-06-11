@@ -12,7 +12,6 @@ const userId = id;
 const fetchDailyChart = async () => {
   try {
     const response = await axios.post('http://localhost:5000/api/dailyChart', { 'userId': userId });
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error fetching daily chart data:', error);
@@ -23,7 +22,6 @@ const fetchDailyChart = async () => {
 const fetchWeeklyChart = async () => {
   try {
     const response = await axios.post('http://localhost:5000/api/weeklyChart', { 'userId': userId });
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error fetching weekly chart data:', error);
@@ -39,35 +37,62 @@ const getLast7Days = () => {
   return days;
 };
 
+const getDiseaseLabel = (disease_id) => {
+  switch(disease_id) {
+    case 1:
+      return '정상';
+    case 2:
+      return '심부전';
+    case 3:
+      return '천식';
+    case 4:
+      return '코로나';
+    default:
+      return '';
+  }
+};
+
 const ChartComponent = () => {
   const [showWeekly, setShowWeekly] = useState(false);  // Default to daily chart
-  const [chartData, setChartData] = useState([]);
+  const [dailyChartData, setDailyChartData] = useState([]);
+  const [weeklyChartData, setWeeklyChartData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = showWeekly ? await fetchWeeklyChart() : await fetchDailyChart();
+      const data = await fetchDailyChart();
       if (data) {
-        if (showWeekly) {
-        }
-        setChartData(data);
+        setDailyChartData(data);
       }
     };
 
     fetchData();
-  }, [showWeekly]);
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchWeeklyChart();
+      if (data) {
+        setWeeklyChartData(data);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const toggleChart = () => {
     setShowWeekly(!showWeekly);
   };
 
-  const labels = showWeekly ? chartData.map(data => data.week).reverse() : getLast7Days();
+  const labels = showWeekly ? weeklyChartData.map(data => data.week).reverse() : getLast7Days();
 
   const diseases = [1, 2, 3, 4]; // 질병 번호 리스트 // 1. 정상 2. 심부전, 3.천식, 4.코로나
   const datasets = diseases.map(disease_id => {
+    const diseaseLabel = getDiseaseLabel(disease_id); // 질병 번호에 따른 라벨 가져오기
+
     return {
-      label: `Disease ${disease_id}`,
+      label: diseaseLabel,
       data: labels.map(label => {
-        const record = chartData.find(d => (showWeekly ? d.week : d.date) === label);
+        const record = showWeekly ? weeklyChartData.find(d => d.week === label) : dailyChartData.find(d => d.date === label);
         if (record) {
           const diseaseRecord = record.data.find(r => r.disease_id === disease_id);
           return diseaseRecord ? diseaseRecord.average_cough_status : 0;
