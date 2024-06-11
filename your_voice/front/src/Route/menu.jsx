@@ -9,6 +9,7 @@ import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 const CLIENT_ID = '848922845081-tubjkh6u80t5lleilc4r4bts1rrc1na6.apps.googleusercontent.com';
 
+
 function MenuBar() {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);

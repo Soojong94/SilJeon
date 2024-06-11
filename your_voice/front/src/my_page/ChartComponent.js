@@ -9,9 +9,10 @@ const userInfo = sessionStorage.getItem('user_info');
 const { id } = userInfo ? JSON.parse(userInfo) : {};
 const userId = id;
 
+
 const fetchDailyChart = async () => {
   try {
-    const response = await axios.post('http://localhost:5000/api/dailyChart', { id: userId });
+    const response = await axios.post('http://localhost:5000/api/dailyChart', { 'userId': userId });
     console.log(response.data);
     return response.data;
   } catch (error) {
@@ -22,7 +23,7 @@ const fetchDailyChart = async () => {
 
 const fetchWeeklyChart = async () => {
   try {
-    const response = await axios.post('http://localhost:5000/api/weeklyChart', { id: userId });
+    const response = await axios.post('http://localhost:5000/api/weeklyChart', { 'userId': userId });
     console.log(response.data);
     return response.data;
   } catch (error) {

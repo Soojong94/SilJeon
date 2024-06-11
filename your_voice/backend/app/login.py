@@ -22,6 +22,7 @@ def login():
             "848922845081-tubjkh6u80t5lleilc4r4bts1rrc1na6.apps.googleusercontent.com",
         )
 
+            
         # 유저 정보
         social_user_id = id_info.get("email")
         social_provider = id_info.get("iss")
