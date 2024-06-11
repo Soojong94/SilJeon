@@ -39,7 +39,7 @@ if __name__ == "__main__":
         port=5000,
         host="0.0.0.0",
         ssl_context=(
-            "/etc/letsencrypt/live/yourcough.site-0002/fullchain.pem",
-            "/etc/letsencrypt/live/yourcough.site-0002/privkey.pem",
+            "/etc/letsencrypt/live/yourcough.site/fullchain.pem",
+            "/etc/letsencrypt/live/yourcough.site/privkey.pem",
         ),
     )
