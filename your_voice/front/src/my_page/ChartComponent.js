@@ -9,7 +9,6 @@ const userInfo = sessionStorage.getItem('user_info');
 const { id } = userInfo ? JSON.parse(userInfo) : {};
 const userId = id;
 
-
 const fetchDailyChart = async () => {
   try {
     const response = await axios.post('http://localhost:5000/api/dailyChart', { 'userId': userId });
