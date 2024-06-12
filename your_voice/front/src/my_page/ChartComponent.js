@@ -11,7 +11,7 @@ const userId = id;
 
 const fetchDailyChart = async () => {
   try {
-    const response = await axios.post('http://localhost:5000/api/dailyChart', { 'userId': userId });
+    const response = await axios.post('http://3.39.0.139/api/dailyChart', { 'userId': userId });
     return response.data;
   } catch (error) {
     console.error('Error fetching daily chart data:', error);
@@ -21,7 +21,7 @@ const fetchDailyChart = async () => {
 
 const fetchWeeklyChart = async () => {
   try {
-    const response = await axios.post('http://localhost:5000/api/weeklyChart', { 'userId': userId });
+    const response = await axios.post('http://3.39.0.139/api/weeklyChart', { 'userId': userId });
     return response.data;
   } catch (error) {
     console.error('Error fetching weekly chart data:', error);

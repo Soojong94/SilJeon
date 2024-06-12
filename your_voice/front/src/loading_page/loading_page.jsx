@@ -20,7 +20,7 @@ function LoadingPage() {
       formData.append('userId', userId);
 
       try {
-        const response = await axios.post('https://service.yourcough.site/api/coughUpload', formData, {
+        const response = await axios.post('https://3.39.0.139/api/coughUpload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
