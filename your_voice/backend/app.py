@@ -28,12 +28,5 @@ app.register_blueprint(login_bp)
 app.register_blueprint(coughUpload_bp)
 app.register_blueprint(chart_bp)
 
-
-# 로그인 리디렉션 경로
-@app.route("/login")
-def login():
-    return redirect("/")
-
-
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
