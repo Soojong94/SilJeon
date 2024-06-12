@@ -13,11 +13,7 @@ def create_app():
     CORS(
         app,
         supports_credentials=True,
-        resources={
-            r"/api/*": {
-                "origins": "ab251514a493645a5b704fb29c3c77c3-2121868386.ap-northeast-1.elb.amazonaws.com"
-            }
-        },
+        resources={r"/api/*": {"origins": "http://yourcough.site"}},
     )
     secret_key = secrets.token_hex(32)
     app.secret_key = secret_key
