@@ -16,7 +16,7 @@ app = Flask(__name__, static_folder="static")
 CORS(
     app,
     supports_credentials=True,
-    resources={r"/api/*": {"origins": "https://yourcough.site"}},
+    resources={r"/api/*": {"origins": "https://service.yourcough.site"}},
 )
 
 # Flask 시크릿 키 설정
