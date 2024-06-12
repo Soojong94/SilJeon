@@ -11,13 +11,13 @@
   display: flex;
   align-items: center;
   padding: 2px;
-  gap: 3%;
+  gap: 2%;
 }
 
 .menu_bar .icon {
   cursor: pointer;
   color: black;
-  font-size: 40px;
+  font-size: 2vw;
 }
 
 .menu_bar .icon:hover {
@@ -38,7 +38,7 @@
 .nav-items {
   display: flex;
   align-items: center;
-  margin-right: 3%;
+  margin-right: 1.2%;
 }
 
 .nav-button {
@@ -48,8 +48,8 @@
   margin-right: 2vw;
   cursor: pointer;
   border-radius: 5px;
-  font-size: 1em;
   margin-bottom: 6%;
+  font-size: 2vw;
 }
 
 .nav_header {
@@ -57,10 +57,7 @@
   color: white;
 }
 
-.login_menu {
-  margin-bottom: 8%;
 
-}
 
 .logo {
   cursor: pointer;

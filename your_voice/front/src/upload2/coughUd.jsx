@@ -33,24 +33,26 @@ const CoughUd = () => {
             <MenuBar />
             <div className='up_box'>
                 {message && <p className='message'>{message}</p>}
-                <h1 className='udH1'>Audio file upload</h1>
+                <h1 className='udH1'>녹음 파일 선택 후 진단</h1>
                 <div className="inputFile-box">
                     <div className='left_content'>
                         <BounceLoader className='bounce' size={230} color="#6375ff" />
                     </div>
                     <div className="middle_content">
-                        <h2 className='ExplnUd'>파일 선택 후 분석 버튼을 눌러주세요.</h2>
+                        <h2 className='ExplnUd'>파일 선택 후, 진단 시작 버튼을 눌러주세요.</h2>
+                        
                         <div className="file-buttons">
                             {selectedFile && <p className='selectedfileName'>{selectedFile.name}</p>}
                             <button className="inputbtn" onClick={() => inputBtn.current.click()}>파일 선택</button>
                             <input type="file" onChange={handleFileChange} ref={inputBtn} className="file-input" />
 
-                            <button className='inputbtn' onClick={navigateToLoadingPage} disabled={!selectedFile}>파일 분석</button>
-                            <button className='inputbtn' id='CovidGo' onClick={navigateToLoadingPage} disabled={!selectedFile}>코로나 진단</button>
+                            <button className='inputbtn' onClick={navigateToLoadingPage} disabled={!selectedFile}>진단 시작</button>
+                            <h2 className='ExplnUd'>아직 파일이 없다면, 녹음을 진행해 주세요.</h2>
+                            <button className='inputbtn'onClick={ToRecordVoice}>녹음하기</button>
                         </div>
                     </div>
                     <div className='recordPg_Move_box'>
-                        <button className="recordPg_Btb" onClick={ToRecordVoice}>녹음 페이지로 이동➡️</button>
+                        <button className="recordPg_Btb" id='CovidGo' onClick={navigateToLoadingPage} disabled={!selectedFile} >코로나 분석으로 이동➡️</button>
                     </div>
                 </div>
             </div>

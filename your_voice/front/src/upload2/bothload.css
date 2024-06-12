@@ -10,6 +10,23 @@
     overflow-y: scroll;
 }
 
+.recordM{
+
+    height: 5vh;
+    background-color: rgb(243, 252, 255);
+    border: none;
+    padding: 0.5vh 5.4vw;
+    cursor: pointer;
+    border-radius: 5vw;
+    font-size: 20px;
+    color: rgb(9, 28, 104);
+    /* box-shadow: 3px 3px 10px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
 .up_box {
     border-radius: 5px;
     width: 70%;
@@ -47,7 +64,7 @@
     
     gap: 200px;
     height: 100%;
-    margin-top: 10vh;
+
 }
 
 .left_content {
@@ -63,15 +80,13 @@
     flex-grow: 1;
 }
 
-.ExplnUd {
-    font-size: 1.5vw;
-}
+
 
 .file-buttons {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 10px;
     margin: 3vh 0 0 0;
 }
 
@@ -104,6 +119,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 30px;
 }
 
 .recordPg_Move_box {
@@ -127,7 +143,7 @@
 
 .recordPg_Btb:hover,
 .inputbtn:hover,
-.btnUd:hover {
+.btnUd:hover ,.recordM:hover{
     background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
   color: rgb(9, 28, 104);
   transform: scale(1.15);

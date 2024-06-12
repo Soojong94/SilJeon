@@ -2,15 +2,22 @@ import React, { useState } from 'react';
 import './NewMainPg.css';
 import CoughUd from '../upload2/coughUd.jsx';
 import Covidbtn from '../Button/Covidbtn.jsx';
-import doctor from '../NewMain/doctor.jpg'
 import MenuBar from '../Route/menu.jsx'
 import { RingLoader } from 'react-spinners';
+import { useNavigate } from 'react-router-dom';
+
 
 function NewMainPg() {
+
+    const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+    };
+
+    const handleRecord = () => {
+        navigate('/Record_voice'); 
     };
 
     return (
@@ -25,10 +32,14 @@ function NewMainPg() {
         speedMultiplier={0.8}/>
                 </div>
                 <div className='voiceContent'>
-                    <h2 className='voiceDsEg'>Voice disorder</h2>
-                    <p className="expln">AI가 당신의 음성을 분석하여</p>
-                    <p className="expln">음성질환 유무를 진단합니다.</p>
+                    <h2 className='voiceDsEg'>딥러닝 기반 기침소리 분석</h2>
+                    <p className="expln">AI가 당신의 기침소리를 분석하여</p>
+                    <p className="expln">호흡기 질환 유무를 진단합니다.</p>
+                    <div className='mainBtn-box'>
                     <Covidbtn />
+                    <button className='dgBtn' onClick={handleRecord}>녹음하기</button>
+                    
+                    </div>
                 </div>
             </div>
         </div>

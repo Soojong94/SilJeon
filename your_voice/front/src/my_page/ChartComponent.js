@@ -39,35 +39,45 @@ const getLast7Days = () => {
   return days;
 };
 
+// 차트 데이터를 전역 변수로 관리
+let chartData = [];
+
+export const resetChartData = () => {
+  chartData = [];
+};
+
 const ChartComponent = () => {
-  const [showWeekly, setShowWeekly] = useState(false);  // Default to daily chart
-  const [chartData, setChartData] = useState([]);
+  const [showWeekly, setShowWeekly] = useState(false);
+  const [localChartData, setLocalChartData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const data = showWeekly ? await fetchWeeklyChart() : await fetchDailyChart();
       if (data) {
-        if (showWeekly) {
-        }
-        setChartData(data);
+        chartData = data; // 전역 변수에 데이터 저장
+        setLocalChartData(data);
       }
     };
 
     fetchData();
   }, [showWeekly]);
 
+  useEffect(() => {
+    setLocalChartData(chartData); // 전역 변수의 데이터로 업데이트
+  }, [chartData]);
+
   const toggleChart = () => {
     setShowWeekly(!showWeekly);
   };
 
-  const labels = showWeekly ? chartData.map(data => data.week).reverse() : getLast7Days();
+  const labels = showWeekly ? localChartData.map(data => data.week).reverse() : getLast7Days();
 
   const diseases = [1, 2, 3, 4]; // 질병 번호 리스트 // 1. 정상 2. 심부전, 3.천식, 4.코로나
   const datasets = diseases.map(disease_id => {
     return {
       label: `Disease ${disease_id}`,
       data: labels.map(label => {
-        const record = chartData.find(d => (showWeekly ? d.week : d.date) === label);
+        const record = localChartData.find(d => (showWeekly ? d.week : d.date) === label);
         if (record) {
           const diseaseRecord = record.data.find(r => r.disease_id === disease_id);
           return diseaseRecord ? diseaseRecord.average_cough_status : 0;
@@ -102,6 +112,7 @@ const ChartComponent = () => {
       <button className="chart-button" onClick={toggleChart}>
         {showWeekly ? '일간 차트 보기' : '주간 차트 보기'}
       </button>
+     
       <div style={{ height: '60vh', width: '60vw' }}>
         <Line data={data} options={options} />
       </div>

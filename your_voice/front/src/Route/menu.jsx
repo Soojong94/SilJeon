@@ -68,11 +68,22 @@ function MenuBar() {
                 )}
               </GoogleOAuthProvider>
             </div>
-            <button className="nav-button" onClick={() => navigate('/MyPage')}>
-              <Tooltip title="마이페이지">
-                <MedicalServicesOutlinedIcon className='icon' />
-              </Tooltip>
-            </button>
+            {isLoggedIn ? (
+                    <button className="nav-button" onClick={() => navigate('/MyPage')}>
+                    <Tooltip title="마이페이지">
+                     <span className="icon">Mypage </span>
+                      {/* <MedicalServicesOutlinedIcon className='icon' /> */}
+                    </Tooltip>
+                  </button>
+                ) : (
+                  <button className="nav-button" >
+                  <Tooltip title="로그인이 필요한 서비스 입니다.">
+                    Mypage
+                    {/* <MedicalServicesOutlinedIcon className='icon' /> */}
+                  </Tooltip>
+                </button>
+                )}
+        
           </div>
         </div>
       </nav>

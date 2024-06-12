@@ -2,9 +2,19 @@ import './my_page.css';
 import React, { useState, useEffect } from 'react';
 import MenuBar from '../Route/menu';
 import ChartComponent from './ChartComponent';
+import { useNavigate } from 'react-router-dom';
 
 
 function My_page() {
+
+  const navigate = useNavigate();
+  const navchange_member = ()=>{
+
+    
+    navigate('/initial_member');
+
+  }; 
+
   return (
     <div className='my_page'>
       <MenuBar />
@@ -24,7 +34,9 @@ function My_page() {
             <br />
             주의 사항: 특별한 주의 사항은 없지만, 정기적인 건강 체크를 계속하세요.
           </p>
+          
         </div>
+        <button className='update_member' onClick={navchange_member}>정보수정</button>
       </div>
     </div>
   );
