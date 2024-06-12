@@ -13,11 +13,7 @@ os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 app = Flask(__name__, static_folder="static")
 
 # CORS 설정
-CORS(
-    app,
-    supports_credentials=True,
-    resources={r"/api/*": {"origins": "https://yourcough.site"}},
-)
+CORS(app, supports_credentials=True)
 # Flask 시크릿 키 설정
 secret_key = secrets.token_hex(32)
 app.secret_key = secret_key
