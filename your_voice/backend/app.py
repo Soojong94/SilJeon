@@ -18,7 +18,6 @@ CORS(
     supports_credentials=True,
     resources={r"/api/*": {"origins": "https://yourcough.site"}},
 )
-
 # Flask 시크릿 키 설정
 secret_key = secrets.token_hex(32)
 app.secret_key = secret_key
