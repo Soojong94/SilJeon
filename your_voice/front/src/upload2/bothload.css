@@ -10,8 +10,7 @@
     overflow-y: scroll;
 }
 
-.recordM{
-
+.recordM {
     height: 5vh;
     background-color: rgb(243, 252, 255);
     border: none;
@@ -20,11 +19,9 @@
     border-radius: 5vw;
     font-size: 20px;
     color: rgb(9, 28, 104);
-    /* box-shadow: 3px 3px 10px; */
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .up_box {
@@ -60,11 +57,8 @@
     color: rgb(9, 28, 104);
     display: flex;
     flex-direction: row;
-   
-    
     gap: 200px;
     height: 100%;
-
 }
 
 .left_content {
@@ -79,8 +73,6 @@
     align-items: center;
     flex-grow: 1;
 }
-
-
 
 .file-buttons {
     display: flex;
@@ -143,14 +135,101 @@
 
 .recordPg_Btb:hover,
 .inputbtn:hover,
-.btnUd:hover ,.recordM:hover{
+.btnUd:hover,
+.recordM:hover {
     background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
-  color: rgb(9, 28, 104);
-  transform: scale(1.15);
-  transition: transform 0.8s ease;
-
+    color: rgb(9, 28, 104);
+    transform: scale(1.15);
+    transition: transform 0.8s ease;
 }
 
 .file-input {
     display: none;
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    .parent-box {
+        flex-direction: column;
+        padding: 1rem;
+        
+    }
+
+    .up_box {
+        width: 90%;
+        height: auto;
+        padding: 5vw 2vh;
+    }
+
+    .udH1 {
+        font-size: 5vw;
+    }
+
+    .ExplnUd {
+        font-size: 3vw;
+    }
+
+    .inputFile-box {
+        flex-direction: column;
+        gap: 20px;
+        height: auto;
+    }
+
+    .recordM, .inputbtn, .recordPg_Btb {
+        width: auto;
+        padding: 0.5rem;
+        font-size: 2vw;
+        border-radius: 1rem;
+    }
+
+    .file-buttons {
+        gap: 1rem;
+        margin: 2vh 0;
+    }
+
+    .selectedfileName {
+        font-size: 2vw;
+    }
+
+    .bounce {
+        display: none !important; /* Hide spinner on mobile */
+    }
+
+    .recordPg_Move_box {
+        right: 10px;
+        top: 10px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .up_box {
+        width: 100%;
+        padding: 5vw 2vh;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .udH1 {
+        font-size: 8vw;
+    }
+
+    .udh2 {
+        font-size: 5vw;
+    }
+
+    .inputFile-box {
+        gap: 10px;
+    }
+
+    .recordM, .inputbtn, .recordPg_Btb {
+        font-size: 2vw;
+    }
+
+    .selectedfileName {
+        font-size: 4vw;
+    }
+
+    .bounce {
+        display: none !important; /* Hide spinner on smaller screens */
+    }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import './bothload.css';
 import MenuBar from '../Route/menu';
@@ -7,8 +7,22 @@ import BounceLoader from "react-spinners/BounceLoader";
 const CoughUd = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [message, setMessage] = useState('');
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 1200);
     const inputBtn = useRef(null);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+            setIsSmallScreen(window.innerWidth <= 1200);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const handleFileChange = (event) => {
         if (event.target.files.length > 0) {

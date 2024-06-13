@@ -1,3 +1,12 @@
+/* recording.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  overflow: hidden;
+}
+
 .parent-box {
   background: linear-gradient(to right, #b6ddee, whitesmoke);
   transition: background 0.3s ease;
@@ -28,7 +37,6 @@
 .udH1 {
   color: rgb(9, 28, 104);
   font-size: 3vw;
-
 }
 
 .udh2 {
@@ -45,7 +53,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .error-message {
@@ -55,7 +62,8 @@
 }
 
 .btnUd,
-.btnBack {
+.btnBack,
+.record-btn {
   background-color: rgb(255, 255, 255);
   border: none;
   padding: 7px 15px;
@@ -72,19 +80,17 @@
   margin-top: 30px;
 }
 
-
 audio {
   background-color: whitesmoke;
   border: none;
   padding: 10px 15px;
   border-radius: 50px;
-  width: 20vw;
+  width: 30vw;
+  height: 5vh;
   transition: background-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 5);
-  margin-bottom: 5%;
+  margin-bottom: 2%;
 }
-
-
 
 .left_box {
   flex: 0 0 40%;
@@ -108,49 +114,13 @@ audio {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 5%;
+  margin-top: 1%;
   flex-grow: 1;
   min-width: 90%;
 }
 
 .PropagateLoader_container {
   margin-top: 30px;
-}
-
-@media (max-width: 768px) {
-  .PropagateLoader_container {
-    display: none;
-  }
-}
-
-.record-btn {
-  background-color: rgb(255, 255, 255);
-  border: none;
-  padding: 7px 15px;
-  cursor: pointer;
-  border-radius: 50px;
-  font-size: 20px;
-  min-width: 50%;
-  min-height: 30%;
-  color: rgb(9, 28, 104);
-  box-shadow: 3px 3px 10px;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.file-name {
-  margin-top: 20px;
-}
-
-.record-btn:hover,
-.btnUd:hover,
-.btnBack:hover {
-  background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
-  color: rgb(9, 28, 104);
-  transform: scale(1.15);
-  transition: transform 0.8s ease;
-
 }
 
 .coughUp_Move_box {
@@ -168,13 +138,93 @@ audio {
   border-radius: 5vw;
   font-size: 21px;
   color: rgb(9, 28, 104);
-
 }
 
-
-.coughUp_Move_box:hover {
+.coughUp_Move_box:hover,
+.record-btn:hover,
+.btnUd:hover,
+.btnBack:hover {
   background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
   color: rgb(9, 28, 104);
   transform: scale(1.1);
   transition: transform 0.8s ease;
+}
+
+@media (max-width: 768px) {
+  .up_box {
+    width: 90%;
+    height: auto;
+    padding: 7vw 6vh;
+  }
+
+  .udH1 {
+    font-size: 4.5vw;
+  }
+
+  .udh2 {
+    font-size: 3vw;
+  }
+
+  .record-btn,
+  .btnUd,
+  .btnBack {
+    font-size: 2vw;
+    padding: 5px 10px;
+    min-width: 70%;
+  }
+.coughUp_Move_box{
+  font-size: 2vw;
+}
+  .left_box,
+  .right_box {
+    font-size: 2vw;
+  }
+
+  audio {
+    width: 30vw;
+    height: 3vh;
+  }
+}
+
+@media (max-width: 500px) {
+  .up_box {
+    width: 100%;
+    padding:6vw 5vh;
+    justify-content: center;
+  }
+
+  .udH1 {
+    font-size: 4vw;
+  }
+
+  .udh2 {
+    font-size: 3vw;
+  }
+
+  .record-btn,
+  .btnUd,
+  .btnBack {
+    font-size: 2vw;
+    padding: 5px 10px;
+    min-width: 80%;
+  }
+
+  .left_box,
+  .right_box {
+    font-size: 3vw;
+  }
+
+  audio {
+    width: 40vw;
+    height: 2vh;
+  }
+  .coughUp_Move_box{
+    font-size: 2vw;
+  }
+  .bounce {
+  display: none !important; 
+}
+}
+.coughUp_Move_box{
+  font-size: 1.3vw;
 }
