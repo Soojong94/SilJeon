@@ -1,26 +1,48 @@
 .dgBtn {
-    background-color: rgb(243, 252, 255);
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5vw;
-    font-size: 1.5vw;
-    margin-top: 50px;
-    color: rgb(9, 28, 104);
-    box-shadow: 5px 5px 20px;
-    width: 10vw;
-   
-   
-    
-
+  background-color: rgb(243, 252, 255);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5vw;
+  font-size: 1.5vw;
+  margin-top: 50px;
+  color: rgb(9, 28, 104);
+  box-shadow: 5px 5px 20px;
+  width: 10vw;
  
-    
-  }
+ 
   
-  .dgBtn:hover {
-    background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
-    color: rgb(9, 28, 104);
-    transform: scale(1.15);
-    transition: transform 0.8s ease;
-  }
+
+
   
+}
+
+.dgBtn:hover {
+  background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
+  color: rgb(9, 28, 104);
+  transform: scale(1.15);
+  transition: transform 0.8s ease;
+}
+@media (max-width: 1000px){
+  .dgBtn {
+
+    padding: 7px 10px;
+
+
+  }
+
+
+  @media (max-width: 750px){
+
+    .dgBtn {
+      width:80px;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 13px;
+
+
+    }
+
+  }
+
+}

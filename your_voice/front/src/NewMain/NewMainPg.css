@@ -18,6 +18,7 @@ body {
     transition: background 0.3s ease;
     padding: 30px 0; 
     margin-top: 40px;
+    overflow: auto; /* 변경된 부분 */
 }
 
 .mainBtn-box {
@@ -44,12 +45,6 @@ body {
     flex: 1;
     padding: 0px 0px 0px 15%;
     text-align: center;
-}
-
-.MainImg img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
 }
 
 .voiceContent {
@@ -111,8 +106,8 @@ body {
     }
 
     .mainBtn-box {
-        flex-direction: row;
-        gap: 10px;
+        flex-direction: column;
+        gap: 20px;
         justify-content: center;
         align-items: center;
     }
@@ -127,33 +122,46 @@ body {
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1000px) {
     .voice {
-        width: 100%;
+        width: 70%;
+        height: auto;
         padding: 5vw 2vh;
         justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        overflow: auto;
+    }
+
+    .MainImg {
+        padding: 0;
+    }
+
+    .voiceContent {
+        text-align: center;
     }
 
     .voiceDsEg {
-        font-size: 8vw;
-    }
-
-    .expln {
         font-size: 5vw;
     }
 
+    .expln {
+        font-size: 3vw;
+    }
+
     .mainBtn-box {
-        gap: 10px;
         flex-direction: row;
+        gap: 20px;
         justify-content: center;
         align-items: center;
     }
 
     .dgBtn {
-        font-size: 6vw;
+        font-size: 5vw;
+        padding: 10px 15px;
     }
 
     .bounce {
-        display: none !important; /* Hide spinner on smaller screens */
+        display: none !important; 
     }
 }
