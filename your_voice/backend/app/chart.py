@@ -42,24 +42,26 @@ def dailyChart():
     daily_averages = [{'date': date_str, 'data': data} for date_str, data in grouped_data.items()]
 
     return jsonify(daily_averages), 200
-
 @chart_bp.route('/api/weeklyChart', methods=["POST"])
 def weeklyChart():
     userId = request.json.get('userId')
     print('userId 2 : ', userId)
 
-    four_weeks_ago = datetime.datetime.now() - datetime.timedelta(weeks=4)
+    # 4주 전의 날짜를 계산
+    four_weeks_ago = datetime.datetime.now() - datetime.timedelta(days=28)
+    four_weeks_ago_str = four_weeks_ago.strftime('%Y-%m-%d')
+
     conn = connect_db()
     cursor = conn.cursor()
     cursor.execute(
         """
-        SELECT disease_id, YEAR(input_date) as year, WEEK(input_date) as week, AVG(cough_status) as average_cough_status
+        SELECT disease_id, YEAR(input_date) as year, WEEK(input_date, 1) as week, AVG(cough_status) as average_cough_status
         FROM cough_status 
         WHERE social_user_id = %s AND input_date >= %s
-        GROUP BY disease_id, YEAR(input_date), WEEK(input_date)
-        ORDER BY YEAR(input_date), WEEK(input_date)
+        GROUP BY disease_id, YEAR(input_date), WEEK(input_date, 1)
+        ORDER BY YEAR(input_date), WEEK(input_date, 1)
         """, 
-        (userId, four_weeks_ago)
+        (userId, four_weeks_ago_str)
     )
     weeklyChart = cursor.fetchall()
     cursor.close()
@@ -76,7 +78,8 @@ def weeklyChart():
             'average_cough_status': average_cough_status
         })
 
-    # 데이터 형식 맞추기
-    weekly_averages = [{'week': week_str, 'data': data} for week_str, data in grouped_data.items()]
+    # 데이터 형식 맞추기 및 주차 필터링
+    filtered_weeks = sorted(grouped_data.keys())[-4:]  # 최근 4주를 선택
+    weekly_averages = [{'week': week_str, 'data': grouped_data[week_str]} for week_str in filtered_weeks]
 
     return jsonify(weekly_averages), 200

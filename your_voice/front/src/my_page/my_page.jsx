@@ -8,18 +8,19 @@ import { useNavigate } from 'react-router-dom';
 function My_page() {
 
   const navigate = useNavigate();
-  const navchange_member = ()=>{
+  const navchange_member = () => {
 
-    
+
     navigate('/initial_member');
 
-  }; 
+  };
 
   return (
     <div className='my_page'>
       <MenuBar />
       <div className='my_page_head'>
-        <h1>Your voice state is..</h1>
+        <button className='update_member' onClick={navchange_member}>회원 정보수정</button>
+        <h1 >AI 분석 결과</h1>
       </div>
       <div className='my_page_container'>
         <div className='my_page_chart'>
@@ -34,9 +35,8 @@ function My_page() {
             <br />
             주의 사항: 특별한 주의 사항은 없지만, 정기적인 건강 체크를 계속하세요.
           </p>
-          
+
         </div>
-        <button className='update_member' onClick={navchange_member}>정보수정</button>
       </div>
     </div>
   );

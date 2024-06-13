@@ -5,11 +5,11 @@ body {
   background: linear-gradient(to right, #b6ddee, whitesmoke);
   transition: background 0.3s ease;
   box-sizing: border-box;
-
+  overflow: auto;
 }
 
 .my_page {
- 
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,7 +34,7 @@ body {
 
 .my_page_head {
   color: rgb(9, 28, 104);
-  font-size: 1vw;
+  font-weight: lighter;
 }
 
 .my_page_container {
@@ -86,9 +86,38 @@ body {
   transition: background-color 0.3s ease;
   border-radius: 20px;
   padding: 10px;
+  margin-bottom: 2vh;
+  margin-left: 2%;
 }
 
 .chart-button:hover {
-  background-color: rgb(255, 255, 255);
   background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
+  color: rgb(9, 28, 104);
+  transform: scale(1.1);
+  transition: transform 0.8s ease;
+
+}
+
+.update_member {
+  position: absolute;
+  right: 3%;
+  top: 5%;
+  font-size: 20px;
+  color: black;
+  background-color: whitesmoke;
+  border: 1px solid lightgray;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 20px;
+  padding: 10px;
+
+}
+
+.update_member:hover {
+
+  background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
+  color: rgb(9, 28, 104);
+  transform: scale(1.1);
+  transition: transform 0.8s ease;
+
 }

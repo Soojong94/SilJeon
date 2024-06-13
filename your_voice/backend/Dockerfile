@@ -1,4 +1,4 @@
-# 베이스 이미지로 Python 3.9 사용
+# Python 3.9 베이스 이미지 사용
 FROM python:3.9-slim
 
 # ffmpeg 설치
@@ -9,11 +9,11 @@ RUN apt-get update && \
 WORKDIR /app
 
 # 종속성 설치
-COPY requirements.txt requirements.txt
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 소스 코드 복사
 COPY . .
 
 # Flask 애플리케이션을 Gunicorn으로 실행
-CMD ["python", "app.py"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
