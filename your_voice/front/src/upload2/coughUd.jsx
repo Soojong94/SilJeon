@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './bothload.css';
 import MenuBar from '../Route/menu';
@@ -50,23 +50,26 @@ const CoughUd = () => {
                 <h1 className='udH1'>녹음 파일 선택 후 진단</h1>
                 <div className="inputFile-box">
                     <div className='left_content'>
-                        <BounceLoader className='bounce' size={230} color="#6375ff" />
+                        <h2 className='ExplnUd'>아직 파일이 없다면, 녹음을 진행해 주세요.</h2>
+                        <BounceLoader className='bounce' size={100} color="#6375ff" />
+                        <button className='inputbtn' onClick={ToRecordVoice}>녹음하기</button>
+                       
                     </div>
+                    <hr className='vertical' />
                     <div className="middle_content">
-                        <h2 className='ExplnUd'>파일 선택 후, 진단 시작 버튼을 눌러주세요.</h2>
+                        <h2 className='ExplnUd'>파일 선택 후, 진단 버튼을 눌러주세요.</h2>
+                        
                         
                         <div className="file-buttons">
                             {selectedFile && <p className='selectedfileName'>{selectedFile.name}</p>}
-                            <button className="inputbtn" onClick={() => inputBtn.current.click()}>파일 선택</button>
+                            <button className="inputbtn" onClick={() => inputBtn.current.click()}>1 파일 선택</button>
                             <input type="file" onChange={handleFileChange} ref={inputBtn} className="file-input" />
-
-                            <button className='inputbtn' onClick={navigateToLoadingPage} disabled={!selectedFile}>진단 시작</button>
-                            <h2 className='ExplnUd'>아직 파일이 없다면, 녹음을 진행해 주세요.</h2>
-                            <button className='inputbtn'onClick={ToRecordVoice}>녹음하기</button>
+                            <div className="button-column">
+                                <button className='inputbtn' id='CovidGo' onClick={navigateToLoadingPage} disabled={!selectedFile}>2-1 질병 진단</button>
+                                
+                                <button className="inputbtn" id='CovidGo' onClick={navigateToLoadingPage} disabled={!selectedFile}>2-2 코로나 분석</button>
+                            </div>
                         </div>
-                    </div>
-                    <div className='recordPg_Move_box'>
-                        <button className="recordPg_Btb" id='CovidGo' onClick={navigateToLoadingPage} disabled={!selectedFile} >코로나 분석으로 이동➡️</button>
                     </div>
                 </div>
             </div>

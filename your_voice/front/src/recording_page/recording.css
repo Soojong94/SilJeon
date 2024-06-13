@@ -19,6 +19,7 @@ body {
 }
 
 .up_box {
+  overflow: auto;
   border-radius: 5px;
   width: 75%;
   height: 80%;
@@ -150,14 +151,17 @@ audio {
   transition: transform 0.8s ease;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .up_box {
-    width: 90%;
-    height: auto;
-    padding: 7vw 6vh;
+    width: 75%;
+    height: 70%;
+    
+    padding: 10px 15px;
   }
 
   .udH1 {
+    
+    margin-top: 10vh;
     font-size: 4.5vw;
   }
 
@@ -171,6 +175,10 @@ audio {
     font-size: 2vw;
     padding: 5px 10px;
     min-width: 70%;
+    width:80px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 13px;
   }
 .coughUp_Move_box{
   font-size: 2vw;
@@ -184,16 +192,24 @@ audio {
     width: 30vw;
     height: 3vh;
   }
+  .recordPg_Btb{
+padding: 5px 7px;
+font-size: 15px;
+
+  }
 }
 
 @media (max-width: 500px) {
   .up_box {
-    width: 100%;
-    padding:6vw 5vh;
+    
+    width: 60%;
+    height: 60%;
+    padding:5px 8px;
     justify-content: center;
   }
 
   .udH1 {
+    margin-top: 10vh;
     font-size: 4vw;
   }
 
@@ -204,6 +220,10 @@ audio {
   .record-btn,
   .btnUd,
   .btnBack {
+    width:80px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 13px;
     font-size: 2vw;
     padding: 5px 10px;
     min-width: 80%;
@@ -224,6 +244,13 @@ audio {
   .bounce {
   display: none !important; 
 }
+
+.recordPg_Btb{
+  padding: 5px 7px;
+  font-size: 15px;
+  
+    }
+
 }
 .coughUp_Move_box{
   font-size: 1.3vw;
