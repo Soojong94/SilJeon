@@ -5,6 +5,8 @@ import secrets
 from app.login import login_bp
 from app.coughUpload import coughUpload_bp
 from app.chart import chart_bp
+from app.deleteAccount import deleteAccount_bp
+from app.resetChart import resetChart_bp
 import tensorflow as tf
 
 # TensorFlow 환경 변수 설정
@@ -26,6 +28,8 @@ app.secret_key = secret_key
 app.register_blueprint(login_bp)
 app.register_blueprint(coughUpload_bp)
 app.register_blueprint(chart_bp)
+app.register_blueprint(deleteAccount_bp)
+app.register_blueprint(resetChart_bp)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

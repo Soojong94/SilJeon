@@ -5,11 +5,7 @@ import moment from 'moment';
 import './my_page.css';
 import axios from 'axios';
 
-const userInfo = sessionStorage.getItem('user_info');
-const { id } = userInfo ? JSON.parse(userInfo) : {};
-const userId = id;
-
-const fetchDailyChart = async () => {
+const fetchDailyChart = async (userId) => {
   try {
     const response = await axios.post('https://yourcough.site/api/dailyChart', { 'userId': userId });
     console.log(response.data);
@@ -20,7 +16,7 @@ const fetchDailyChart = async () => {
   }
 };
 
-const fetchWeeklyChart = async () => {
+const fetchWeeklyChart = async (userId) => {
   try {
     const response = await axios.post('https://yourcough.site/api/weeklyChart', { 'userId': userId });
     console.log(response.data);
@@ -47,20 +43,31 @@ export const resetChartData = () => {
 };
 
 const ChartComponent = () => {
+  const [userId, setUserId] = useState(null);
   const [showWeekly, setShowWeekly] = useState(false);
   const [localChartData, setLocalChartData] = useState([]);
 
   useEffect(() => {
+    const storedUserInfo = sessionStorage.getItem('user_info');
+    if (storedUserInfo) {
+      const { id } = JSON.parse(storedUserInfo);
+      setUserId(id);
+    }
+  }, []);
+
+  useEffect(() => {
     const fetchData = async () => {
-      const data = showWeekly ? await fetchWeeklyChart() : await fetchDailyChart();
-      if (data) {
-        chartData = data; // 전역 변수에 데이터 저장
-        setLocalChartData(data);
+      if (userId) {
+        const data = showWeekly ? await fetchWeeklyChart(userId) : await fetchDailyChart(userId);
+        if (data) {
+          chartData = data; // 전역 변수에 데이터 저장
+          setLocalChartData(data);
+        }
       }
     };
 
     fetchData();
-  }, [showWeekly]);
+  }, [showWeekly, userId]);
 
   useEffect(() => {
     setLocalChartData(chartData); // 전역 변수의 데이터로 업데이트
