@@ -155,12 +155,10 @@ audio {
   .up_box {
     width: 75%;
     height: 70%;
-    
     padding: 10px 15px;
   }
 
   .udH1 {
-    
     margin-top: 10vh;
     font-size: 4.5vw;
   }
@@ -175,14 +173,16 @@ audio {
     font-size: 2vw;
     padding: 5px 10px;
     min-width: 70%;
-    width:80px;
+    width: 80px;
     padding: 10px 15px;
     border-radius: 10px;
     font-size: 13px;
   }
-.coughUp_Move_box{
-  font-size: 2vw;
-}
+
+  .coughUp_Move_box {
+    font-size: 2vw;
+  }
+
   .left_box,
   .right_box {
     font-size: 2vw;
@@ -192,19 +192,22 @@ audio {
     width: 30vw;
     height: 3vh;
   }
-  .recordPg_Btb{
-padding: 5px 7px;
-font-size: 15px;
 
+  .recordPg_Btb {
+    padding: 5px 7px;
+    font-size: 15px;
+  }
+
+  .PropagateLoader_container {
+    display: none; /* Hide spinner on screens less than 1000px */
   }
 }
 
 @media (max-width: 500px) {
   .up_box {
-    
     width: 60%;
     height: 60%;
-    padding:5px 8px;
+    padding: 5px 8px;
     justify-content: center;
   }
 
@@ -220,7 +223,7 @@ font-size: 15px;
   .record-btn,
   .btnUd,
   .btnBack {
-    width:80px;
+    width: 80px;
     padding: 10px 15px;
     border-radius: 10px;
     font-size: 13px;
@@ -238,20 +241,25 @@ font-size: 15px;
     width: 40vw;
     height: 2vh;
   }
-  .coughUp_Move_box{
+
+  .coughUp_Move_box {
     font-size: 2vw;
   }
+
   .bounce {
-  display: none !important; 
+    display: none !important;
+  }
+
+  .recordPg_Btb {
+    padding: 5px 7px;
+    font-size: 15px;
+  }
+
+  .PropagateLoader_container {
+    display: none !important; /* Hide spinner on screens less than 500px */
+  }
 }
 
-.recordPg_Btb{
-  padding: 5px 7px;
-  font-size: 15px;
-  
-    }
-
-}
-.coughUp_Move_box{
+.coughUp_Move_box {
   font-size: 1.3vw;
 }

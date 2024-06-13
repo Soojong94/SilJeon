@@ -100,15 +100,12 @@ const Record_voice = () => {
               <button className='record-btn' onClick={recording ? stopRecording : startRecording}>
                 {recording ? (
                   <>녹음 중지
-                  <div className='punto'>
                     <PuffLoader
-                    className='punto'
                       color="black"
                       size={10}
                       speedMultiplier={1}
                       cssOverride={{ display: 'inline-block', marginBottom: '7px', marginLeft: '10px' }}
                     />
-                    </div>
                   </>
                 ) : '1. 기침 녹음 시작   ▶'}
               </button>
@@ -116,12 +113,10 @@ const Record_voice = () => {
               <button className='btnUd' onClick={downloadAudio} disabled={!audioBlob}>2. 녹음 파일 다운로드</button>
               <button className='btnBack' onClick={() => navigate('/coughUd')}>3. 녹음 파일 업로드⬆️</button>
             </div>
-
           </div>
         </div>
         <button className='coughUp_Move_box' onClick={() => navigate('/coughUd')}>⬅️파일 업로드 페이지 돌아가기</button>
       </div>
-
     </div>
   );
 };
