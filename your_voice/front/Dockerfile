@@ -16,11 +16,13 @@ RUN npm run build
 
 # Nginx 설치 및 설정
 RUN apt-get update && apt-get install -y nginx
-RUN rm -rf /etc/nginx/conf.d/*
+COPY default /etc/nginx/sites-available/default
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY ssl-config /etc/letsencrypt
 
 # 포트 설정
 EXPOSE 80
+EXPOSE 443
 
 # Nginx 서버 실행
 CMD ["nginx", "-g", "daemon off;"]
