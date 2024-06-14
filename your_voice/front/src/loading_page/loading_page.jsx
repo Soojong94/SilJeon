@@ -20,7 +20,7 @@ function LoadingPage() {
       formData.append('userId', userId);
 
       try {
-        const response = await axios.post('http://localhost:5000/api/coughUpload', formData, {
+        const response = await axios.post('https://localhost:5000/api/coughUpload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -28,7 +28,7 @@ function LoadingPage() {
 
         if (response.status === 200) {
           const analysisResult = response.data;
-          console.log(analysisResult)
+          console.log(analysisResult);
           navigate('/diagnosis_page', { state: { analysisResult } });
         } else {
           alert('파일 분석에 실패했습니다.');
@@ -47,11 +47,13 @@ function LoadingPage() {
   return (
     <div className='ringLoader'>
       <MenuBar />
-      <RingLoader
-        color="#36d7b7"
-        size={400}
-        speedMultiplier={0.8}
-      />
+      <div className='ring-loader-wrapper'>
+        <RingLoader
+          color="#36d7b7"
+          size={300}
+          speedMultiplier={0.8}
+        />
+      </div>
       <div className='loaderText'>
         <h1>분석중..</h1>
       </div>

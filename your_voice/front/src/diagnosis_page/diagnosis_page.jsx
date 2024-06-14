@@ -31,7 +31,7 @@ const DiagnosisPage = () => {
       ) : (
         <div className='diagnosis_body_container'>
           <h3 className='contentDg'> 기침소리 상태 결과 <br /></h3>
-          <h1 className='resultDg'>{(analysisResult.prediction)}</h1>
+          <h1 className='resultDg'>{(analysisResult.prediction * 10 ** 8).toFixed(2)}</h1>
           <div className='Dgcontent_box'>
             {windowWidth > 600 && (
               <div className='spinnerDg'>
@@ -43,7 +43,7 @@ const DiagnosisPage = () => {
               </div>
             )}
             <div className='Dg'>
-              <h3>{(parseFloat(analysisResult.probabilities[analysisResult.prediction]) * 100).toFixed(2)}%</h3>
+              <h3>결과는 이거저거 다 먹어 입니다. 난 햄버거 수제버거 파스타 오므라이스 다좋아해 왜냐면 맛있거든 냠냠 츄베륨 호호호</h3>
             </div>
           </div>
         </div>

@@ -28,6 +28,7 @@ body {
 }
 
 .voice {
+    overflow: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -131,6 +132,7 @@ body {
         align-items: center;
         flex-direction: column;
         overflow: auto;
+        margin-top: 30px;
     }
 
     .MainImg {

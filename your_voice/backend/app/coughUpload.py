@@ -11,7 +11,6 @@ coughUpload_bp = Blueprint("coughUpload", __name__)
 # TensorFlow 모델 로드
 model = load_model1()
 
-
 @coughUpload_bp.route("/api/coughUpload", methods=["POST"])
 def coughUpload():
     try:
@@ -42,8 +41,6 @@ def coughUpload():
         conn = connect_db()
         cursor = conn.cursor()
 
-        current_date = datetime.now().strftime("%Y-%m-%d")
-
         for disease_name, probability in prediction_probabilities.items():
             cursor.execute(
                 "SELECT disease_id FROM cough_disease WHERE disease_name = %s",
@@ -60,31 +57,11 @@ def coughUpload():
 
             cursor.execute(
                 """
-                SELECT status_idx FROM cough_status
-                WHERE social_user_id = %s AND DATE(input_date) = %s AND disease_id = %s
+                INSERT INTO cough_status (social_user_id, cough_status, input_date, disease_id)
+                VALUES (%s, %s, NOW(), %s)
                 """,
-                (user_id, current_date, disease_id),
+                (user_id, probability, disease_id),
             )
-            existing_record = cursor.fetchone()
-
-            if existing_record:
-                status_idx = existing_record[0]
-                cursor.execute(
-                    """
-                    UPDATE cough_status
-                    SET cough_status = %s, input_date = NOW()
-                    WHERE status_idx = %s
-                    """,
-                    (probability, status_idx),
-                )
-            else:
-                cursor.execute(
-                    """
-                    INSERT INTO cough_status (social_user_id, cough_status, input_date, disease_id)
-                    VALUES (%s, %s, NOW(), %s)
-                    """,
-                    (user_id, probability, disease_id),
-                )
 
         conn.commit()
         cursor.close()

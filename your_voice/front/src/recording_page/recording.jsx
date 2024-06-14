@@ -115,7 +115,7 @@ const Record_voice = () => {
             </div>
           </div>
         </div>
-        <button className='coughUp_Move_box' onClick={() => navigate('/coughUd')}>⬅️파일 업로드 페이지 돌아가기</button>
+        
       </div>
     </div>
   );

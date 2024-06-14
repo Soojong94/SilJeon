@@ -38,6 +38,7 @@ body {
 .udH1 {
   color: rgb(9, 28, 104);
   font-size: 3vw;
+
 }
 
 .udh2 {
@@ -155,11 +156,12 @@ audio {
   .up_box {
     width: 75%;
     height: 70%;
-    padding: 10px 15px;
+    padding: 10px 30px;
+    margin-top: 50px;
   }
 
   .udH1 {
-    margin-top: 10vh;
+    margin-top: 20vh;
     font-size: 4.5vw;
   }
 
@@ -212,8 +214,9 @@ audio {
   }
 
   .udH1 {
-    margin-top: 10vh;
+    margin-top: 20vh;
     font-size: 4vw;
+
   }
 
   .udh2 {
