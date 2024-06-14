@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const fetchDailyChart = async (userId) => {
   try {
-    const response = await axios.post('http://localhost:5000/api/dailyChart', { userId });
+    const response = await axios.post('https://yourcough.site/api/dailyChart', { userId });
     console.log(response.data);
     return response.data;
   } catch (error) {
@@ -18,7 +18,7 @@ const fetchDailyChart = async (userId) => {
 
 const fetchWeeklyChart = async (userId) => {
   try {
-    const response = await axios.post('http://localhost:5000/api/weeklyChart', { userId });
+    const response = await axios.post('https://yourcough.site/api/weeklyChart', { userId });
     console.log(response.data);
     return response.data;
   } catch (error) {

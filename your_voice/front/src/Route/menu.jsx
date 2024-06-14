@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
-import MedicalServicesOutlinedIcon from '@mui/icons-material/MedicalServicesOutlined';
 import './menu.css';
-import logo from '../Route/YourVoice.png';
+import logo from '../Route/YourCough.png';
 import axios from 'axios';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
@@ -25,7 +24,7 @@ function MenuBar() {
 
     try {
       // 인증 토큰을 백엔드로 전달
-      const response = await axios.post('http://localhost:5000/api/login', { token });
+      const response = await axios.post('https://yourcough.site/api/login', { token });
 
       console.log('Server response:', response.data);
 

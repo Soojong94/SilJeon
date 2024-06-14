@@ -4,7 +4,6 @@
   right: 0px;
   max-height: 7%;
   width: 100%;
-
 }
 
 .menu_bar {
@@ -33,6 +32,7 @@
   align-items: center;
   padding-left: 3vw;
   padding-right: 2vw;
+
 }
 
 .nav-items {
@@ -61,4 +61,8 @@
 
 .logo {
   cursor: pointer;
+}
+
+.logo_img {
+  height: 17vh;
 }
