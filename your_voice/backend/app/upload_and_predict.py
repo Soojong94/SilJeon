@@ -1,12 +1,18 @@
 import os
 os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 import numpy as np
-import soundfile as sf
 import librosa
 import tensorflow as tf
 from werkzeug.utils import secure_filename
-from pydub import AudioSegment
 import io
+
+# MFCC 파라미터
+n_mfcc = 20
+n_fft = 2048
+hop_length = 512
+duration = 10  # 각 오디오 파일의 길이 설정
+sr = 22050  # 통일된 샘플링 레이트
+fixed_sequence_length = int(np.ceil(duration * sr / hop_length))
 
 def process_file(file):
     print("process_file 함수 호출됨")
@@ -23,6 +29,8 @@ def process_file(file):
     return convert_to_wav(file_bytes, file_extension)
 
 def convert_to_wav(file_bytes, file_extension):
+    from pydub import AudioSegment
+
     supported_formats = ["mp3", "m4a", "mp4", "webm", "ogg", "flac", "weba"]
     if file_extension not in supported_formats:
         raise ValueError(f"지원하지 않는 파일 형식: {file_extension}")
@@ -44,7 +52,14 @@ def convert_to_wav(file_bytes, file_extension):
 
 def preprocess_audio(file_bytes, duration=10, sr=22050, n_mfcc=20, n_fft=2048, hop_length=512):
     print(f"preprocess_audio 함수 호출됨")
-    audio_data, samplerate = sf.read(file_bytes, dtype='float32')
+
+    # 파일을 임시로 저장
+    with open("temp_audio.wav", "wb") as f:
+        f.write(file_bytes.read())
+
+    # librosa를 사용하여 임시 파일에서 오디오 데이터를 로드
+    audio_data, samplerate = librosa.load("temp_audio.wav", sr=sr, duration=duration)
+    os.remove("temp_audio.wav")  # 임시 파일 삭제
 
     # 입력 신호 길이가 n_fft보다 짧은 경우 처리하지 않음
     if len(audio_data) < n_fft:
@@ -60,32 +75,27 @@ def preprocess_audio(file_bytes, duration=10, sr=22050, n_mfcc=20, n_fft=2048, h
     else:
         audio_data = audio_data[:duration * sr]
 
-    # 오디오 샘플링 레이트를 변경
-    if samplerate != sr:
-        audio_data = librosa.resample(audio_data, orig_sr=samplerate, target_sr=sr)
-
     mfcc = librosa.feature.mfcc(y=audio_data, sr=sr, n_mfcc=n_mfcc, n_fft=n_fft, hop_length=hop_length)
 
     # mfcc 배열의 차원 확인
     if mfcc.ndim != 2:
         raise ValueError(f"MFCC 배열의 차원이 올바르지 않습니다: {mfcc.ndim}차원")
 
-    fixed_sequence_length = 431  # 모델 학습 시 사용한 값으로 설정
     if mfcc.shape[1] < fixed_sequence_length:
         pad_width = fixed_sequence_length - mfcc.shape[1]
         mfcc = np.pad(mfcc, ((0, 0), (0, pad_width)), mode="constant")
     else:
         mfcc = mfcc[:, :fixed_sequence_length]
 
-    mfcc = np.expand_dims(mfcc, axis=0)  # Add batch dimension
-    mfcc = np.expand_dims(mfcc, axis=-1)  # Add channel dimension if necessary
+    mfcc = np.expand_dims(mfcc, axis=0)  # 배치 차원 추가
+    mfcc = np.expand_dims(mfcc, axis=-1)  # 채널 차원 추가 (필요시)
 
     return mfcc
 
 def load_model1():
-    # 현재 파일의 디렉토리 경로 경로 설정
+    # 현재 파일의 디렉토리 경로 설정
     base_dir = os.path.dirname(__file__)
-    model_path = os.path.join(base_dir, "..", "models", "0610_analyzer.keras")
+    model_path = os.path.join(base_dir, "..", "models", "0615_(2413,0.1).keras")
 
     try:
         model = tf.keras.models.load_model(model_path)
