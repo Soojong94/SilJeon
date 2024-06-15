@@ -1,3 +1,4 @@
+
 import './my_page.css';
 import React, { useState, useEffect } from 'react';
 import MenuBar from '../Route/menu';

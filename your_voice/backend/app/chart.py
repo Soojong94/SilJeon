@@ -3,7 +3,6 @@ from db.db import connect_db
 import datetime as dt
 
 chart_bp = Blueprint("chart", __name__)
-
 @chart_bp.route("/api/dailyChart", methods=["POST"])
 def dailyChart():
     userId = request.json.get("userId")
@@ -12,20 +11,6 @@ def dailyChart():
     week_ago = dt.datetime.now() - dt.timedelta(days=7)
     conn = connect_db()
     cursor = conn.cursor()
-
-    # 가장 최신 4개의 데이터 쿼리
-    cursor.execute(
-        """
-        SELECT disease_id, input_date, cough_status
-        FROM cough_status
-        WHERE social_user_id = %s AND input_date >= %s
-        ORDER BY input_date DESC
-        LIMIT 4
-        """,
-        (userId, week_ago),
-    )
-    latestData = cursor.fetchall()
-    print("가장 최근 데이터 예용!", latestData)
 
     # 해당 날짜의 모든 데이터 쿼리
     cursor.execute(
@@ -43,20 +28,6 @@ def dailyChart():
     conn.close()
 
     # 데이터를 날짜별로 그룹화
-    grouped_latest_data = {}
-    for disease_id, datetime_value, cough_status in latestData:
-        date_str = datetime_value.strftime("%Y-%m-%d")
-        time_str = datetime_value.strftime("%H:%M:%S")
-        if date_str not in grouped_latest_data:
-            grouped_latest_data[date_str] = []
-        grouped_latest_data[date_str].append(
-            {
-                "disease_id": disease_id,
-                "cough_status": cough_status,
-                "time": time_str,  # 시간을 추가
-            }
-        )
-
     grouped_all_data = {}
     for disease_id, datetime_value, cough_status in allData:
         date_str = datetime_value.strftime("%Y-%m-%d")
@@ -71,15 +42,17 @@ def dailyChart():
             }
         )
 
-    # 데이터 형식 맞추기
-    daily_averages = [
-        {
+    # 각 날짜별 최신 데이터를 선택
+    daily_averages = []
+    for date_str, data in grouped_all_data.items():
+        latest_data_sorted = sorted(data, key=lambda x: x['time'], reverse=True)
+        latest_data = latest_data_sorted[:4] if len(latest_data_sorted) >= 4 else latest_data_sorted
+
+        daily_averages.append({
             "date": date_str,
-            "latest_data": grouped_latest_data.get(date_str, []),
-            "all_data": grouped_all_data[date_str],
-        }
-        for date_str in grouped_all_data.keys()
-    ]
+            "latest_data": latest_data,
+            "all_data": data,
+        })
 
     return jsonify(daily_averages), 200
 

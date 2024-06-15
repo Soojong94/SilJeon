@@ -115,7 +115,7 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
       data: labels.map(label => {
         const record = chartData.find(d => moment(d.date).format('MM-DD') === label);
         if (record) {
-          const diseaseRecord = record.all_data.find(r => r.disease_id === disease_id);
+          const diseaseRecord = record.latest_data.find(r => r.disease_id === disease_id);
           return diseaseRecord ? diseaseRecord.cough_status * 100 : 0;
         }
         return 0;
