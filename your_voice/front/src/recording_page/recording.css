@@ -156,9 +156,10 @@ audio {
 
 
   .up_box {
-    width: 75%;
-    height: 70%;
-    padding: 10px;
+    width: 90%;
+    height: 85%;
+    padding-bottom: 50px;
+    margin-bottom: 30px;
   }
 
   .udH1 {
@@ -205,9 +206,23 @@ audio {
     display: none;
     /* Hide spinner on screens less than 1000px */
   }
+
+  .parent-box {
+    overflow: auto;
+  }
 }
 
 @media (max-width: 500px) {
+  .udh2{
+
+    margin-top: 80px;
+  }
+  .divided_body {
+    display: flex;
+    flex-direction: column;
+ 
+  }
+ 
   .up_box {
     width: 80%;
     height: 80%;
@@ -215,6 +230,8 @@ audio {
     justify-content: center;
     margin-top: 100px;
     flex: 3;
+    flex-direction: column;
+   
   }
 
   .udH1 {
@@ -223,7 +240,7 @@ audio {
   }
 
   .udh2 {
-    font-size: 3vw;
+    font-size: 5vw;
   }
 
   .record-btn,

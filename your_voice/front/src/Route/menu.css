@@ -98,6 +98,7 @@
   }
 }
 
+
 /* 600px 이하일 때 */
 @media screen and (max-width: 600px) {
   .menu_bar_container {
