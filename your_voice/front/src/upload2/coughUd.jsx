@@ -30,43 +30,29 @@ const CoughUd = () => {
     }
   };
 
-  const navigateToLoadingPage = () => {
-    if (selectedFile) {
-      navigate('/loading_page', { state: { file: selectedFile } });
-    } else {
-      alert('파일을 선택해주세요.');
-    }
-  };
-
-  const ToRecordVoice = () => {
-    navigate('/Record_voice');
-  };
-
   return (
     <div className='parent-box'>
       <MenuBar />
-      <div className='up_box'>
+      <div className='up_boxF'>
         {message && <p className='message'>{message}</p>}
-        <h1 className='udH1'>녹음 파일 선택 후 진단</h1>
+        <h1 className='udH15'>녹음 파일 선택 후 진단</h1>
         <div className="inputFile-box">
           <div className='left_content'>
-            <h2 className='ExplnUd'>아직 파일이 없다면, 녹음을 진행해 주세요.</h2>
+            <h2 className='ExplnUdF'>아직 파일이 없다면, 녹음을 진행해 주세요.</h2>
             <BounceLoader className='bounce' size={100} color="#6375ff" />
             <button className='inputbtn' onClick={ToRecordVoice}>녹음하기</button>
-
           </div>
           <hr className='vertical' />
           <div className="middle_content">
-            <h2 className='ExplnUd'>파일 선택 후, 진단 버튼을 눌러주세요.</h2>
-
-
+            <h2 className='ExplnUdF'>파일 선택 후, 진단 버튼을 눌러주세요.</h2>
             <div className="file-buttons">
-              {selectedFile && <p className='selectedfileName'>{selectedFile.name}</p>}
+
               <button className="inputbtn" onClick={() => inputBtn.current.click()}>1 파일 선택</button>
               <input type="file" onChange={handleFileChange} ref={inputBtn} className="file-input" />
-              <div className="button-column">
-                <button className='inputbtn' id='CovidGo' onClick={navigateToLoadingPage} disabled={!selectedFile}>2-1 질병 진단</button>
 
+              <div className="button-column">
+                {selectedFile && <p className='selectedfileName'>{selectedFile.name}</p>}
+                <button className='inputbtn' id='CovidGo' onClick={navigateToLoadingPage} disabled={!selectedFile}>2-1 질병 진단</button>
                 <button className="inputbtn" id='CovidGo' onClick={navigateToLoadingPage} disabled={!selectedFile}>2-2 코로나 분석</button>
               </div>
             </div>

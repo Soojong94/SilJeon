@@ -1,5 +1,4 @@
 import os
-
 os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 import numpy as np
 import soundfile as sf
@@ -8,7 +7,6 @@ import tensorflow as tf
 from werkzeug.utils import secure_filename
 from pydub import AudioSegment
 import io
-
 
 def process_file(file):
     print("process_file 함수 호출됨")
@@ -23,7 +21,6 @@ def process_file(file):
 
     # WAV 파일이 아니면 변환 작업 수행
     return convert_to_wav(file_bytes, file_extension)
-
 
 def convert_to_wav(file_bytes, file_extension):
     supported_formats = ["mp3", "m4a", "mp4", "webm", "ogg", "flac", "weba"]
@@ -45,12 +42,9 @@ def convert_to_wav(file_bytes, file_extension):
     except Exception as e:
         raise Exception(f"파일 변환 중 오류 발생: {e}")
 
-
-def preprocess_audio(
-    file_bytes, duration=10, sr=22050, n_mfcc=20, n_fft=2048, hop_length=512
-):
+def preprocess_audio(file_bytes, duration=10, sr=22050, n_mfcc=20, n_fft=2048, hop_length=512):
     print(f"preprocess_audio 함수 호출됨")
-    audio_data, samplerate = sf.read(file_bytes, dtype="float32")
+    audio_data, samplerate = sf.read(file_bytes, dtype='float32')
 
     # 입력 신호 길이가 n_fft보다 짧은 경우 처리하지 않음
     if len(audio_data) < n_fft:
@@ -62,19 +56,15 @@ def preprocess_audio(
 
     # 오디오 데이터를 설정된 길이로 자르거나 패딩
     if len(audio_data) < duration * sr:
-        audio_data = np.pad(
-            audio_data, (0, duration * sr - len(audio_data)), mode="constant"
-        )
+        audio_data = np.pad(audio_data, (0, duration * sr - len(audio_data)), mode='constant')
     else:
-        audio_data = audio_data[: duration * sr]
+        audio_data = audio_data[:duration * sr]
 
     # 오디오 샘플링 레이트를 변경
     if samplerate != sr:
         audio_data = librosa.resample(audio_data, orig_sr=samplerate, target_sr=sr)
 
-    mfcc = librosa.feature.mfcc(
-        y=audio_data, sr=sr, n_mfcc=n_mfcc, n_fft=n_fft, hop_length=hop_length
-    )
+    mfcc = librosa.feature.mfcc(y=audio_data, sr=sr, n_mfcc=n_mfcc, n_fft=n_fft, hop_length=hop_length)
 
     # mfcc 배열의 차원 확인
     if mfcc.ndim != 2:
@@ -91,7 +81,6 @@ def preprocess_audio(
     mfcc = np.expand_dims(mfcc, axis=-1)  # Add channel dimension if necessary
 
     return mfcc
-
 
 def load_model1():
     # 현재 파일의 디렉토리 경로 경로 설정

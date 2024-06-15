@@ -44,6 +44,8 @@ const DiagnosisPage = () => {
             )}
             <div className='Dg'>
               <h3>{(parseFloat(analysisResult.probabilities[analysisResult.prediction]) * 100).toFixed(2)}%</h3>
+              <br />
+              <h3>{analysisResult.diagnosis_message}</h3>
             </div>
           </div>
         </div>

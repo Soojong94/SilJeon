@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const fetchDailyChart = async (userId) => {
   try {
-    const response = await axios.post('https://yourcough.site/api/dailyChart', { userId });
+    const response = await axios.post('http://localhost:5000/api/dailyChart', { userId });
     console.log(response.data);
     return response.data;
   } catch (error) {
@@ -16,13 +16,13 @@ const fetchDailyChart = async (userId) => {
   }
 };
 
-const fetchWeeklyChart = async (userId) => {
+const fetchMonthlyChart = async (userId) => {
   try {
-    const response = await axios.post('https://yourcough.site/api/weeklyChart', { userId });
+    const response = await axios.post('http://localhost:5000/api/monthChart', { userId });
     console.log(response.data);
     return response.data;
   } catch (error) {
-    console.error('Error fetching weekly chart data:', error);
+    console.error('Error fetching monthly chart data:', error);
     return [];
   }
 };
@@ -35,32 +35,46 @@ const getLast7Days = () => {
   return days;
 };
 
-const ChartComponent = () => {
-  const [userId, setUserId] = useState(null);
-  const [showWeekly, setShowWeekly] = useState(false);
+const getLast30Days = () => {
+  const days = [];
+  for (let i = 29; i >= 0; i--) {
+    days.push(moment().subtract(i, 'days').format('MM-DD'));
+  }
+  return days;
+};
+
+const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange }) => {
   const [dailyData, setDailyData] = useState([]);
-  const [weeklyData, setWeeklyData] = useState([]);
+  const [monthlyData, setMonthlyData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const storedUserInfo = sessionStorage.getItem('user_info');
-    if (storedUserInfo) {
-      const { id } = JSON.parse(storedUserInfo);
-      setUserId(id);
-      fetchData(id);
-    }
-  }, []);
+    fetchData(userId);
+  }, [userId, showMonthly]);
 
   const fetchData = async (id) => {
     setLoading(true);
     try {
-      const [dailyResponse, weeklyResponse] = await Promise.all([
+      const [dailyResponse, monthlyResponse] = await Promise.all([
         fetchDailyChart(id),
-        fetchWeeklyChart(id)
+        fetchMonthlyChart(id)
       ]);
 
       setDailyData(dailyResponse);
-      setWeeklyData(weeklyResponse);
+      setMonthlyData(monthlyResponse);
+
+      if (!showMonthly) {
+        // 오늘 날짜 데이터 설정
+        const today = moment().format('MM-DD');
+        const todayEntry = dailyResponse.find(entry => moment(entry.date).format('MM-DD') === today);
+        if (todayEntry) {
+          onTodayDataChange(todayEntry.all_data); // 오늘 데이터를 부모 컴포넌트로 전달
+        } else {
+          onTodayDataChange([]);
+        }
+      } else {
+        onTodayDataChange([]);
+      }
     } catch (error) {
       console.error('Error fetching chart data:', error);
     } finally {
@@ -68,18 +82,12 @@ const ChartComponent = () => {
     }
   };
 
-  const toggleChart = () => {
-    setShowWeekly(!showWeekly);
-  };
-
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  const chartData = showWeekly ? weeklyData : dailyData;
-  const labels = showWeekly
-    ? chartData.map(data => data.week)
-    : getLast7Days();
+  const chartData = showMonthly ? monthlyData : dailyData;
+  const labels = showMonthly ? getLast30Days() : getLast7Days();
 
   const diseases = [1, 2, 3, 4]; // 질병 번호 리스트 // 1. 정상 2. 심부전, 3.천식, 4.코로나
   const diseaseNames = {
@@ -89,62 +97,52 @@ const ChartComponent = () => {
     4: '코로나'
   };
 
-  // 주간 데이터일 때, 각 질병의 확률을 하나의 막대로 통합해서 표시
-  const datasets = showWeekly
-    ? diseases.map(disease_id => {
-      return {
+  const datasets = showMonthly
+    ? diseases.map(disease_id => ({
         label: diseaseNames[disease_id] || `질병 ${disease_id}`,
         data: labels.map(label => {
-          const record = chartData.find(d => d.week === label);
+          const record = chartData.find(d => moment(d.date).format('MM-DD') === label);
           if (record) {
             const diseaseRecord = record.data.find(r => r.disease_id === disease_id);
-            const averageCoughStatus = diseaseRecord ? diseaseRecord.average_cough_status * 100 : 0;
-            return averageCoughStatus;
+            return diseaseRecord ? diseaseRecord.average_cough_status * 100 : 0;
           }
           return 0;
         }),
-        backgroundColor: getColorForDisease(disease_id), // 막대의 배경색
-      };
-    })
-    : diseases.map(disease_id => {
-      return {
+        backgroundColor: getColorForDisease(disease_id),
+      }))
+    : diseases.map(disease_id => ({
         label: diseaseNames[disease_id] || `질병 ${disease_id}`,
         data: labels.map(label => {
-          const record = chartData.find(d => {
-            const dateLabel = moment(d.date).format('MM-DD');
-            return dateLabel === label;
-          });
+          const record = chartData.find(d => moment(d.date).format('MM-DD') === label);
           if (record) {
-            const diseaseRecord = record.data.find(r => r.disease_id === disease_id);
-            const averageCoughStatus = diseaseRecord ? diseaseRecord.average_cough_status * 100 : 0;
-            return averageCoughStatus; // 값에 100을 곱해줌
+            const diseaseRecord = record.all_data.find(r => r.disease_id === disease_id);
+            return diseaseRecord ? diseaseRecord.cough_status * 100 : 0;
           }
           return 0;
         }),
-        borderColor: getColorForDisease(disease_id), // 선의 색상
-        backgroundColor: getColorForDisease(disease_id), // 막대의 배경색
-        fill: false
-      };
-    });
+        borderColor: getColorForDisease(disease_id),
+        backgroundColor: getColorForDisease(disease_id),
+        fill: false,
+      }));
 
   const data = {
     labels,
-    datasets
+    datasets,
   };
 
   const options = {
     maintainAspectRatio: false,
     scales: {
       x: {
-        stacked: showWeekly, // 주간 차트에서는 막대를 쌓아 올림
+        stacked: showMonthly,
         ticks: {
           callback: function (value, index, values) {
-            return labels[index]; // 'MM-DD' 또는 'YYYY년 WW주차' 형식으로 변환된 labels 사용
-          }
-        }
+            return labels[index];
+          },
+        },
       },
       y: {
-        stacked: showWeekly, // 주간 차트에서는 막대를 쌓아 올림
+        stacked: showMonthly,
         min: 0,
         max: 100,
         ticks: {
@@ -157,14 +155,10 @@ const ChartComponent = () => {
   return (
     <div>
       <button className="chart-button" onClick={toggleChart}>
-        {showWeekly ? '일간 차트 보기' : '주간 차트 보기'}
+        {showMonthly ? '일간 차트 보기' : '월간 차트 보기'}
       </button>
-      <div style={{ height: '60vh', width: '30vw' }}>
-        {showWeekly ? (
-          <Bar data={data} options={options} />
-        ) : (
-          <Line data={data} options={options} />
-        )}
+      <div style={{ height: showMonthly ? '60vh' : '40vh', width: showMonthly ? '60vw' : '40vw' }}>
+        {showMonthly ? <Bar data={data} options={options} /> : <Line data={data} options={options} />}
       </div>
     </div>
   );

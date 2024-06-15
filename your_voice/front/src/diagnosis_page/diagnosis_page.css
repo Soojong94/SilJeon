@@ -1,12 +1,10 @@
 .diagnosis_page {
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
-
-  background: linear-gradient(to right, #b6ddee, whitesmoke);
+ background: linear-gradient(to right, #b6ddee, whitesmoke);
 }
 
 
@@ -14,14 +12,14 @@
   display: flex;
   flex-direction: column;
   width: 70%;
-  height: 80%;
+  height: 70%;
   border: 3px double lightblue;
-  padding: 2 2.5vw;
-  border-radius: 10px;
+  padding: 20px;
+  border-radius: 30px;
   background: linear-gradient(to right, #fdcccc, #fff1f1);
   box-shadow: 0px 0px 10px lightslategray;
   text-align: center;
-  margin: 3vw 0 0 0;
+  margin-top: 100px;
 
 }
 
@@ -64,9 +62,86 @@
 .Dg {
 
   flex: 3;
-  font-size: 1vw;
+  font-size: 3vw;
   padding: 3vw;
   color: rgb(9, 28, 104);
   ;
+
+}
+
+@media (max-width: 1000px){
+
+
+  .Dgcontent_box{
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin-top:100px;
+    
+  }
+  .Dg {
+
+    
+    font-size: 40px;
+    padding: 25px;
+    color: rgb(9, 28, 104);
+    ;
+  
+  }
+
+  .resultDg {
+  
+    margin: 1.5vw 0 0 0;
+    font-size:40px;
+    color: rgb(9, 28, 104);
+  
+  
+  
+  }
+  .contentDg{
+
+    font-size: 30px;
+    margin-bottom: 30px;
+ 
+  }
+  
+}
+
+@media (max-width: 400px){
+
+  .Dgcontent_box{
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin-top:100px;
+    
+  }
+  .Dg {
+
+   
+    font-size: 30px;
+    padding: 10px;
+    color: rgb(9, 28, 104);
+    ;
+  
+  }
+
+  .resultDg {
+    margin: 1.5vw 0 0 0;
+    font-size: 30px;
+    color: rgb(9, 28, 104);
+  
+  
+  
+  }
+  .contentDg{
+
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
 
 }

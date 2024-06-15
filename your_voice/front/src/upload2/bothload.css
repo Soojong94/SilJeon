@@ -1,4 +1,3 @@
-/* bothload.css */
 .parent-box {
     background: linear-gradient(to right, #b6ddee, whitesmoke);
     transition: background 0.3s ease;
@@ -7,56 +6,43 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-y: scroll;
 }
 
 .vertical {
     width: 1px;
-    height: 100%; /* 높이를 부모 요소에 맞게 설정 */
+    height: 100%;
     background-color: #1e6b8d;
-    border: none;
-    margin: 0 20px; /* 수직선 양쪽에 간격 추가 */
+    margin: 0 20px;
 }
-
-.recordM {
-    height: 5vh;
-    background-color: rgb(243, 252, 255);
-    border: none;
-    padding: 0.5vh 5.4vw;
-    cursor: pointer;
-    border-radius: 5vw;
-    font-size: 10px;
-    color: rgb(9, 28, 104);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.ExplnUdF{
+    font-size: 20px;
 }
-
-.up_box {
+.CovidGo{
+    margin-top: 20px;
+}
+.up_boxF {
     border-radius: 30px;
-    width: 80%;
+    width: 90%;
     height: 70%;
-    background-color: rgb(255, 254, 242);
+    max-height: 90%;
+    background: linear-gradient(to right, #fdcccc, #fff1f1);
     box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
     box-sizing: border-box;
     text-align: center;
-    justify-content: center;
-    padding: 30px;
-    overflow: hidden;
+    padding: 20px ;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 100px 0 80px 0;
 }
+#explnupF{
+margin-top: 70px;
 
-.udH1 {
-    color: rgb(9, 28, 104);
-    font-size: 3vw;
 }
-
-.udh2 {
+.udH15 {
     color: rgb(9, 28, 104);
-    font-size: 1.3vw;
+    font-size: 2.5vw;
 }
 
 .message {
@@ -67,40 +53,45 @@
 .inputFile-box {
     color: rgb(9, 28, 104);
     display: flex;
-    flex-direction: row;
     align-items: center;
-    height: 100%;
-    padding : 10px;
-    gap : 3vw;
+    width: 100%;
+    
+    padding: 20px;
+    overflow: auto;
+   
+   
 }
 
 .left_content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex: 4;
 }
 
 .middle_content {
     display: flex;
     flex-direction: column;
-    
-    flex-grow: 1;
+    flex: 4;
+    align-items: center;
 }
 
 .file-buttons {
     display: flex;
-    flex-direction: row;
     align-items: center;
     gap: 10px;
     margin: 3vh 0 0 0;
 }
 
-#CovidGo{
-
-margin: 55px 0 50px 0;
-
-
+.button-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
+
+
+
 .selectedfileName {
     color: rgb(9, 28, 104);
     font-size: 1vw;
@@ -117,11 +108,10 @@ margin: 55px 0 50px 0;
 }
 
 .inputbtn {
-    width :13vw;
+    width: 13vw;
     height: 6vh;
     background-color: rgb(243, 252, 255);
     border: none;
-    padding: 5px 25px;
     cursor: pointer;
     border-radius: 3vw;
     font-size: 17px;
@@ -130,8 +120,7 @@ margin: 55px 0 50px 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin :20px;
-    
+    margin: 20px;
 }
 
 .recordPg_Move_box {
@@ -146,7 +135,6 @@ margin: 55px 0 50px 0;
 .recordPg_Btb {
     background-color: rgb(243, 252, 255);
     border: none;
-    padding: 7px 20px;
     cursor: pointer;
     border-radius: 5vw;
     font-size: 20px;
@@ -167,40 +155,44 @@ margin: 55px 0 50px 0;
     display: none;
 }
 
-/* Media Queries for Mobile Devices */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
     .parent-box {
         flex-direction: column;
         padding: 1rem;
     }
 
-    .up_box {
-        width: 70%;
-        height: 70%;
-        padding: 5vw 2vh;
-        overflow: auto;
+    .up_boxF {
+        margin: 30px 10px 0 10px;
+        width: 90%;
+        height: 90%;
+        padding: 30px 20px;
+       
+    }
+    #explnupF{
+        margin-top: 10px;
+        
+        }
+    .udH15 {
+        font-size: 20px;
     }
 
-    .udH1 {
-        font-size: 5vw;
-    }
-
-    .ExplnUd {
-        font-size: 3vw;
+    .ExplnUdF {
+        font-size: 12px;
     }
 
     .inputFile-box {
         flex-direction: column;
-        gap : 30px;
+        gap: 20px;
         height: auto;
         padding: 3vw;
+        overflow: auto;
     }
 
     .recordM, .inputbtn, .recordPg_Btb {
-        width:150px;
-        height: auto;
-        padding:5px 12px;
-        font-size: 13px;
+        width: 100px;
+        height: 20px;
+        padding: 5px 12px;
+        font-size: 10px;
         border-radius: 30px;
     }
 
@@ -224,34 +216,41 @@ margin: 55px 0 50px 0;
 }
 
 @media (max-width: 1000px) {
-    .up_box {
-      width: 75%;
-        padding: 5vw 2vh;
-        justify-content: center;
-        align-items: center;
-        overflow: auto;
+    .up_boxF {
+        width: 90%;
+        padding: 20px;
     }
 
-    .udH1 {
-        font-size: 32px;
+    .ExplnUdF {
+        font-size: 15px;
+        margin-top: 60px;
     }
 
+    .udH15 {
+        font-size: 20px;
+    }
+    #explnupF{
+        margin-top: 0px;
+        
+        }
     .udh2 {
         font-size: 3vw;
     }
 
     .inputFile-box {
         gap: 10px;
+        overflow: auto;
     }
 
     .recordM, .inputbtn, .recordPg_Btb {
-        font-size: 15px;
+        font-size: 12px;
         padding: 10px 15px;
-        
+        width: 120px;
+        height: 30px;
     }
 
     .selectedfileName {
-        font-size: 12px;
+        font-size: 17px;
     }
 
     .bounce {
