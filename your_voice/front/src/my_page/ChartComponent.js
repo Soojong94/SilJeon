@@ -99,31 +99,31 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
 
   const datasets = showMonthly
     ? diseases.map(disease_id => ({
-        label: diseaseNames[disease_id] || `질병 ${disease_id}`,
-        data: labels.map(label => {
-          const record = chartData.find(d => moment(d.date).format('MM-DD') === label);
-          if (record) {
-            const diseaseRecord = record.data.find(r => r.disease_id === disease_id);
-            return diseaseRecord ? diseaseRecord.average_cough_status * 100 : 0;
-          }
-          return 0;
-        }),
-        backgroundColor: getColorForDisease(disease_id),
-      }))
+      label: diseaseNames[disease_id] || `질병 ${disease_id}`,
+      data: labels.map(label => {
+        const record = chartData.find(d => moment(d.date).format('MM-DD') === label);
+        if (record) {
+          const diseaseRecord = record.data.find(r => r.disease_id === disease_id);
+          return diseaseRecord ? diseaseRecord.average_cough_status * 100 : 0;
+        }
+        return 0;
+      }),
+      backgroundColor: getColorForDisease(disease_id),
+    }))
     : diseases.map(disease_id => ({
-        label: diseaseNames[disease_id] || `질병 ${disease_id}`,
-        data: labels.map(label => {
-          const record = chartData.find(d => moment(d.date).format('MM-DD') === label);
-          if (record) {
-            const diseaseRecord = record.all_data.find(r => r.disease_id === disease_id);
-            return diseaseRecord ? diseaseRecord.cough_status * 100 : 0;
-          }
-          return 0;
-        }),
-        borderColor: getColorForDisease(disease_id),
-        backgroundColor: getColorForDisease(disease_id),
-        fill: false,
-      }));
+      label: diseaseNames[disease_id] || `질병 ${disease_id}`,
+      data: labels.map(label => {
+        const record = chartData.find(d => moment(d.date).format('MM-DD') === label);
+        if (record) {
+          const diseaseRecord = record.all_data.find(r => r.disease_id === disease_id);
+          return diseaseRecord ? diseaseRecord.cough_status * 100 : 0;
+        }
+        return 0;
+      }),
+      borderColor: getColorForDisease(disease_id),
+      backgroundColor: getColorForDisease(disease_id),
+      fill: false,
+    }));
 
   const data = {
     labels,

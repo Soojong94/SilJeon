@@ -4,7 +4,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .mainPG_box {
@@ -16,15 +16,16 @@ body {
     align-items: center;
     background: linear-gradient(to right, #b6ddee, whitesmoke);
     transition: background 0.3s ease;
-    padding: 30px 0; 
+    padding: 30px 0;
     margin-top: 40px;
-    overflow: auto; /* 변경된 부분 */
+    overflow: auto;
+    /* 변경된 부분 */
 }
 
 .mainBtn-box {
     display: flex;
-    justify-content: center; 
-    gap: 50px; 
+    justify-content: center;
+    gap: 50px;
 }
 
 .voice {
@@ -77,7 +78,7 @@ body {
     box-shadow: 5px 5px 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
     .mainPG_box {
         flex-direction: column;
         padding: 1rem;
@@ -119,7 +120,8 @@ body {
     }
 
     .bounce {
-        display: none !important; /* Hide spinner on smaller screens */
+        display: none !important;
+        /* Hide spinner on smaller screens */
     }
 }
 
@@ -164,6 +166,6 @@ body {
     }
 
     .bounce {
-        display: none !important; 
+        display: none !important;
     }
 }

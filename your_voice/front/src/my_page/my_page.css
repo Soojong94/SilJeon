@@ -121,3 +121,45 @@ body {
   transition: transform 0.8s ease;
 
 }
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+  padding: 8px;
+  text-align: left;
+}
+
+.table-container tr {
+  border-bottom: 1px solid #ddd;
+  /* 보더 라인 추가 */
+}
+
+.table-container tr:last-child {
+  border-bottom: none;
+  /* 마지막 행의 보더 라인 제거 */
+}
+
+.table-container th {
+  background-color: #f2f2f2;
+  border-bottom: 2px solid #ddd;
+  /* 헤더에 더 굵은 보더 라인 추가 */
+}
+
+.table-container td {
+  border-right: 1px solid #ddd;
+  /* 열 사이의 보더 라인 추가 */
+}
+
+.table-container td:last-child {
+  border-right: none;
+  /* 마지막 열의 보더 라인 제거 */
+}

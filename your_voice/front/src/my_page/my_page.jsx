@@ -4,15 +4,33 @@ import MenuBar from '../Route/menu';
 import ChartComponent from './ChartComponent';
 import { useNavigate } from 'react-router-dom';
 
+const diseaseNames = {
+  1: '정상',
+  2: '심부전',
+  3: '천식',
+  4: '코로나'
+};
 
 function My_page() {
-
   const navigate = useNavigate();
+  const [showMonthly, setShowMonthly] = useState(false);
+  const [userId, setUserId] = useState(null);
+  const [todayData, setTodayData] = useState([]);
+
+  useEffect(() => {
+    const storedUserInfo = sessionStorage.getItem('user_info');
+    if (storedUserInfo) {
+      const { id } = JSON.parse(storedUserInfo);
+      setUserId(id);
+    }
+  }, []);
+
+  const toggleChart = () => {
+    setShowMonthly(!showMonthly);
+  };
+
   const navchange_member = () => {
-
-
     navigate('/initial_member');
-
   };
 
   return (
@@ -20,23 +38,42 @@ function My_page() {
       <MenuBar />
       <div className='my_page_head'>
         <button className='update_member' onClick={navchange_member}>회원 정보수정</button>
-        <h1 >AI 분석 결과</h1>
+        <h1>AI 분석 결과</h1>
       </div>
       <div className='my_page_container'>
         <div className='my_page_chart'>
-          <ChartComponent />
+          <ChartComponent
+            showMonthly={showMonthly}
+            toggleChart={toggleChart}
+            userId={userId}
+            onTodayDataChange={setTodayData}
+          />
         </div>
-        <div className='my_page_body'>
-          <p>
-            <h2 className='myH2'>일반 건강 상태가 양호할 때 (0-20%)</h2>
-            <br />
-            행동 요령: 현재 건강 상태가 매우 좋습니다. 꾸준한 운동과 균형 잡힌 식단을 유지하세요.
-            <br />
-            <br />
-            주의 사항: 특별한 주의 사항은 없지만, 정기적인 건강 체크를 계속하세요.
-          </p>
-
-        </div>
+        {!showMonthly && todayData.length > 0 && (
+          <div className='my_page_body'>
+            <h3>오늘의 건강 상태</h3>
+            <div className="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>시간</th>
+                    <th >질병</th>
+                    <th>상태 값 (%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {todayData.map((entry, index) => (
+                    <tr key={index}>
+                      <td>{entry.time}</td>
+                      <td>{diseaseNames[entry.disease_id]}</td>
+                      <td>{(entry.cough_status * 100).toFixed(2)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

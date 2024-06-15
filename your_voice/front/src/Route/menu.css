@@ -1,3 +1,4 @@
+/* 기본 스타일 */
 .menu_bar_container {
   position: fixed;
   top: 0px;
@@ -22,7 +23,6 @@
 .menu_bar .icon:hover {
   color: lightcoral;
   cursor: pointer;
-
 }
 
 .navbar {
@@ -32,7 +32,6 @@
   align-items: center;
   padding-left: 3vw;
   padding-right: 2vw;
-
 }
 
 .nav-items {
@@ -57,12 +56,85 @@
   color: white;
 }
 
-
-
 .logo {
   cursor: pointer;
 }
 
 .logo_img {
   height: 17vh;
+}
+
+.login_menu {
+  padding-bottom: 3vh;
+}
+
+/* 1000px 이하일 때 */
+@media screen and (max-width: 1000px) {
+  .menu_bar_container {
+    max-height: 10%;
+  }
+
+  .menu_bar .icon {
+    font-size: 3vw;
+  }
+
+  .navbar {
+    padding-left: 4vw;
+    padding-right: 3vw;
+  }
+
+  .nav-button {
+    padding: 2vh 2.5vh;
+    margin-right: 3vw;
+    font-size: 2.5vw;
+  }
+
+  .logo_img {
+    height: 20vh;
+  }
+
+  .login_menu {
+    padding-bottom: 5vh;
+  }
+}
+
+/* 600px 이하일 때 */
+@media screen and (max-width: 600px) {
+  .menu_bar_container {
+    max-height: 15%;
+  }
+
+  .menu_bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px;
+    gap: 5%;
+  }
+
+  .menu_bar .icon {
+    font-size: 4vw;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 5vw;
+    padding-right: 4vw;
+  }
+
+  .nav-items {
+    margin-right: 0;
+    margin-bottom: 2%;
+  }
+
+  .nav-button {
+    padding: 2.5vh 3vh;
+    margin-right: 0;
+    margin-bottom: 10%;
+    font-size: 3vw;
+  }
+
+  .logo_img {
+    height: 25vh;
+  }
 }
