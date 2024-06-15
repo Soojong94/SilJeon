@@ -21,18 +21,18 @@ body {
 .up_box {
   overflow: auto;
   border-radius: 5px;
-  width: 75%;
+  width: 80%;
   height: 80%;
   background: linear-gradient(to right, #fdcccc, #fff1f1);
   box-shadow: 0px 0px 10px lightslategray;
-  margin-top: 5vw;
   text-align: center;
-  padding: 2vw 0;
+  padding: 0.5vw 0;
   overflow: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 30px;
+  margin-top: 100px;
 }
 
 .udH1 {
@@ -156,12 +156,11 @@ audio {
   .up_box {
     width: 75%;
     height: 70%;
-    padding: 10px 30px;
-    margin-top: 50px;
+    padding: 10px ;
   }
 
   .udH1 {
-    margin-top: 20vh;
+   
     font-size: 4.5vw;
   }
 
@@ -207,15 +206,16 @@ audio {
 
 @media (max-width: 500px) {
   .up_box {
-    width: 60%;
-    height: 60%;
+    width: 80%;
+    height: 80%;
     padding: 5px 8px;
     justify-content: center;
+    margin-top: 100px;
+    flex:3;
   }
 
   .udH1 {
-    margin-top: 20vh;
-    font-size: 4vw;
+    font-size: 20px;
 
   }
 
@@ -230,7 +230,7 @@ audio {
     padding: 10px 15px;
     border-radius: 10px;
     font-size: 13px;
-    font-size: 2vw;
+  
     padding: 5px 10px;
     min-width: 80%;
   }
@@ -241,7 +241,7 @@ audio {
   }
 
   audio {
-    width: 40vw;
+    width: 33vw;
     height: 2vh;
   }
 
