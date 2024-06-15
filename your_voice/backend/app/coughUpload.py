@@ -38,6 +38,10 @@ def coughUpload():
             class_labels[i]: float(prediction[0][i]) for i in range(len(class_labels))
         }
 
+        # 예측 결과 콘솔 출력
+        print(f"Predicted class: {predicted_class} ({predicted_label})")
+        print(f"Prediction probabilities: {prediction_probabilities}")
+
         conn = connect_db()
         cursor = conn.cursor()
 
@@ -57,25 +61,19 @@ def coughUpload():
             disease_id = disease_id_tuple[0]
             print("질병번호 : ", disease_id)
 
+            # 무조건 새로운 레코드 삽입
+            print(f"Inserting new record: user_id={user_id}, probability={probability}, disease_id={disease_id}")
             cursor.execute(
                 """
-                SELECT status_idx FROM cough_status
-                WHERE social_user_id = %s AND DATE(input_date) = %s AND disease_id = %s
+                INSERT INTO cough_status (social_user_id, cough_status, input_date, disease_id)
+                VALUES (%s, %s, NOW(), %s)
                 """,
-                (user_id, current_date, disease_id),
+                (user_id, probability, disease_id),
             )
-            existing_record = cursor.fetchone()
-
-            if not existing_record:
-                cursor.execute(
-                    """
-                    INSERT INTO cough_status (social_user_id, cough_status, input_date, disease_id)
-                    VALUES (%s, %s, NOW(), %s)
-                    """,
-                    (user_id, probability, disease_id),
-                )
+            print(f"Insert executed: {cursor.rowcount} rows affected")
 
         conn.commit()
+        print("Transaction committed")
 
         # 예측된 질병의 진단 내용 가져오기
         cursor.execute(
