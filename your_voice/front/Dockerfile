@@ -14,15 +14,8 @@ COPY . .
 # 프론트엔드 애플리케이션 빌드
 RUN npm run build
 
-# Nginx 설치 및 설정
-RUN apt-get update && apt-get install -y nginx
-COPY default /etc/nginx/sites-available/default
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY ssl-config /etc/letsencrypt
-
 # 포트 설정
-EXPOSE 80
-EXPOSE 443
+EXPOSE 3000
 
-# Nginx 서버 실행
-CMD ["nginx", "-g", "daemon off;"]
+# 애플리케이션 실행 (nginx 없이)
+CMD ["npm", "start"]

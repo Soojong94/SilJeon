@@ -1,28 +1,26 @@
-version: '3'
+version: '3.8'
 
 services:
+  backend:
+    build:
+      context: ./backend  # 백엔드 Dockerfile이 있는 디렉토리
+    ports:
+      - "5000:5000"  # 호스트의 포트 5000을 백엔드 컨테이너의 포트 5000과 매핑
+    networks:
+      - mynetwork  # 동일한 네트워크에 속하도록 설정
+    depends_on:
+      - frontend  # 프론트엔드 서비스가 먼저 시작되어야 함
 
   frontend:
     build:
-      context: ./front
-      dockerfile: Dockerfile
+      context: ./front  # 프론트엔드 Dockerfile이 있는 디렉토리
     ports:
-      - "80:80"
-      - "443:443"
-    depends_on:
-      - backend
-    volumes:
-      - ./front:/app
-      - ssl-config:/etc/letsencrypt
+      - "3000:3000"  # 호스트의 포트 3000을 프론트엔드 컨테이너의 포트 3000과 매핑
+    networks:
+      - mynetwork  # 동일한 네트워크에 속하도록 설정
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:5000  # 백엔드의 주소를 환경 변수로 설정
 
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    ports:
-      - "5000:5000"
-    volumes:
-      - ./backend:/app
-
-volumes:
-  ssl-config:
+networks:
+  mynetwork:
+    driver: bridge
