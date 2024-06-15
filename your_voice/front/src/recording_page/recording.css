@@ -15,7 +15,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-y: scroll;
+  overflow: hidden;
+ 
 }
 
 .up_box {
@@ -26,13 +27,12 @@ body {
   background: linear-gradient(to right, #fdcccc, #fff1f1);
   box-shadow: 0px 0px 10px lightslategray;
   text-align: center;
-  padding: 0.5vw 0;
-  overflow: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 30px;
   margin-top: 100px;
+  overflow: auto;
 }
 
 .udH1 {
@@ -158,7 +158,7 @@ audio {
   .up_box {
     width: 90%;
     height: 85%;
-    padding-bottom: 50px;
+   
     margin-bottom: 30px;
   }
 
@@ -204,7 +204,6 @@ audio {
 
   .PropagateLoader_container {
     display: none;
-    /* Hide spinner on screens less than 1000px */
   }
 
   .parent-box {
@@ -228,7 +227,6 @@ audio {
   .up_box {
     width: 80%;
     height: 80%;
-    padding: 5px 8px;
     justify-content: center;
     margin-top: 100px;
     flex: 3;
@@ -286,7 +284,7 @@ margin-bottom: 20px;
 
   .PropagateLoader_container {
     display: none !important;
-
+    /* Hide spinner on screens less than 500px */
   }
 }
 

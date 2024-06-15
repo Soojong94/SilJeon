@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .vertical {
@@ -27,8 +28,7 @@
     border-radius: 30px;
     width: 85%;
     height: 80%;
-
-    background: linear-gradient(to right, #fdcccc, #fff1f1);
+     background: linear-gradient(to right, #fdcccc, #fff1f1);
     box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
     box-sizing: border-box;
     text-align: center;
@@ -36,7 +36,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 8vw 0 1vw 0;
+    margin: 9vw 0 2vw 0;
+ 
 }
 
 #explnupF {
@@ -59,8 +60,11 @@
     display: flex;
     align-items: center;
     width: 100%;
+    box-sizing: border-box;
+    margin-top: 50px;
+ 
 
-    padding: 20px;
+   
 
 
 
@@ -167,10 +171,10 @@
     }
 
     .up_boxF {
-        margin: 100px 10px 0 10px;
+        margin: 100px 0 50px 0px;
         width: 90%;
         height: 90%;
-        padding: 30px 20px;
+      
         gap: 50px;
 
     }
@@ -190,11 +194,10 @@
 
     .inputFile-box {
         flex-direction: column;
-        gap: 50px;
-        height: auto;
-        padding: 2vw;
-        overflow: auto;
-        margin: 20px;
+      
+     
+         overflow: auto;
+    
 
     }
 
@@ -233,11 +236,15 @@
         flex-direction: column;
         padding: 1rem;
     }
+    .left_content{
+        margin-left: 10px;
+    }
 
     .up_boxF {
+        
         width: 90%;
         height: 75%;
-        padding: 20px 20px;
+        padding: 10px;
         width: 90%;
         display: flex;
         flex-direction: column;
@@ -262,9 +269,9 @@
     }
 
     .inputFile-box {
-        gap: 10px;
-        overflow-x: scroll;
-        overflow-y: hidden;
+        gap: 20px;
+        margin:0 5px 10px 10px;
+        overflow: auto;
     }
 
     .recordM,
@@ -286,6 +293,6 @@
     }
 
     .middle_content {
-        margin-bottom: 50px;
+        margin: 0 10px 50px 10px;
     }
 }
