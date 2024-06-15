@@ -2,171 +2,174 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  overflow: hidden;
 }
 
 .mainPG_box {
-    box-sizing: border-box;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to right, #b6ddee, whitesmoke);
-    transition: background 0.3s ease;
-    padding: 30px 0;
-    margin-top: 40px;
-    overflow: auto;
-    /* 변경된 부분 */
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #b6ddee, whitesmoke);
+  transition: background 0.3s ease;
+  padding-top: 5%;
+  margin-top: 5px;
+  overflow: auto;
+  /* 변경된 부분 */
 }
 
 .mainBtn-box {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
 }
 
 .voice {
-    overflow: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 75%;
-    height: 80%;
-    background: linear-gradient(to right, #fdcccc, #fff1f1);
-    border: 3px double lightblue;
-    padding: 10px 20px;
-    border-radius: 30px;
-    box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
-    text-align: center;
+  overflow: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+  height: 80%;
+  background: linear-gradient(to right, #fdcccc, #fff1f1);
+  border: 3px double lightblue;
+  padding: 10px 20px;
+  border-radius: 30px;
+  box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
+  text-align: center;
 }
 
 .MainImg {
-    flex: 1;
-    padding: 0px 0px 0px 15%;
-    text-align: center;
+  flex: 1;
+  padding: 0px 0px 5% 6%;
+  text-align: center;
 }
 
 .voiceContent {
-    flex: 3;
-    text-align: center;
+  flex: 3;
+  text-align: center;
 }
 
 .voiceDsEg {
-    margin: 0 0 30px 0;
-    font-size: 3vw;
-    color: rgb(9, 28, 104);
+  margin: 0 0 30px 0;
+  font-size: 3vw;
+  color: rgb(9, 28, 104);
 }
 
 .expln {
-    font-size: 1.4vw;
-    margin: 2% 0;
-    color: rgb(9, 28, 104);
+  font-size: 1.4vw;
+  margin: 2% 0;
+  color: rgb(9, 28, 104);
 }
 
 .voiceDg {
-    background-color: transparent;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 10px;
-    font-size: 1vw;
-    margin-top: 100px;
-    color: rgb(9, 28, 104);
-    box-shadow: 5px 5px 20px;
+  background-color: transparent;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 1vw;
+  margin-top: 100px;
+  color: rgb(9, 28, 104);
+  box-shadow: 5px 5px 20px;
 }
 
+
 @media (max-width: 500px) {
-    .mainPG_box {
-        flex-direction: column;
-        padding: 1rem;
-    }
+  .mainPG_box {
+    flex-direction: column;
 
-    .voice {
-        width: 90%;
-        height: auto;
-        padding: 5vw 2vh;
-        flex-direction: column;
-    }
+  }
 
-    .MainImg {
-        padding: 0;
-    }
+  .voice {
+    width: 90%;
+    height: 80%;
+    padding-bottom: 10%;
+  }
 
-    .voiceContent {
-        text-align: center;
-    }
+  .MainImg {
+    padding: 0;
+  }
 
-    .voiceDsEg {
-        font-size: 6vw;
-    }
+  .voiceContent {
+    text-align: center;
+  }
 
-    .expln {
-        font-size: 4vw;
-    }
+  .voiceDsEg {
+    font-size: 6vw;
+  }
 
-    .mainBtn-box {
-        flex-direction: column;
-        gap: 20px;
-        justify-content: center;
-        align-items: center;
-    }
+  .expln {
+    font-size: 4vw;
+  }
 
-    .dgBtn {
-        font-size: 5vw;
-        padding: 1rem;
-    }
+  .mainBtn-box {
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .bounce {
-        display: none !important;
-        /* Hide spinner on smaller screens */
-    }
+  .dgBtn {
+    font-size: 5vw;
+    padding: 1rem;
+  }
+
+  .bounce {
+    display: none !important;
+    /* Hide spinner on smaller screens */
+  }
 }
 
 @media (max-width: 1000px) {
-    .voice {
-        width: 70%;
-        height: auto;
-        padding: 5vw 2vh;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        overflow: scroll;
-        margin-top: 20%;
-    }
+  .voice {
+    width: 70%;
+    height: 50%;
+    padding: 10vw 2vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    margin-top: 40%;
+    margin-bottom: 15%;
 
-    .MainImg {
-        padding: 0;
-    }
+  }
 
-    .voiceContent {
-        text-align: center;
+  .MainImg {
+    padding: 0;
+  }
 
-    }
+  .voiceContent {
+    text-align: center;
 
-    .voiceDsEg {
-        font-size: 5vw;
-    }
+  }
 
-    .expln {
-        font-size: 3vw;
-    }
+  .voiceDsEg {
+    font-size: 50px;
+  }
 
-    .mainBtn-box {
-        flex-direction: row;
-        gap: 20px;
-        justify-content: center;
-        align-items: center;
-    }
+  .expln {
+    font-size: 25px;
+    font-weight: lighter;
+  }
 
-    .dgBtn {
-        font-size: 5vw;
-        padding: 10px 15px;
-    }
+  .mainBtn-box {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5vh;
+  }
 
-    .bounce {
-        display: none !important;
-    }
+  .dgBtn {
+    font-size: 5vw;
+    padding: 10px 15px;
+  }
+
+  .bounce {
+    display: none !important;
+  }
 }

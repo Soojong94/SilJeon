@@ -8,7 +8,6 @@ import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 const CLIENT_ID = '848922845081-tubjkh6u80t5lleilc4r4bts1rrc1na6.apps.googleusercontent.com';
 
-
 function MenuBar() {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -67,22 +66,14 @@ function MenuBar() {
                 )}
               </GoogleOAuthProvider>
             </div>
-            {isLoggedIn ? (
-              <button className="nav-button" onClick={() => navigate('/MyPage')}>
+            {isLoggedIn && (
+              <button className="nav-button my_page_btn" onClick={() => navigate('/MyPage')}>
                 <Tooltip title="마이페이지">
                   <span className="icon">Mypage </span>
                   {/* <MedicalServicesOutlinedIcon className='icon' /> */}
                 </Tooltip>
               </button>
-            ) : (
-              <button className="nav-button" >
-                <Tooltip title="로그인이 필요한 서비스 입니다.">
-                  Mypage
-                  {/* <MedicalServicesOutlinedIcon className='icon' /> */}
-                </Tooltip>
-              </button>
             )}
-
           </div>
         </div>
       </nav>
