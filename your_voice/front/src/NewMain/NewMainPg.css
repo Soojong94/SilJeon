@@ -1,25 +1,20 @@
 /* NewMainPg.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  overflow: hidden;
-}
+
 
 .mainPG_box {
-  box-sizing: border-box;
-  width: 100vw;
-  height: 100vh;
+
+  width: 80vw;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #b6ddee, whitesmoke);
-  transition: background 0.3s ease;
   padding-top: 5%;
   margin-top: 5px;
   overflow: auto;
   /* 변경된 부분 */
+
 }
 
 .mainBtn-box {
@@ -33,8 +28,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 75%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(to right, #fdcccc, #fff1f1);
   border: 3px double lightblue;
   padding: 10px 20px;
@@ -64,6 +59,7 @@ body {
   font-size: 1.4vw;
   margin: 2% 0;
   color: rgb(9, 28, 104);
+  font-weight: lighter;
 }
 
 .voiceDg {
@@ -78,6 +74,10 @@ body {
   box-shadow: 5px 5px 20px;
 }
 
+.expln1 {
+  color: rgb(235, 70, 58);
+}
+
 
 @media (max-width: 500px) {
   .mainPG_box {
@@ -86,8 +86,8 @@ body {
   }
 
   .voice {
-    width: 90%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     padding-bottom: 10%;
   }
 
@@ -127,16 +127,16 @@ body {
 
 @media (max-width: 1000px) {
   .voice {
-    width: 70%;
-    height: 50%;
-    padding: 10vw 2vh;
+    width: 95%;
+    height: 100%;
+    padding: 18vw 2vh;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    overflow: hidden;
-    margin-top: 40%;
+    overflow: auto;
+    margin-top: 20%;
     margin-bottom: 15%;
-
+    box-shadow: none;
   }
 
   .MainImg {
@@ -149,11 +149,11 @@ body {
   }
 
   .voiceDsEg {
-    font-size: 40px;
+    font-size: 38px;
   }
 
   .expln {
-    font-size: 25px;
+    font-size: 21px;
     font-weight: lighter;
   }
 

@@ -29,13 +29,16 @@ function NewMainPg() {
           <RingLoader
             className='bounce'
             color="#36d7b7"
-            size={250}
-            speedMultiplier={0.8} />
+            size={350}
+            speedMultiplier={1} />
         </div>
         <div className='voiceContent'>
           <h2 className='voiceDsEg'>딥러닝 기반 기침소리 분석</h2>
-          <p className="expln">AI가 당신의 기침소리를 분석하여</p>
-          <p className="expln">호흡기 질환 유무를 진단합니다.</p>
+          <span className="expln ">AI가 당신의</span>
+          <span className="expln expln1"> 기침소리를 분석</span>
+          <span className="expln">하여</span>
+          <span className="expln expln2"> 호흡기 질환 유무를 진단</span>
+          <p className="expln">합니다</p>
           <div className='mainBtn-box'>
             <Covidbtn />
 

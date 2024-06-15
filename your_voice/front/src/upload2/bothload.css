@@ -28,7 +28,7 @@
     border-radius: 30px;
     width: 85%;
     height: 80%;
-     background: linear-gradient(to right, #fdcccc, #fff1f1);
+    background: linear-gradient(to right, #fdcccc, #fff1f1);
     box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
     box-sizing: border-box;
     text-align: center;
@@ -37,7 +37,7 @@
     flex-direction: column;
     align-items: center;
     margin: 9vw 0 2vw 0;
- 
+
 }
 
 #explnupF {
@@ -62,9 +62,9 @@
     width: 100%;
     box-sizing: border-box;
     margin-top: 50px;
- 
 
-   
+
+
 
 
 
@@ -163,7 +163,7 @@
     display: none;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 586px) {
     .parent-box {
         flex-direction: column;
         padding: 1rem;
@@ -174,7 +174,7 @@
         margin: 100px 0 50px 0px;
         width: 90%;
         height: 90%;
-      
+
         gap: 50px;
 
     }
@@ -194,10 +194,10 @@
 
     .inputFile-box {
         flex-direction: column;
-      
-     
-         overflow: auto;
-    
+
+
+        overflow: auto;
+
 
     }
 
@@ -236,12 +236,13 @@
         flex-direction: column;
         padding: 1rem;
     }
-    .left_content{
+
+    .left_content {
         margin-left: 10px;
     }
 
     .up_boxF {
-        
+
         width: 90%;
         height: 75%;
         padding: 10px;
@@ -270,7 +271,7 @@
 
     .inputFile-box {
         gap: 20px;
-        margin:0 5px 10px 10px;
+        margin: 0 5px 10px 10px;
         overflow: auto;
     }
 
