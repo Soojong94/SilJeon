@@ -1,102 +1,86 @@
-
-.initial-box{
-
-
+/* 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100vh;
+    background: linear-gradient(to right, #b6ddee, whitesmoke);
+    transition: background 0.3s ease;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 70%;
-    width: 70%;
+  }
+  
+  .initialBg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .initial-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: auto;
     background: transparent;
-    /* box-shadow: 0px 0px 10px lightslategray; */
-    margin: 2vw auto;
-    position: relative;
-    /* border: 3px double lightblue; */
+    margin: auto;
     border-radius: 10px;
     color: rgb(9, 28, 104);
-    margin-top: 6%;
     padding: 1%;
-    gap: 50px;
-    
-}
-
-.initialBtn{
+    gap: 20px; /* 버튼 간의 간격 조정 */
+  }
+  
+  .initialBtn {
     height: 50px;
-    width: 280px;
-    padding: 10px 30px;
+    width: 200px;
+    padding: 10px 20px;
     font-size: 20px;
-   
     color: black;
     background-color: whitesmoke;
     border: 1px solid lightgray;
     cursor: pointer;
     transition: background-color 0.3s ease;
     border-radius: 20px;
-    margin :10px 10px ;
-}
-
-.initialBtn:hover{
+  }
   
+  .initialBtn:hover {
     background-color: rgb(255, 255, 255);
     background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
-
-
-}
-
-
-@media (max-width: 1000px){
-
-    .initialBtn{
-        height: 7.2vh;
-        width: 230px;
-        padding: 2px 10px;
-        font-size: 17px;
-        color: black;
-        background-color: whitesmoke;
-        border: 1px solid lightgray;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        border-radius: 20px;
-        margin :10px 10px ;
+  }
+  
+  @media (max-width: 1000px) {
+    .initial-box {
+      width: 80%;
+      gap: 15px;
     }
-    
-    .initialBtn:hover{
-      
-        background-color: rgb(255, 255, 255);
-        background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
-    
-    
+  
+    .initialBtn {
+      height: 45px;
+      width: 180px;
+      padding: 8px 15px;
+      font-size: 18px;
     }
-
-
-}
-
-
-@media (max-width: 500px){
-
-
-    .initialBtn{
-        height: 5vh;
-        width: 200px;
-        padding: 7px 10px;
-        font-size: 12px;
-        gap: 30px;
-        color: black;
-        background-color: whitesmoke;
-        border: 1px solid lightgray;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        border-radius: 20px;
-        margin :10px 10px ;
+  }
+  
+  @media (max-width: 500px) {
+    .initial-box {
+      width: 90%;
+      gap: 10px;
     }
-    
-    .initialBtn:hover{
-      
-        background-color: rgb(255, 255, 255);
-        background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
-    
-    
+  
+    .initialBtn {
+      height: 40px;
+      width: 160px;
+      padding: 5px 10px;
+      font-size: 16px;
     }
-    
-}
+  }
+  
