@@ -14,17 +14,19 @@
   width: 70%;
   height: 70%;
   border: 3px double lightblue;
-  padding: 20px;
+  padding: 2vh 1vw;
   border-radius: 30px;
   background: linear-gradient(to right, #fdcccc, #fff1f1);
   box-shadow: 0px 0px 10px lightslategray;
   text-align: center;
-  margin-top: 100px;
+  margin: 100px 0 30px 0;
+  overflow: auto;
 
 }
 
 
 .contentDg {
+  flex :3;
   margin: 1.7vw 0 0 0;
   font-size: 2vw;
   color: rgb(9, 28, 104);
@@ -62,7 +64,7 @@
 .Dg {
 
   flex: 3;
-  font-size: 3vw;
+  font-size: 30px;
   padding: 3vw;
   color: rgb(9, 28, 104);
   ;
@@ -84,7 +86,7 @@
   .Dg {
 
     
-    font-size: 40px;
+    font-size: 30px;
     padding: 25px;
     color: rgb(9, 28, 104);
     ;
@@ -94,7 +96,7 @@
   .resultDg {
   
     margin: 1.5vw 0 0 0;
-    font-size:40px;
+    font-size:30px;
     color: rgb(9, 28, 104);
   
   
@@ -126,7 +128,7 @@
     font-size: 30px;
     padding: 10px;
     color: rgb(9, 28, 104);
-    ;
+    margin-bottom: 30px;
   
   }
 
