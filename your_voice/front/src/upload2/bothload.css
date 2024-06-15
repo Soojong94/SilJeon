@@ -192,8 +192,9 @@
         flex-direction: column;
         gap: 50px;
         height: auto;
-        padding: 3vw;
+        padding: 2vw;
         overflow: auto;
+        margin: 20px;
 
     }
 

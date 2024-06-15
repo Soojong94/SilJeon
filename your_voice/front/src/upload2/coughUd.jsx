@@ -60,6 +60,7 @@ const CoughUd = () => {
             <div className="file-buttons">
 
               <button className="inputbtn" onClick={() => inputBtn.current.click()}>1 파일 선택</button>
+              
               <input type="file" onChange={handleFileChange} ref={inputBtn} className="file-input" />
 
               <div className="button-column">

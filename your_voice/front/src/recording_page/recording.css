@@ -215,14 +215,16 @@ audio {
 @media (max-width: 500px) {
   .udh2{
 
-    margin-top: 80px;
+    margin-top: 40px;
   }
   .divided_body {
     display: flex;
     flex-direction: column;
  
   }
- 
+ .PropagateLoader-container{
+  margin-top: 50px;
+ }
   .up_box {
     width: 80%;
     height: 80%;
@@ -233,35 +235,39 @@ audio {
     flex-direction: column;
    
   }
+  .record-container{
 
+margin-bottom: 20px;
+
+  }
   .udH1 {
-    font-size: 20px;
+    font-size: 30px;
 
   }
 
   .udh2 {
-    font-size: 5vw;
+    font-size: 6vw;
   }
 
   .record-btn,
   .btnUd,
   .btnBack {
-    width: 80px;
-    padding: 10px 15px;
+  
+    padding: 5px 7px;
     border-radius: 10px;
     font-size: 13px;
+    min-width: 170px;
 
-    padding: 5px 10px;
-    min-width: 80%;
+    
   }
 
   .left_box,
   .right_box {
-    font-size: 3vw;
+    font-size: 15px;
   }
 
   audio {
-    width: 33vw;
+    width: 45vw;
     height: 2vh;
   }
 
@@ -280,7 +286,7 @@ audio {
 
   .PropagateLoader_container {
     display: none !important;
-    /* Hide spinner on screens less than 500px */
+
   }
 }
 
