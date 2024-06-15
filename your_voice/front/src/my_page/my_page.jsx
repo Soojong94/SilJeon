@@ -1,6 +1,6 @@
-
 import './my_page.css';
 import React, { useState, useEffect } from 'react';
+import moment from 'moment'; // <-- 여기에 moment를 임포트합니다.
 import MenuBar from '../Route/menu';
 import ChartComponent from './ChartComponent';
 import { useNavigate } from 'react-router-dom';
@@ -17,6 +17,8 @@ function My_page() {
   const [showMonthly, setShowMonthly] = useState(false);
   const [userId, setUserId] = useState(null);
   const [todayData, setTodayData] = useState([]);
+  const [selectedTime, setSelectedTime] = useState('');
+  const [latestData, setLatestData] = useState([]);
 
   useEffect(() => {
     const storedUserInfo = sessionStorage.getItem('user_info');
@@ -26,6 +28,18 @@ function My_page() {
     }
   }, []);
 
+  useEffect(() => {
+    if (todayData.length > 0) {
+      const latestDataEntry = todayData.reduce((latest, entry) => {
+        const latestDate = moment(latest.time, 'HH:mm:ss');
+        const entryDate = moment(entry.time, 'HH:mm:ss');
+        return entryDate.isAfter(latestDate) ? entry : latest;
+      }, todayData[0]);
+      setLatestData([latestDataEntry]);
+      setSelectedTime(latestDataEntry.time);
+    }
+  }, [todayData]);
+
   const toggleChart = () => {
     setShowMonthly(!showMonthly);
   };
@@ -33,6 +47,19 @@ function My_page() {
   const navchange_member = () => {
     navigate('/initial_member');
   };
+
+  const handleTimeChange = (event) => {
+    setSelectedTime(event.target.value);
+  };
+
+  const filteredTodayData = selectedTime
+    ? todayData.filter(entry => entry.time === selectedTime)
+    : latestData;
+
+  const timeOptions = [...new Set(todayData.map(entry => entry.time))];
+
+  // 데이터를 disease_id로 정렬합니다.
+  const sortedTodayData = filteredTodayData.sort((a, b) => a.disease_id - b.disease_id);
 
   return (
     <div className='my_page'>
@@ -57,13 +84,20 @@ function My_page() {
               <table>
                 <thead>
                   <tr>
-                    <th>시간</th>
-                    <th >질병</th>
+                    <th> <div className="filter-container">
+              <label htmlFor="time-select">시간 </label>
+              <select id="time-select" value={selectedTime} onChange={handleTimeChange}>
+                {timeOptions.map((time, index) => (
+                  <option key={index} value={time}>{time}</option>
+                ))}
+              </select>
+            </div></th>
+                    <th>질병</th>
                     <th>상태 값 (%)</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {todayData.map((entry, index) => (
+                  {sortedTodayData.map((entry, index) => (
                     <tr key={index}>
                       <td>{entry.time}</td>
                       <td>{diseaseNames[entry.disease_id]}</td>
