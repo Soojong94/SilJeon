@@ -12,33 +12,38 @@
     width: 1px;
     height: 100%;
     background-color: #1e6b8d;
-    margin: 0 ;
+    margin: 0;
 }
-.ExplnUdF{
+
+.ExplnUdF {
     font-size: 2vw;
 }
-.CovidGo{
+
+.CovidGo {
     margin-top: 2vw;
 }
+
 .up_boxF {
     border-radius: 30px;
     width: 85%;
     height: 80%;
-   
+
     background: linear-gradient(to right, #fdcccc, #fff1f1);
     box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
     box-sizing: border-box;
     text-align: center;
-    padding: 1vw ;
+    padding: 1vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 8vw 0 1vw 0;
 }
-#explnupF{
-margin-top: 70px;
+
+#explnupF {
+    margin-top: 70px;
 
 }
+
 .udH15 {
     color: rgb(9, 28, 104);
     font-size: 2.5vw;
@@ -54,11 +59,11 @@ margin-top: 70px;
     display: flex;
     align-items: center;
     width: 100%;
-    
+
     padding: 20px;
-  
-   
-   
+
+
+
 }
 
 .left_content {
@@ -113,7 +118,7 @@ margin-top: 70px;
     border: none;
     cursor: pointer;
     border-radius: 3vw;
-    font-size:1.5vw;
+    font-size: 1.5vw;
     color: rgb(9, 28, 104);
     box-shadow: 3px 3px 10px;
     display: flex;
@@ -158,6 +163,7 @@ margin-top: 70px;
     .parent-box {
         flex-direction: column;
         padding: 1rem;
+
     }
 
     .up_boxF {
@@ -165,12 +171,15 @@ margin-top: 70px;
         width: 90%;
         height: 90%;
         padding: 30px 20px;
-       
+        gap: 50px;
+
     }
-    #explnupF{
+
+    #explnupF {
         margin-top: 10px;
-        
-        }
+
+    }
+
     .udH15 {
         font-size: 20px;
     }
@@ -181,13 +190,16 @@ margin-top: 70px;
 
     .inputFile-box {
         flex-direction: column;
-        gap: 20px;
+        gap: 50px;
         height: auto;
         padding: 3vw;
         overflow: auto;
+
     }
 
-    .recordM, .inputbtn, .recordPg_Btb {
+    .recordM,
+    .inputbtn,
+    .recordPg_Btb {
         width: 100px;
         height: 20px;
         padding: 5px 12px;
@@ -205,7 +217,8 @@ margin-top: 70px;
     }
 
     .bounce {
-        display: none !important; /* Hide spinner on mobile */
+        display: none !important;
+        /* Hide spinner on mobile */
     }
 
     .recordPg_Move_box {
@@ -215,21 +228,18 @@ margin-top: 70px;
 }
 
 @media (max-width: 1000px) {
-    .parent-box{
-
+    .parent-box {
         flex-direction: column;
         padding: 1rem;
     }
+
     .up_boxF {
-        margin: 150px 10px 0 10px;
         width: 90%;
-        height: 90%;
-        padding: 30px 20px;
+        height: 75%;
+        padding: 20px 20px;
         width: 90%;
-        padding: 20px;
         display: flex;
         flex-direction: column;
-      
     }
 
     .ExplnUdF {
@@ -240,10 +250,12 @@ margin-top: 70px;
     .udH15 {
         font-size: 20px;
     }
-    #explnupF{
+
+    #explnupF {
         margin-top: 0px;
-        
-        }
+
+    }
+
     .udh2 {
         font-size: 3vw;
     }
@@ -254,7 +266,9 @@ margin-top: 70px;
         overflow-y: hidden;
     }
 
-    .recordM, .inputbtn, .recordPg_Btb {
+    .recordM,
+    .inputbtn,
+    .recordPg_Btb {
         font-size: 12px;
         padding: 10px 15px;
         width: 120px;
@@ -266,6 +280,11 @@ margin-top: 70px;
     }
 
     .bounce {
-        display: none !important; /* Hide spinner on smaller screens */
+        display: none !important;
+        /* Hide spinner on smaller screens */
+    }
+
+    .middle_content {
+        margin-bottom: 50px;
     }
 }

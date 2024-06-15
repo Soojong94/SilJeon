@@ -153,14 +153,16 @@ audio {
 }
 
 @media (max-width: 1000px) {
+
+
   .up_box {
     width: 75%;
     height: 70%;
-    padding: 10px ;
+    padding: 10px;
   }
 
   .udH1 {
-   
+
     font-size: 4.5vw;
   }
 
@@ -200,7 +202,8 @@ audio {
   }
 
   .PropagateLoader_container {
-    display: none; /* Hide spinner on screens less than 1000px */
+    display: none;
+    /* Hide spinner on screens less than 1000px */
   }
 }
 
@@ -211,7 +214,7 @@ audio {
     padding: 5px 8px;
     justify-content: center;
     margin-top: 100px;
-    flex:3;
+    flex: 3;
   }
 
   .udH1 {
@@ -230,7 +233,7 @@ audio {
     padding: 10px 15px;
     border-radius: 10px;
     font-size: 13px;
-  
+
     padding: 5px 10px;
     min-width: 80%;
   }
@@ -259,7 +262,8 @@ audio {
   }
 
   .PropagateLoader_container {
-    display: none !important; /* Hide spinner on screens less than 500px */
+    display: none !important;
+    /* Hide spinner on screens less than 500px */
   }
 }
 
