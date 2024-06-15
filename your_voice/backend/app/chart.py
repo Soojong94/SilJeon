@@ -4,7 +4,6 @@ import datetime as dt
 
 chart_bp = Blueprint("chart", __name__)
 
-
 @chart_bp.route("/api/dailyChart", methods=["POST"])
 def dailyChart():
     userId = request.json.get("userId")
@@ -14,19 +13,14 @@ def dailyChart():
     conn = connect_db()
     cursor = conn.cursor()
 
-    # 가장 최신 데이터 쿼리
+    # 가장 최신 4개의 데이터 쿼리
     cursor.execute(
         """
-        SELECT cs1.disease_id, cs1.input_date as datetime, cs1.cough_status
-        FROM cough_status cs1
-        JOIN (
-            SELECT disease_id, DATE(input_date) as date, MAX(input_date) as max_date
-            FROM cough_status 
-            WHERE social_user_id = %s AND input_date >= %s
-            GROUP BY disease_id, DATE(input_date)
-        ) cs2
-        ON cs1.disease_id = cs2.disease_id AND DATE(cs1.input_date) = cs2.date AND cs1.input_date = cs2.max_date
-        ORDER BY cs1.input_date
+        SELECT disease_id, input_date, cough_status
+        FROM cough_status
+        WHERE social_user_id = %s AND input_date >= %s
+        ORDER BY input_date DESC
+        LIMIT 4
         """,
         (userId, week_ago),
     )
@@ -81,14 +75,13 @@ def dailyChart():
     daily_averages = [
         {
             "date": date_str,
-            "latest_data": latest_data,
+            "latest_data": grouped_latest_data.get(date_str, []),
             "all_data": grouped_all_data[date_str],
         }
-        for date_str, latest_data in grouped_latest_data.items()
+        for date_str in grouped_all_data.keys()
     ]
 
     return jsonify(daily_averages), 200
-
 
 @chart_bp.route("/api/monthChart", methods=["POST"])
 def monthChart():
