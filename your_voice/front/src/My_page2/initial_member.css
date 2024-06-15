@@ -6,8 +6,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 80vh;
-    width: 70vw;
+    height: 70%;
+    width: 70%;
     background: transparent;
     /* box-shadow: 0px 0px 10px lightslategray; */
     margin: 2vw auto;
@@ -16,17 +16,17 @@
     border-radius: 10px;
     color: rgb(9, 28, 104);
     margin-top: 6%;
-    position: relative;
     padding: 1%;
+    gap: 50px;
     
 }
 
 .initialBtn{
     height: 50px;
-    width: 200px;
-    padding: 7px 30px;
+    width: 280px;
+    padding: 10px 30px;
     font-size: 20px;
-    gap: 30px;
+   
     color: black;
     background-color: whitesmoke;
     border: 1px solid lightgray;
@@ -42,4 +42,61 @@
     background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
 
 
+}
+
+
+@media (max-width: 1000px){
+
+    .initialBtn{
+        height: 7.2vh;
+        width: 230px;
+        padding: 2px 10px;
+        font-size: 17px;
+        color: black;
+        background-color: whitesmoke;
+        border: 1px solid lightgray;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        border-radius: 20px;
+        margin :10px 10px ;
+    }
+    
+    .initialBtn:hover{
+      
+        background-color: rgb(255, 255, 255);
+        background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
+    
+    
+    }
+
+
+}
+
+
+@media (max-width: 500px){
+
+
+    .initialBtn{
+        height: 5vh;
+        width: 200px;
+        padding: 7px 10px;
+        font-size: 12px;
+        gap: 30px;
+        color: black;
+        background-color: whitesmoke;
+        border: 1px solid lightgray;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        border-radius: 20px;
+        margin :10px 10px ;
+    }
+    
+    .initialBtn:hover{
+      
+        background-color: rgb(255, 255, 255);
+        background: linear-gradient(to right, #7bcedd, rgb(116, 118, 241));
+    
+    
+    }
+    
 }
