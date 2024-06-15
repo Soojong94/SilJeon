@@ -24,7 +24,7 @@
     margin-top: 50px;
     border-radius: 30px;
     width: 90%;
-    height: auto;
+    height: 70%;
     max-height: 90%;
     background: linear-gradient(to right, #fdcccc, #fff1f1);
     box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
@@ -35,8 +35,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 100px 0 80px 0;
 }
+#explnupF{
+margin-top: 70px;
 
+}
 .udH15 {
     color: rgb(9, 28, 104);
     font-size: 2.5vw;
@@ -52,8 +56,11 @@
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 10px;
-    overflow-y: auto;
+    
+    padding: 20px;
+    overflow: auto;
+   
+   
 }
 
 .left_content {
@@ -157,10 +164,14 @@
 
     .up_boxF {
         margin: 30px 10px 0 10px;
-        width: 90%;
+        width: 80%;
         padding: 30px 20px;
+        overflow: auto;
     }
-
+    #explnupF{
+        margin-top: 10px;
+        
+        }
     .udH15 {
         font-size: 20px;
     }
@@ -212,12 +223,16 @@
 
     .ExplnUdF {
         font-size: 15px;
+        margin-top: 60px;
     }
 
     .udH15 {
         font-size: 20px;
     }
-
+    #explnupF{
+        margin-top: 0px;
+        
+        }
     .udh2 {
         font-size: 3vw;
     }
