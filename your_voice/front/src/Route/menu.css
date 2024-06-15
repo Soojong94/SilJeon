@@ -37,7 +37,7 @@
 .nav-items {
   display: flex;
   align-items: center;
-  margin-right: 1.2%;
+  margin-right: 10%;
 }
 
 .nav-button {
@@ -62,6 +62,10 @@
 
 .logo_img {
   height: 17vh;
+}
+
+.login_menu {
+  margin-right: 5%;
 }
 
 
