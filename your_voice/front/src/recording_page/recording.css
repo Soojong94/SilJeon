@@ -85,7 +85,7 @@ body {
 audio {
   background-color: whitesmoke;
   border: none;
-  padding: 10px 15px;
+  padding: 7px 10px;
   border-radius: 50px;
   width: 30vw;
   height: 5vh;
@@ -266,7 +266,7 @@ margin-bottom: 20px;
 
   audio {
     width: 45vw;
-    height: 3.3vh;
+    height: 3.8vh;
   }
 
   .coughUp_Move_box {
