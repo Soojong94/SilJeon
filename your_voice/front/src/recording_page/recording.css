@@ -213,6 +213,16 @@ audio {
 }
 
 @media (max-width: 500px) {
+  .udh2{
+
+    margin-top: 80px;
+  }
+  .divided_body {
+    display: flex;
+    flex-direction: column;
+ 
+  }
+ 
   .up_box {
     width: 80%;
     height: 80%;
@@ -220,6 +230,8 @@ audio {
     justify-content: center;
     margin-top: 100px;
     flex: 3;
+    flex-direction: column;
+   
   }
 
   .udH1 {
