@@ -21,7 +21,6 @@
     margin-top: 20px;
 }
 .up_boxF {
-    margin-top: 50px;
     border-radius: 30px;
     width: 90%;
     height: 70%;
@@ -30,7 +29,7 @@
     box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
     box-sizing: border-box;
     text-align: center;
-    padding: 20px 50px;
+    padding: 20px ;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -67,13 +66,13 @@ margin-top: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 2;
+    flex: 4;
 }
 
 .middle_content {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex: 4;
     align-items: center;
 }
 
@@ -164,9 +163,10 @@ margin-top: 70px;
 
     .up_boxF {
         margin: 30px 10px 0 10px;
-        width: 80%;
+        width: 90%;
+        height: 90%;
         padding: 30px 20px;
-        overflow: auto;
+       
     }
     #explnupF{
         margin-top: 10px;
