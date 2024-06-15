@@ -31,15 +31,17 @@ def coughUpload():
 
         # 모델 예측
         prediction = model.predict(mfcc)
-        predicted_class = np.argmax(prediction, axis=1)
+        predicted_class = np.argmax(prediction, axis=1)[0]
         class_labels = ["정상", "심부전", "천식", "코로나"]
-        predicted_label = class_labels[predicted_class[0]]
+        predicted_label = class_labels[predicted_class]
         prediction_probabilities = {
             class_labels[i]: float(prediction[0][i]) for i in range(len(class_labels))
         }
 
         conn = connect_db()
         cursor = conn.cursor()
+
+        current_date = datetime.now().strftime("%Y-%m-%d")
 
         for disease_name, probability in prediction_probabilities.items():
             cursor.execute(
@@ -48,22 +50,45 @@ def coughUpload():
             )
             disease_id_tuple = cursor.fetchone()
 
-            if disease_id_tuple:
-                disease_id = disease_id_tuple[0]
-                print("질병번호 : ", disease_id)
-            else:
+            if not disease_id_tuple:
                 print(f"{disease_name}에 해당하는 질병번호를 찾을 수 없습니다.")
                 continue
 
+            disease_id = disease_id_tuple[0]
+            print("질병번호 : ", disease_id)
+
             cursor.execute(
                 """
-                INSERT INTO cough_status (social_user_id, cough_status, input_date, disease_id)
-                VALUES (%s, %s, NOW(), %s)
+                SELECT status_idx FROM cough_status
+                WHERE social_user_id = %s AND DATE(input_date) = %s AND disease_id = %s
                 """,
-                (user_id, probability, disease_id),
+                (user_id, current_date, disease_id),
             )
+            existing_record = cursor.fetchone()
+
+            if not existing_record:
+                cursor.execute(
+                    """
+                    INSERT INTO cough_status (social_user_id, cough_status, input_date, disease_id)
+                    VALUES (%s, %s, NOW(), %s)
+                    """,
+                    (user_id, probability, disease_id),
+                )
 
         conn.commit()
+
+        # 예측된 질병의 진단 내용 가져오기
+        cursor.execute(
+            """
+            SELECT disease_diagnosis
+            FROM disease_diagnosis
+            WHERE disease_id = %s
+            """,
+            (predicted_class + 1,)  # predicted_class는 0부터 시작하므로 +1
+        )
+        diagnosis_result = cursor.fetchone()
+        diagnosis_message = diagnosis_result[0] if diagnosis_result else "진단 내용을 찾을 수 없습니다."
+
         cursor.close()
         conn.close()
 
@@ -72,6 +97,7 @@ def coughUpload():
                 {
                     "prediction": predicted_label,
                     "probabilities": prediction_probabilities,
+                    "diagnosis_message": diagnosis_message,
                 }
             ),
             200,
