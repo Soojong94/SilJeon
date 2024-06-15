@@ -156,9 +156,10 @@ audio {
 
 
   .up_box {
-    width: 75%;
-    height: 70%;
-    padding: 10px;
+    width: 90%;
+    height: 85%;
+    padding-bottom: 50px;
+    margin-bottom: 30px;
   }
 
   .udH1 {
@@ -204,6 +205,10 @@ audio {
   .PropagateLoader_container {
     display: none;
     /* Hide spinner on screens less than 1000px */
+  }
+
+  .parent-box {
+    overflow: auto;
   }
 }
 
