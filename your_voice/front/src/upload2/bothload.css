@@ -12,29 +12,28 @@
     width: 1px;
     height: 100%;
     background-color: #1e6b8d;
-    margin: 0 20px;
+    margin: 0 ;
 }
 .ExplnUdF{
-    font-size: 20px;
+    font-size: 2vw;
 }
 .CovidGo{
-    margin-top: 20px;
+    margin-top: 2vw;
 }
 .up_boxF {
     border-radius: 30px;
-    width: 90%;
-    height: 70%;
-    max-height: 90%;
+    width: 85%;
+    height: 80%;
+   
     background: linear-gradient(to right, #fdcccc, #fff1f1);
     box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
     box-sizing: border-box;
     text-align: center;
-    padding: 20px ;
-    position: relative;
+    padding: 1vw ;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px 0 80px 0;
+    margin: 8vw 0 1vw 0;
 }
 #explnupF{
 margin-top: 70px;
@@ -57,7 +56,7 @@ margin-top: 70px;
     width: 100%;
     
     padding: 20px;
-    overflow: auto;
+  
    
    
 }
@@ -114,13 +113,13 @@ margin-top: 70px;
     border: none;
     cursor: pointer;
     border-radius: 3vw;
-    font-size: 17px;
+    font-size:1.5vw;
     color: rgb(9, 28, 104);
     box-shadow: 3px 3px 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px;
+    margin: 1vw;
 }
 
 .recordPg_Move_box {
@@ -137,7 +136,7 @@ margin-top: 70px;
     border: none;
     cursor: pointer;
     border-radius: 5vw;
-    font-size: 20px;
+    font-size: 1.2vw;
     color: rgb(9, 28, 104);
 }
 
@@ -155,14 +154,14 @@ margin-top: 70px;
     display: none;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
     .parent-box {
         flex-direction: column;
         padding: 1rem;
     }
 
     .up_boxF {
-        margin: 30px 10px 0 10px;
+        margin: 100px 10px 0 10px;
         width: 90%;
         height: 90%;
         padding: 30px 20px;
@@ -202,7 +201,7 @@ margin-top: 70px;
     }
 
     .selectedfileName {
-        font-size: 2vw;
+        font-size: 10px;
     }
 
     .bounce {
@@ -216,9 +215,21 @@ margin-top: 70px;
 }
 
 @media (max-width: 1000px) {
+    .parent-box{
+
+        flex-direction: column;
+        padding: 1rem;
+    }
     .up_boxF {
+        margin: 150px 10px 0 10px;
+        width: 90%;
+        height: 90%;
+        padding: 30px 20px;
         width: 90%;
         padding: 20px;
+        display: flex;
+        flex-direction: column;
+      
     }
 
     .ExplnUdF {
@@ -239,7 +250,8 @@ margin-top: 70px;
 
     .inputFile-box {
         gap: 10px;
-        overflow: auto;
+        overflow-x: scroll;
+        overflow-y: hidden;
     }
 
     .recordM, .inputbtn, .recordPg_Btb {

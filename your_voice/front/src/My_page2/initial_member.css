@@ -8,11 +8,11 @@
     align-items: center;
     height: 80vh;
     width: 70vw;
-    background: linear-gradient(to right, whitesmoke, #fff1f1);
-    box-shadow: 0px 0px 10px lightslategray;
+    background: transparent;
+    /* box-shadow: 0px 0px 10px lightslategray; */
     margin: 2vw auto;
     position: relative;
-    border: 3px double lightblue;
+    /* border: 3px double lightblue; */
     border-radius: 10px;
     color: rgb(9, 28, 104);
     margin-top: 6%;
