@@ -4,7 +4,7 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
- background: linear-gradient(to right, #b6ddee, whitesmoke);
+  background: linear-gradient(to right, #b6ddee, whitesmoke);
 }
 
 
@@ -26,7 +26,7 @@
 
 
 .contentDg {
-  flex :3;
+  flex: 3;
   margin: 1.7vw 0 0 0;
   font-size: 2vw;
   color: rgb(9, 28, 104);
@@ -38,7 +38,7 @@
 
 .resultDg {
   margin: 1.5vw 0 0 0;
-  font-size: 18px;
+  font-size: 50px;
   color: rgb(9, 28, 104);
 
 
@@ -71,82 +71,88 @@
 
 }
 
-@media (max-width: 1000px){
+@media (max-width: 1000px) {
 
 
-  .Dgcontent_box{
+  .Dgcontent_box {
 
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 80%;
-    margin-top:100px;
+    margin-top: 100px;
     overflow: auto;
-    
+
   }
+
   .Dg {
 
-    
+
     font-size: 22px;
     padding: 25px;
     color: rgb(9, 28, 104);
     ;
-  
+
   }
 
   .resultDg {
-  
+
     margin: 1.5vw 0 0 0;
-    font-size:25px;
+    font-size: 25px;
     color: rgb(9, 28, 104);
-  
-  
-  
+
+
+
   }
-  .contentDg{
+
+  .contentDg {
 
     font-size: 20px;
     margin-bottom: 30px;
- 
+
   }
-  
+
 }
 
-@media (max-width: 400px){
+@media (max-width: 400px) {
 
-  .Dgcontent_box{
+  .Dgcontent_box {
     overflow: auto;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 80%;
-    margin-top:100px;
-    
+    margin-top: 100px;
+
   }
+
   .Dg {
 
-   
-    font-size: 20px;
+
+    font-size: 15px;
     padding: 10px;
     color: rgb(9, 28, 104);
     margin-bottom: 30px;
-  
+
   }
-  .Dg-adv{
+
+  .Dg-adv {
     font-weight: lighter;
 
   }
+
   .resultDg {
     margin: 1.5vw 0 0 0;
     font-size: 15px;
     color: rgb(9, 28, 104);
-  
-  
-  
-  }
-  .contentDg{
 
-    font-size: 15px;
+
+
+  }
+
+  .contentDg {
+
+    font-size: 20px;
     margin-bottom: 20px;
   }
 

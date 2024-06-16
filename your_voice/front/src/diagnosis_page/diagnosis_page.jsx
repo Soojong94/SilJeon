@@ -32,6 +32,7 @@ const DiagnosisPage = () => {
         <div className='diagnosis_body_container'>
           <h3 className='contentDg'> 기침소리 상태 결과 <br /></h3>
           <h1 className='resultDg'>{(analysisResult.prediction)}</h1>
+          <h3>{(parseFloat(analysisResult.probabilities[analysisResult.prediction]) * 100).toFixed(2)}%</h3>
           <div className='Dgcontent_box'>
             {windowWidth > 600 && (
               <div className='spinnerDg'>
@@ -43,8 +44,6 @@ const DiagnosisPage = () => {
               </div>
             )}
             <div className='Dg'>
-              <h3>{(parseFloat(analysisResult.probabilities[analysisResult.prediction]) * 100).toFixed(2)}%</h3>
-              <br />
               <h3>{analysisResult.diagnosis_message}</h3>
             </div>
           </div>
