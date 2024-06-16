@@ -31,13 +31,15 @@ body {
   flex-direction: column;
   align-items: center;
   border-radius: 30px;
-  margin-top: 100px;
-  overflow: auto;
+  margin-top: 20vh;
+  margin-bottom: 8vh;
+
 }
 
 .udH1 {
   color: rgb(9, 28, 104);
   font-size: 3vw;
+  margin-top: 7vh;
 
 }
 
@@ -85,10 +87,10 @@ body {
 audio {
   background-color: whitesmoke;
   border: none;
-  padding: 7px 10px;
+  padding: 7px 0px;
   border-radius: 50px;
   width: 30vw;
-  height: 5vh;
+  height: 7vh;
   transition: background-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 5);
   margin-bottom: 2%;
@@ -159,7 +161,7 @@ audio {
     width: 90%;
     height: 85%;
 
-    margin-bottom: 100px;
+    margin-bottom: 20px;
   }
 
   .udH1 {
@@ -194,7 +196,7 @@ audio {
 
   audio {
     width: 42vw;
-    height: 3vh;
+    height: 7vh;
   }
 
   .recordPg_Btb {
@@ -212,7 +214,7 @@ audio {
 }
 
 
-@media (max-width: 760px){
+@media (min-height: 760px){
 
  
   .divided_body {
@@ -222,7 +224,7 @@ audio {
   }
 
   .PropagateLoader-container {
-    margin-top: 50px;
+    margin-top: 200px;
   }
 
   .up_box {
@@ -232,6 +234,7 @@ audio {
     margin-top: 100px;
     flex: 3;
     flex-direction: column;
+    margin-bottom: 30px;
 
   }
 
@@ -266,7 +269,7 @@ audio {
 
   audio {
     width: 30vw;
-    height: 4.2vh;
+    height: 8vh;
   }
 
   .coughUp_Move_box {
@@ -349,7 +352,7 @@ audio {
 
   audio {
     width: 45vw;
-    height: 3.8vh;
+    height: 7vh;
   }
 
   .coughUp_Move_box {
