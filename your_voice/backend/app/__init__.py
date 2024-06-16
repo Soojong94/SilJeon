@@ -13,7 +13,7 @@ def create_app():
     CORS(
         app,
         supports_credentials=True,
-        resources={r"/api/*": {"origins": "http://localhost:3000"}},
+        resources={r"/api/*": {"origins": "https://yourcough.site"}},
     )
     secret_key = secrets.token_hex(32)
     app.secret_key = secret_key
