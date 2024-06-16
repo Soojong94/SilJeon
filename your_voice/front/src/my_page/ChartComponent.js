@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const fetchDailyChart = async (userId) => {
   try {
-    const response = await axios.post('http://localhost:5000/api/dailyChart', { userId });
+    const response = await axios.post('https://yourcough.site/api/dailyChart', { userId });
     console.log(response.data);
     return response.data;
   } catch (error) {
@@ -18,7 +18,7 @@ const fetchDailyChart = async (userId) => {
 
 const fetchMonthlyChart = async (userId) => {
   try {
-    const response = await axios.post('http://localhost:5000/api/monthChart', { userId });
+    const response = await axios.post('https://yourcough.site/api/monthChart', { userId });
     console.log(response.data);
     return response.data;
   } catch (error) {
@@ -157,7 +157,7 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
       <button className="chart-button" onClick={toggleChart}>
         {showMonthly ? '일간 차트 보기' : '월간 차트 보기'}
       </button>
-      <div style={{ height: showMonthly ? '60vh' : '53vh', width: showMonthly ? '80vw' : '40vw', display: 'flex', justifyContent: 'center' }}>
+      <div style={{ height: showMonthly ? '53vh' : '53vh', width: showMonthly ? '80vw' : '40vw', display: 'flex', justifyContent: 'center' }}>
         {showMonthly ? <Bar data={data} options={options} /> : <Line data={data} options={options} />}
       </div>
     </div>
