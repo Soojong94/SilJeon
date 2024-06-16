@@ -8,7 +8,7 @@ import MenuBar from '../Route/menu';
 function LoadingPage() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { file } = location.state;
+  const { file, analysisType } = location.state;
 
   const userInfo = sessionStorage.getItem('user_info');
   const { id: userId } = userInfo ? JSON.parse(userInfo) : {};
@@ -18,6 +18,7 @@ function LoadingPage() {
       const formData = new FormData();
       formData.append('file', file);
       formData.append('userId', userId);
+      formData.append('analysisType', analysisType); // 분석 유형 추가
 
       try {
         const response = await axios.post('http://localhost:5000/api/coughUpload', formData, {
@@ -42,7 +43,7 @@ function LoadingPage() {
     };
 
     uploadAndAnalyzeFile();
-  }, [file, navigate, userId]);
+  }, [file, navigate, userId, analysisType]);
 
   return (
     <div className='ringLoader'>

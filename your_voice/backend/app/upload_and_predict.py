@@ -5,6 +5,10 @@ import librosa
 import tensorflow as tf
 from werkzeug.utils import secure_filename
 import io
+from flask import Blueprint, request, jsonify
+import logging
+from db.db import connect_db
+from datetime import datetime
 
 # MFCC 파라미터
 n_mfcc = 20
@@ -50,8 +54,8 @@ def convert_to_wav(file_bytes, file_extension):
     except Exception as e:
         raise Exception(f"파일 변환 중 오류 발생: {e}")
 
-def preprocess_audio(file_bytes, duration=10, sr=22050, n_mfcc=20, n_fft=2048, hop_length=512):
-    print(f"preprocess_audio 함수 호출됨")
+def preprocess_audio_model1(file_bytes, duration=10, sr=22050, n_mfcc=20, n_fft=2048, hop_length=512):
+    print(f"preprocess_audio_model1 함수 호출됨")
 
     # 파일을 임시로 저장
     with open("temp_audio.wav", "wb") as f:
@@ -92,6 +96,33 @@ def preprocess_audio(file_bytes, duration=10, sr=22050, n_mfcc=20, n_fft=2048, h
 
     return mfcc
 
+def preprocess_audio_model2(file_bytes):
+    print(f"preprocess_audio_model2 함수 호출됨")
+
+    # 파일을 임시로 저장
+    with open("temp_audio.wav", "wb") as f:
+        f.write(file_bytes.read())
+
+    # librosa를 사용하여 임시 파일에서 오디오 데이터를 로드
+    audio_data, sr = librosa.load("temp_audio.wav", sr=None)
+    os.remove("temp_audio.wav")  # 임시 파일 삭제
+
+    # 입력 신호 길이가 n_fft보다 짧은 경우 처리하지 않음
+    if len(audio_data) < n_fft:
+        raise ValueError(f"입력 신호 길이가 너무 짧습니다: {len(audio_data)}")
+
+    # MFCC 특징 추출
+    mfccs = librosa.feature.mfcc(y=audio_data, sr=sr, n_mfcc=40)
+    features = np.mean(mfccs.T, axis=0)
+    
+    # 특성 배열의 차원 확인
+    if features.ndim != 1:
+        raise ValueError(f"특성 배열의 차원이 올바르지 않습니다: {features.ndim}차원")
+
+    features = np.expand_dims(features, axis=0)  # 배치 차원 추가
+
+    return features
+
 def load_model1():
     # 현재 파일의 디렉토리 경로 설정
     base_dir = os.path.dirname(__file__)
@@ -99,7 +130,19 @@ def load_model1():
 
     try:
         model = tf.keras.models.load_model(model_path)
-        print("모델 로딩 성공")
+        print("모델 1 로딩 성공")
+        return model
+    except Exception as e:
+        raise RuntimeError("모델을 로드하는 중 오류 발생") from e
+
+def load_model2():
+    # 현재 파일의 디렉토리 경로 설정
+    base_dir = os.path.dirname(__file__)
+    model_path = os.path.join(base_dir, "..", "models", "cough_SCH.keras")
+
+    try:
+        model = tf.keras.models.load_model(model_path)
+        print("모델 2 로딩 성공")
         return model
     except Exception as e:
         raise RuntimeError("모델을 로드하는 중 오류 발생") from e
