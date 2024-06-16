@@ -8,6 +8,14 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 
+# .env 파일 복사
+COPY .env .
+
+# 환경 변수 설정
+ENV WDS_SOCKET_HOST=0.0.0.0
+ENV WDS_SOCKET_PATH=/ws
+ENV WDS_SOCKET_PORT=443
+
 # 소스 코드 복사
 COPY . .
 
