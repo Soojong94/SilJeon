@@ -159,7 +159,7 @@ audio {
     width: 90%;
     height: 85%;
 
-    margin-bottom: 100px;
+    margin-bottom: 70px;
   }
 
   .udH1 {
@@ -212,7 +212,7 @@ audio {
 }
 
 
-@media (max-width: 760px){
+@media (min-height: 760px){
 
  
   .divided_body {
@@ -222,7 +222,7 @@ audio {
   }
 
   .PropagateLoader-container {
-    margin-top: 150px;
+    margin-top: 200px;
   }
 
   .up_box {
@@ -232,6 +232,7 @@ audio {
     margin-top: 100px;
     flex: 3;
     flex-direction: column;
+    margin-bottom: 30px;
 
   }
 
@@ -367,7 +368,7 @@ audio {
 
   .PropagateLoader_container {
     display: none !important;
-    /* Hide spinner on screens less than 500px */
+   
   }
 }
 
