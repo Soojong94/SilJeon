@@ -23,7 +23,7 @@ function MenuBar() {
 
     try {
       // 인증 토큰을 백엔드로 전달
-      const response = await axios.post('https://yourcough.site/api/login', { token });
+      const response = await axios.post('http://localhost:5000/api/login', { token });
 
       console.log('Server response:', response.data);
 
