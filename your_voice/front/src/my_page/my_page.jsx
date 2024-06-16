@@ -70,12 +70,14 @@ function My_page() {
       </div>
       <div className='my_page_container'>
         <div className='my_page_chart'>
+
           <ChartComponent
             showMonthly={showMonthly}
             toggleChart={toggleChart}
             userId={userId}
             onTodayDataChange={setTodayData}
           />
+
         </div>
         {!showMonthly && todayData.length > 0 && (
           <div className='my_page_body'>
@@ -85,13 +87,13 @@ function My_page() {
                 <thead>
                   <tr>
                     <th> <div className="filter-container">
-              <label htmlFor="time-select">시간 </label>
-              <select id="time-select" value={selectedTime} onChange={handleTimeChange}>
-                {timeOptions.map((time, index) => (
-                  <option key={index} value={time}>{time}</option>
-                ))}
-              </select>
-            </div></th>
+                      <label htmlFor="time-select">시간 </label>
+                      <select id="time-select" value={selectedTime} onChange={handleTimeChange}>
+                        {timeOptions.map((time, index) => (
+                          <option key={index} value={time}>{time}</option>
+                        ))}
+                      </select>
+                    </div></th>
                     <th>질병</th>
                     <th>상태 값 (%)</th>
                   </tr>

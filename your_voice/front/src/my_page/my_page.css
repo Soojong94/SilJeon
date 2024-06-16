@@ -14,14 +14,13 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 50%;
-  width: 70%;
+  height: 70vh;
+  width: 83vw;
   background: linear-gradient(to right, whitesmoke, #fff1f1);
   box-shadow: 0px 0px 10px lightslategray;
   margin: 2vw auto;
   position: relative;
   border: 3px double lightblue;
-  border-radius: 10px;
   color: rgb(9, 28, 104);
   margin-top: 6%;
   position: relative;
@@ -70,9 +69,9 @@ body {
 
 .my_page_chart canvas {
   max-width: 100%;
-  max-height: 100%;
+  max-height: 90%;
   object-fit: contain;
-  border-radius: 5%;
+
   overflow: auto;
 
 }
@@ -162,4 +161,128 @@ body {
 .table-container td:last-child {
   border-right: none;
   /* 마지막 열의 보더 라인 제거 */
+}
+
+
+@media screen and (max-width: 1000px) {
+  .my_page_container {
+    flex-direction: column;
+    height: 100vh;
+    margin-bottom: 5%;
+    gap: 50px;
+  }
+
+  .my_page {
+    margin-top: 15%;
+    height: 70vh;
+    width: 90vw;
+  }
+
+  .my_page_body {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  .my_page_chart {
+    width: 100%;
+  }
+
+  .my_page_chart canvas {
+    width: 300%;
+    align-items: center;
+    /* 캔버스의 너비를 100%로 설정 */
+  }
+
+
+  .update_member {
+    position: absolute;
+    right: 3%;
+    top: 5%;
+    font-size: 20px;
+    color: black;
+    background-color: whitesmoke;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+    padding: 10px;
+
+  }
+
+
+  .chart-button {
+    position: relative;
+    font-size: 15px;
+    color: black;
+    background-color: whitesmoke;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 2vh;
+    margin-left: 2%;
+  }
+
+}
+
+/* 500px 이하일 때 */
+@media screen and (max-width: 500px) {
+  .my_page_container {
+    flex-direction: column;
+    height: 100vh;
+    margin-bottom: 5%;
+    gap: 30px;
+  }
+
+  .my_page {
+    margin-top: 15%;
+    height: 70vh;
+    width: 90vw;
+  }
+
+  .my_page_body {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  .my_page_chart {
+    width: 100%;
+  }
+
+  .my_page_chart canvas {
+    width: 300%;
+    align-items: center;
+    /* 캔버스의 너비를 100%로 설정 */
+  }
+
+  .update_member {
+    position: relative;
+    left: 80%;
+    top: 3%;
+    font-size: 2vh;
+    color: black;
+    background-color: whitesmoke;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+    padding: 10px;
+  }
+
+  .chart-button {
+    position: relative;
+    font-size: 15px;
+    color: black;
+    background-color: whitesmoke;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 2vh;
+    margin-left: 2%;
+  }
+
+
 }

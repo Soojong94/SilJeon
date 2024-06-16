@@ -153,15 +153,16 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
   };
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <button className="chart-button" onClick={toggleChart}>
         {showMonthly ? '일간 차트 보기' : '월간 차트 보기'}
       </button>
-      <div style={{ height: showMonthly ? '60vh' : '40vh', width: showMonthly ? '60vw' : '40vw' }}>
+      <div style={{ height: showMonthly ? '60vh' : '53vh', width: showMonthly ? '80vw' : '40vw', display: 'flex', justifyContent: 'center' }}>
         {showMonthly ? <Bar data={data} options={options} /> : <Line data={data} options={options} />}
       </div>
     </div>
   );
+
 };
 
 const getColorForDisease = (disease_id) => {
