@@ -48,11 +48,14 @@ const CoughUd = () => {
       <div className='up_boxF'>
         {message && <p className='message'>{message}</p>}
         <h1 className='udH15'>녹음 파일 선택 후 진단</h1>
-        <div className="inputFile-box">
-          <div className='left_content'>
+          <div className='inputFile-box'>
+           
+            <div className="left_content">
             <h2 className='ExplnUdF' id='explnupF'>아직 파일이 없다면, 녹음을 진행해 주세요.</h2>
-            <BounceLoader className='bounce' size={100} color="#6375ff" />
-            <button className='inputbtn' onClick={ToRecordVoice}>녹음하기</button>
+            <div className='recordContents'>
+            <BounceLoader className='Upbounce' size={80} color="#6375ff" />
+            <button className='inputbtn' id='recordInput' onClick={ToRecordVoice}>녹음하기</button>
+            </div>
           </div>
           <hr className='vertical' />
           <div className="middle_content">
