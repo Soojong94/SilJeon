@@ -31,13 +31,20 @@ function LoadingPage() {
           const analysisResult = response.data;
           console.log(analysisResult);
           navigate('/diagnosis_page', { state: { analysisResult } });
+        } else if (response.status === 400) {
+          alert('분석할 수 없는 소리입니다. 기침 소리를 다시 녹음해 주세요');
+          navigate('/');
         } else {
           alert('파일 분석에 실패했습니다.');
           navigate('/');
         }
       } catch (error) {
         console.error('파일 분석 중 오류가 발생했습니다:', error);
-        alert('파일 분석 중 오류가 발생했습니다.');
+        if (error.response && error.response.status === 400) {
+          alert('올바른 기침 소리를 녹음해주세요.');
+        } else {
+          alert('파일 분석 중 오류가 발생했습니다.');
+        }
         navigate('/');
       }
     };

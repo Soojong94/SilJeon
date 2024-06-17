@@ -5,10 +5,7 @@ import librosa
 import tensorflow as tf
 from werkzeug.utils import secure_filename
 import io
-from flask import Blueprint, request, jsonify
-import logging
-from db.db import connect_db
-from datetime import datetime
+from pydub import AudioSegment  # pydub 임포트 추가
 
 # MFCC 파라미터
 n_mfcc = 20
@@ -33,8 +30,6 @@ def process_file(file):
     return convert_to_wav(file_bytes, file_extension)
 
 def convert_to_wav(file_bytes, file_extension):
-    from pydub import AudioSegment
-
     supported_formats = ["mp3", "m4a", "mp4", "webm", "ogg", "flac", "weba"]
     if file_extension not in supported_formats:
         raise ValueError(f"지원하지 않는 파일 형식: {file_extension}")
@@ -57,13 +52,12 @@ def convert_to_wav(file_bytes, file_extension):
 def preprocess_audio_model1(file_bytes, duration=10, sr=22050, n_mfcc=20, n_fft=2048, hop_length=512):
     print(f"preprocess_audio_model1 함수 호출됨")
 
-    # 파일을 임시로 저장
+    file_bytes.seek(0)
     with open("temp_audio.wav", "wb") as f:
         f.write(file_bytes.read())
-
-    # librosa를 사용하여 임시 파일에서 오디오 데이터를 로드
+    
     audio_data, samplerate = librosa.load("temp_audio.wav", sr=sr, duration=duration)
-    os.remove("temp_audio.wav")  # 임시 파일 삭제
+    os.remove("temp_audio.wav")
 
     # 입력 신호 길이가 n_fft보다 짧은 경우 처리하지 않음
     if len(audio_data) < n_fft:
@@ -99,13 +93,12 @@ def preprocess_audio_model1(file_bytes, duration=10, sr=22050, n_mfcc=20, n_fft=
 def preprocess_audio_model2(file_bytes):
     print(f"preprocess_audio_model2 함수 호출됨")
 
-    # 파일을 임시로 저장
+    file_bytes.seek(0)
     with open("temp_audio.wav", "wb") as f:
         f.write(file_bytes.read())
-
-    # librosa를 사용하여 임시 파일에서 오디오 데이터를 로드
+    
     audio_data, sr = librosa.load("temp_audio.wav", sr=None)
-    os.remove("temp_audio.wav")  # 임시 파일 삭제
+    os.remove("temp_audio.wav")
 
     # 입력 신호 길이가 n_fft보다 짧은 경우 처리하지 않음
     if len(audio_data) < n_fft:
@@ -122,6 +115,20 @@ def preprocess_audio_model2(file_bytes):
     features = np.expand_dims(features, axis=0)  # 배치 차원 추가
 
     return features
+
+def is_audio_present(file_bytes, threshold=0.01):
+    """오디오 신호에 소리가 있는지 여부를 확인합니다."""
+    file_bytes.seek(0)
+    with open("temp_audio.wav", "wb") as f:
+        f.write(file_bytes.read())
+    
+    audio_data, sr = librosa.load("temp_audio.wav", sr=None)
+    os.remove("temp_audio.wav")
+    
+    rms = librosa.feature.rms(y=audio_data)
+    rms_energy = rms.mean()
+    print(f"RMS 에너지: {rms_energy}")
+    return rms_energy > threshold, file_bytes
 
 def load_model1():
     # 현재 파일의 디렉토리 경로 설정
