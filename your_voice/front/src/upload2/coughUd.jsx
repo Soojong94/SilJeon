@@ -60,13 +60,22 @@ const CoughUd = () => {
           <hr className='vertical' />
           <div className="middle_content">
             <h2 className='ExplnUdF'>파일 선택 후, 진단 버튼을 눌러주세요.</h2>
+            
+            <br></br>
+            <br></br>
+           
+            <p className='notice'>질병 진단시 천식,심부전,코로나,정상으로 분류됩니다.</p>
+            <p className='notice'>코로나 진단시 의심,정상,코로나로 분류됩니다.</p>
             <div className="file-buttons">
+          
               <button className="inputbtn" onClick={() => inputBtn.current.click()}>1 파일 선택</button>
               <input type="file" onChange={handleFileChange} ref={inputBtn} className="file-input" />
               <div className="button-column">
                 {selectedFile && <p className='selectedfileName'>{selectedFile.name}</p>}
-                <button className='inputbtn' id='CovidGo' onClick={() => navigateToLoadingPage('disease')} disabled={!selectedFile}>2-1 질병 진단</button>
-                <button className="inputbtn" id='CovidGo' onClick={() => navigateToLoadingPage('covid')} disabled={!selectedFile}>2-2 코로나 분석</button>
+                <button className="inputbtn" id='CovidGo' onClick={() => navigateToLoadingPage('covid')} disabled={!selectedFile}>2-1 코로나 분석</button>
+                <button className='inputbtn' id='CovidGo' onClick={() => navigateToLoadingPage('disease')} disabled={!selectedFile}>2-2 질병 진단</button>
+         
+                
               </div>
             </div>
           </div>
