@@ -23,7 +23,7 @@ function MenuBar() {
 
     try {
       // 인증 토큰을 백엔드로 전달
-      const response = await axios.post('http://localhost:5000/api/login', { token }, {withCredentials: true });
+      const response = await axios.post('http://localhost:5000/api/login', { token }, { withCredentials: true });
 
       console.log('Server response:', response.data);
 
@@ -57,15 +57,15 @@ function MenuBar() {
         <div className="nav-items">
           <div className='menu_bar'>
 
-           {isLoggedIn ? (
-                    <button className='icon nav-button' onClick={navchange_member}>
-                    Setting
-                    </button>
-                ) : (
-                 <></>
-                )}
+            {isLoggedIn ? (
+              <button className='icon nav-button' onClick={navchange_member}>
+                Setting
+              </button>
+            ) : (
+              <></>
+            )}
 
-        
+
             <div className='login_menu'>
               <GoogleOAuthProvider clientId={CLIENT_ID}>
                 {isLoggedIn ? (
@@ -88,7 +88,7 @@ function MenuBar() {
               </button>
             )}
           </div>
-        
+
         </div>
       </nav>
     </div>

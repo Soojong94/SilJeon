@@ -20,7 +20,7 @@ function LoadingPage() {
       formData.append('userId', userId);
       formData.append('analysisType', analysisType); // 분석 유형 추가
 
-        try {
+      try {
         const response = await axios.post('http://localhost:5000/api/coughUpload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
