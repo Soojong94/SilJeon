@@ -10,13 +10,14 @@
 .menu_bar {
   display: flex;
   align-items: center;
+  margin:0 7vw 3vh 0;
 
 }
 
 .menu_bar .icon {
   cursor: pointer;
   color: black;
-  font-size: 2vw;
+  font-size: 20px;
 }
 
 .menu_bar .icon:hover {
@@ -29,24 +30,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .nav-items {
   display: flex;
   align-items: center;
-  margin-right: 13%;
+  margin-right: 0px;
   margin-top: 10px;
 }
 
 .nav-button {
   background-color: transparent;
   border: none;
-  padding: 1.5vh 2vh;
+  padding: 0.5vh;
   margin-right: 2vw;
   cursor: pointer;
   border-radius: 5px;
-  margin-bottom: 6%;
-  font-size: 2vw;
+
 }
 
 
@@ -61,63 +62,21 @@
 }
 
 
-/* 1000px 이하일 때 */
 @media screen and (max-width: 1000px) {
   .menu_bar_container {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    max-height: 7%;
-    width: 100%;
-  }
-
-
-  .menu_bar_container {
-    max-height: 2ch;
-  }
-
-  .menu_bar .icon {
-    font-size: 3vw;
-  }
-
-  .nav-button {
-    padding: 2vh 2.5vh;
-    margin-right: 5vw;
-    font-size: 2.5vw;
-
-  }
-
-  .logo_img {
-    height: 15vh;
-  }
-
-
-  .logo {
-    height: 15vh;
-  }
-
-  .login_img:hover {
-    cursor: pointer;
-  }
-}
-
-
-
-/* 600px 이하일 때 */
-@media screen and (max-width: 600px) {
-  .menu_bar_container {
+    margin-top: 7vh;
     max-height: 15%;
   }
 
   .menu_bar {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     padding: 5px;
-    gap: 5%;
+
   }
 
   .menu_bar .icon {
-    font-size: 4vw;
+    font-size: 2vw;
   }
 
   .navbar {
@@ -134,16 +93,79 @@
   .nav-button {
     padding: 2.5vh 3vh;
     margin-right: 0;
-    margin-bottom: 10%;
-    font-size: 3vw;
+    margin-bottom: 2%;
+    font-size: 2vw;
   }
 
   .logo_img {
-    height: 10vh;
+    margin-left: 2vw;
+    height: 15vh;
   }
 
   .logo {
-    height: 10vh;
+    height: 15vh;
+  }
+
+  .navbar,
+  .logo {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .logo,
+  .login_menu,
+  .mypage_menu {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
+
+/* 600px 이하일 때 */
+@media screen and (max-width: 500px) {
+  .menu_bar_container {
+    margin-top: 7vh;
+    max-height: 15%;
+  }
+
+  .menu_bar {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 5px;
+
+  }
+
+  .menu_bar .icon {
+    font-size: 2vw;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+
+  }
+
+  .nav-items {
+    margin-right: 0;
+    margin-bottom: 2%;
+  }
+
+  .nav-button {
+    padding: 2.5vh 3vh;
+    margin-right: 0;
+    margin-bottom: 2%;
+    font-size: 2vw;
+  }
+
+  .logo_img {
+    margin-left: 5vw;
+    height: 15vh;
+  }
+
+  .logo {
+    height: 15vh;
   }
 
   .navbar,

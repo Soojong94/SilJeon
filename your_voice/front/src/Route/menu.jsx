@@ -44,6 +44,9 @@ function MenuBar() {
     setIsLoggedIn(false);
     navigate('/');  // 로그아웃 후 리디렉션
   };
+  const navchange_member = () => {
+    navigate('/initial_member');
+  };
 
   return (
     <div className='menu_bar_container nav_header'>
@@ -53,12 +56,15 @@ function MenuBar() {
         </div>
         <div className="nav-items">
           <div className='menu_bar'>
+          <button className='icon nav-button' onClick={navchange_member}>
+            Setting
+            </button>
             <div className='login_menu'>
               <GoogleOAuthProvider clientId={CLIENT_ID}>
                 {isLoggedIn ? (
                   <button className="nav-button" onClick={handleLogout}>
                     <Tooltip title="로그아웃">
-                      <span className="icon">Logout</span>
+                      <span className="icon ">Logout</span>
                     </Tooltip>
                   </button>
                 ) : (
@@ -75,6 +81,7 @@ function MenuBar() {
               </button>
             )}
           </div>
+        
         </div>
       </nav>
     </div>

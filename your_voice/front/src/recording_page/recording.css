@@ -24,7 +24,7 @@ body {
 
   width: 85%;
   height: 80%;
-  background: linear-gradient(to right, #fdcccc, #fff1f1);
+  background: linear-gradient(to right, whitesmoke, #fff1f1);
   box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
   box-sizing: border-box;
   text-align: center;
@@ -49,14 +49,15 @@ body {
 
 .udH1 {
   color: rgb(9, 28, 104);
-  font-size: 3vw;
+  font-size: 2.5vw;
   margin-top: 7vh;
 
 }
 
 .udh2 {
   color: rgb(9, 28, 104);
-  font-size: 2vw;
+  font-size: 1.8vw;
+  margin-bottom: 10px;
 }
 
 .message {
@@ -84,7 +85,7 @@ body {
   padding: 7px 15px;
   cursor: pointer;
   border-radius: 50px;
-  font-size: 20px;
+  font-size: 1vw;
   min-width: 50%;
   min-height: 20%;
   color: rgb(9, 28, 104);
@@ -92,7 +93,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 5vh;
 }
 
 audio {
@@ -114,7 +115,7 @@ audio {
   min-width: 45%;
   position: relative;
   font-size: 1.5vw;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
 }
 
 .right_box {
@@ -186,23 +187,23 @@ margin-top: 6vh;
 
   .udH1 {
 
-    font-size: 4.5vw;
+    font-size: 3vw;
   }
 
   .udh2 {
-    font-size: 3vw;
+    font-size: 2vw;
   }
 
   .record-btn,
   .btnUd,
   .btnBack {
-    font-size: 2vw;
+    font-size: 1.7vw;
     padding: 5px 10px;
     min-width: 70%;
-    width: 80px;
+    width: 100px;
     padding: 10px 15px;
     border-radius: 10px;
-    font-size: 13px;
+  
   }
 
   .coughUp_Move_box {
@@ -237,7 +238,7 @@ margin-top: 6vh;
 @media (max-width: 500px) {
   .udh2 {
 
-    margin-top: 40px;
+    margin: 40px 0 20px 0;
   }
 
   .divided_body {
@@ -267,12 +268,12 @@ margin-top: 6vh;
   }
 
   .udH1 {
-    font-size: 30px;
+    font-size: 5vw;
 
   }
 
   .udh2 {
-    font-size: 6vw;
+    font-size: 3vw;
   }
 
   .record-btn,
