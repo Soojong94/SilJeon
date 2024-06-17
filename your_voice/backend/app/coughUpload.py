@@ -1,10 +1,12 @@
 import os
 from flask import Blueprint, request, jsonify
-from app.upload_and_predict import process_file, load_model1, load_model2, preprocess_audio_model1, preprocess_audio_model2
+from app.upload_and_predict import process_file, load_model1, load_model2, preprocess_audio_model1, preprocess_audio_model2, is_audio_present
 import logging
 import numpy as np
 from db.db import connect_db
 from datetime import datetime
+import io  # io 임포트 추가
+from pydub import AudioSegment  # pydub 임포트 추가
 
 coughUpload_bp = Blueprint("coughUpload", __name__)
 # TensorFlow 모델 로드
@@ -26,6 +28,11 @@ def coughUpload():
         wav_data = process_file(file)
         if isinstance(wav_data, tuple):
             return wav_data
+
+        # 오디오 데이터에 소리가 있는지 확인
+        has_audio, wav_data = is_audio_present(wav_data)
+        if not has_audio:
+            return jsonify({"error": "업로드된 파일에 유의미한 소리가 없습니다."}), 400
 
         # 모델 선택 및 전처리
         if analysis_type == "covid":

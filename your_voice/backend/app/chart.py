@@ -3,6 +3,7 @@ from db.db import connect_db
 import datetime as dt
 
 chart_bp = Blueprint("chart", __name__)
+
 @chart_bp.route("/api/dailyChart", methods=["POST"])
 def dailyChart():
     userId = request.json.get("userId")
