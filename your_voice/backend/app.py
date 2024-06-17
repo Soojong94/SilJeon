@@ -33,3 +33,10 @@ app.register_blueprint(resetChart_bp)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=False)
+
+
+@sockets.route("/ws")
+def echo_socket(ws):
+    while not ws.closed:
+        message = ws.receive()
+        ws.send(message)
