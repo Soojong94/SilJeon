@@ -49,8 +49,10 @@ const DiagnosisPage = () => {
               <h3>{analysisResult.diagnosis_message}</h3>
             </div>
           </div>
-          <p>다시 받아보고 싶다면, 진단받기를 눌러주세요!</p>
-          <p><Covidbtn className="backTo" /></p>
+          <div className='backBox'>
+          <p className="backTo">다시 받아보고 싶다면, 진단받기를 눌러주세요!</p>
+          <p className="backTo"><Covidbtn  /></p>
+          </div>
         </div>
       )}
       

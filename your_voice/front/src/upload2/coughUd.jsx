@@ -64,8 +64,9 @@ const CoughUd = () => {
             <br></br>
             <br></br>
            
-            <p className='notice'>질병 진단시 천식,심부전,코로나,정상으로 분류됩니다.</p>
-            <p className='notice'>코로나 진단시 의심,정상,코로나로 분류됩니다.</p>
+            <p className='notice'>질병 진단시 천식,심부전,코로나,정상으로 분류</p>
+            <br/>
+            <p className='notice'>코로나 진단시 의심,정상,코로나로 분류</p>
             <div className="file-buttons">
           
               <button className="inputbtn" onClick={() => inputBtn.current.click()}>1 파일 선택</button>

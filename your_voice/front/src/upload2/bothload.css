@@ -32,7 +32,7 @@
     border-radius: 30px;
     width: 85%;
     height: 80%;
-    background:  white;
+    background: linear-gradient(to right, whitesmoke, #fff1f1);
     box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
     box-sizing: border-box;
     text-align: center;
@@ -257,12 +257,14 @@
         height: 70%;
         overflow: auto;
         gap: 2vh;
+        background: linear-gradient(to right, whitesmoke, #fff1f1);
+        
 
     }
  
     .notice{
 
-        font-size: 2vw;
+        font-size: 3vw;
     }
     #explnupF {
         margin-top: 10px;
