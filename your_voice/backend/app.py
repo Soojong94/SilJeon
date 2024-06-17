@@ -18,7 +18,7 @@ app = Flask(__name__, static_folder="static")
 CORS(
     app,
     supports_credentials=True,
-    resources={r"/api/*": {"origins": "https://yourcough.site"}},
+    resources={r"/api/*": {"origins": "http://localhost:3000"}},
 )
 # Flask 시크릿 키 설정
 secret_key = secrets.token_hex(32)
