@@ -23,7 +23,10 @@
 .CovidGo {
     margin-top: 2vw;
 }
-
+.recordContents{
+    display: flex;
+    flex-direction: row;
+}
 .up_boxF {
     border-radius: 30px;
     width: 85%;
@@ -39,6 +42,11 @@
     margin: 9vw 0 2vw 0;
 
 }
+#recordInput{
+
+    margin-top: 12vh;;
+    
+        }
 
 #explnupF {
     margin-top: 70px;
@@ -61,8 +69,9 @@
     display: flex;
     align-items: center;
     width: 100%;
+    height: 100%;
     box-sizing: border-box;
-    margin-top: 50px;
+    margin-top: 10px;
 
 
 
@@ -75,13 +84,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 4;
+    flex: 3;
 }
 
 .middle_content {
     display: flex;
     flex-direction: column;
-    flex: 4;
+    flex: 3;
     align-items: center;
 }
 
@@ -112,8 +121,9 @@
     margin-top: 10px;
 }
 
-.bounce {
+.Upbounce {
     margin: 3vw;
+
 }
 
 .inputbtn {
@@ -176,9 +186,10 @@
         width: 90%;
         height: 90%;
 
-        gap: 50px;
+        gap: 3vh;
 
     }
+ 
 
     #explnupF {
         margin-top: 10px;
@@ -241,7 +252,10 @@
     .left_content {
         margin-left: 10px;
     }
+    #explnupF{
 
+        margin-top: 5vh;
+    }
     .up_boxF {
 
         width: 90%;
@@ -262,10 +276,6 @@
         margin-top: 10vh;
     }
 
-    #explnupF {
-        margin-top: 0px;
-
-    }
 
     .udh2 {
         font-size: 3vw;

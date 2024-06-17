@@ -164,14 +164,23 @@ audio {
   transform: scale(1.1);
   transition: transform 0.8s ease;
 }
+.RecordLoader{
+display: flex;
 
+
+}
+.recordInput{
+
+margin-top: 6vh;
+
+}
 @media (max-width: 1000px) {
 
 
   .up_box {
     width: 90%;
     height: 85%;
-
+    overflow: auto;
     margin-bottom: 20px;
   }
 
@@ -224,84 +233,6 @@ audio {
   }
 }
 
-
-@media (min-height: 760px){
-
- 
-  .divided_body {
-    display: flex;
-    flex-direction: row;
-
-  }
-
-  .PropagateLoader-container {
-    margin-top: 200px;
-  }
-
-  .up_box {
-    width: 80%;
-    height: 80%;
-    justify-content: center;
-    margin-top: 100px;
-    flex: 3;
-    flex-direction: column;
-    margin-bottom: 30px;
-
-  }
-
-
-  .udH1 {
-    font-size: 5vw;
-    margin-top: 12vh;
-    
-
-  }
-
-  .udh2 {
-    font-size: 2vw;
-  }
-
-  .record-btn,
-  .btnUd,
-  .btnBack {
-
-    padding: 5px 7px;
-    border-radius: 10px;
-    font-size: 13px;
-    min-width: 170px;
-
-
-  }
-
-  .left_box,
-  .right_box {
-    font-size: 15px;
-  }
-
-  audio {
-    width: 30vw;
-    height: 8vh;
-  }
-
-  .coughUp_Move_box {
-    font-size: 2vw;
-  }
-
-  .bounce {
-    display: none !important;
-  }
-
-  .recordPg_Btb {
-    padding: 5px 7px;
-    font-size: 15px;
-  }
-
-  .PropagateLoader_container {
-    display: none !important;
-    /* Hide spinner on screens less than 500px */
-  }
-
-}
 
 @media (max-width: 500px) {
   .udh2 {

@@ -101,8 +101,9 @@ const Record_voice = () => {
                 {recording ? (
                   <>녹음 중지
                     <PuffLoader
+                     className='RecordLoader'
                       color="black"
-                      size={10}
+                      size={50}
                       speedMultiplier={1}
                       cssOverride={{ display: 'inline-block', marginBottom: '7px', marginLeft: '10px' }}
                     />
