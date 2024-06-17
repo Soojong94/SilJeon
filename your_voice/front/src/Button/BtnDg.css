@@ -4,7 +4,7 @@
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5vw;
-  font-size: 1.5vw;
+  font-size: 1vw;
   margin-top: 50px;
   color: rgb(9, 28, 104);
   box-shadow: 5px 5px 20px;
@@ -23,25 +23,49 @@
   transform: scale(1.15);
   transition: transform 0.8s ease;
 }
+
+
+
 @media (max-width: 1000px){
   .dgBtn {
-
+    font-size: 2vw;
     padding: 7px 10px;
-
+    width: 150px;
 
   }
 
 
-  @media (max-width: 750px){
 
-    .dgBtn {
-      width:80px;
-      padding: 10px 15px;
-      border-radius: 10px;
-      font-size: 13px;
+}
 
 
-    }
+
+
+@media (max-width: 750px){
+
+  .dgBtn {
+    width:120px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 2vw;
+
+
+  }
+
+}
+
+
+
+
+@media (max-width: 500px){
+
+
+  .dgBtn {
+    width:100px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 3vw;
+
 
   }
 

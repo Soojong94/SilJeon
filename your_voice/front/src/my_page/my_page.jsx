@@ -44,10 +44,7 @@ function My_page() {
     setShowMonthly(!showMonthly);
   };
 
-  const navchange_member = () => {
-    navigate('/initial_member');
-  };
-
+  
   const handleTimeChange = (event) => {
     setSelectedTime(event.target.value);
   };
@@ -65,7 +62,7 @@ function My_page() {
     <div className='my_page'>
       <MenuBar />
       <div className='my_page_head'>
-        <button className='update_member' onClick={navchange_member}>회원 정보수정</button>
+        
         <h1>AI 분석 결과</h1>
       </div>
       <div className='my_page_container'>

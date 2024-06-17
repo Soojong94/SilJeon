@@ -5,6 +5,7 @@
 5. pip install pydub
 pip install librosa
 pip install google-auth google-auth-oauthlib
+pip install tensorflow
 
 ★ffmpeg 환경 변수 설정
 1. 실전프로젝트 단톡방에 있는 ffmpeg 깔기
