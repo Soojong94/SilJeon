@@ -20,11 +20,12 @@ function LoadingPage() {
       formData.append('userId', userId);
       formData.append('analysisType', analysisType); // 분석 유형 추가
 
-      try {
-        const response = await axios.post('http://localhost:5000/api/coughUpload', formData, {
+        try {
+        const response = await axios.post('https://yourcough.site/api/coughUpload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
-          }
+          },
+          withCredentials: true // withCredentials 옵션 추가
         });
 
         if (response.status === 200) {
