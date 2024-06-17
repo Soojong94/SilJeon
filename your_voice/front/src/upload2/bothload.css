@@ -191,6 +191,7 @@
         margin-top: 10vh;
     }
     .up_boxF {
+        overflow: auto;
 
         width: 90%;
         height: 75%;
@@ -253,8 +254,8 @@
     .up_boxF {
         margin: 100px 0 50px 0px;
         width: 90%;
-        height: 90%;
-
+        height: 70%;
+        overflow: auto;
         gap: 2vh;
 
     }
