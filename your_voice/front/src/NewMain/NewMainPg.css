@@ -30,11 +30,11 @@
   height: 80%;
   background: linear-gradient(to right, whitesmoke, #fff1f1);
   border: 3px double lightblue;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
   border-radius: 30px;
   box-shadow: 10px 10px 20px rgba(72, 62, 1, 0.5);
   text-align: center;
-  margin: 17vh 0 5vh 0;
+  margin: 18vh 0 5vh 0;
 }
 
 .MainImg {
@@ -127,6 +127,7 @@
   .dgBtn {
     font-size: 5vw;
     padding: 10px 15px;
+    width: 120px;
   }
 
   .Mainbounce {
@@ -156,11 +157,11 @@
   }
 
   .voiceDsEg {
-    font-size: 6vw;
+    font-size: 5vw;
   }
 
   .expln {
-    font-size: 4vw;
+    font-size: 3vw;
   }
 
   .mainBtn-box {
