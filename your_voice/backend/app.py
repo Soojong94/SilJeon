@@ -17,7 +17,7 @@ app = Flask(__name__, static_folder="static")
 # CORS 설정
 CORS(
     app,
-    supports_credentials=False,
+    supports_credentials=True,
     resources={r"/api/*": {"origins": "http://localhost:3000"}},
 )
 # Flask 시크릿 키 설정
@@ -33,3 +33,10 @@ app.register_blueprint(resetChart_bp)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=False)
+
+
+@sockets.route("/ws")
+def echo_socket(ws):
+    while not ws.closed:
+        message = ws.receive()
+        ws.send(message)
