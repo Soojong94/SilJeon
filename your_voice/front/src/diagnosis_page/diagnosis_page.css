@@ -11,11 +11,11 @@
 .diagnosis_body_container {
   display: flex;
   flex-direction: column;
-  width: 80%;
-  height: 75%;
+  width: 70%;
+  height: 70%;
   border: 3px double lightblue;
  border-radius: 30px;
-  background: linear-gradient(to right, #fdcccc, #fff1f1);
+ background: linear-gradient(to right, whitesmoke, #fff1f1);
   box-shadow: 0px 0px 10px lightslategray;
   text-align: center;
   margin: 100px 0 30px 0;
@@ -61,10 +61,10 @@
 }
 
 .Dg {
-  width: 50%;
-  flex: 5;
+
+  flex: 3;
   font-size: 20px;
-  padding: 4vw;
+  padding: 3vw;
   color: rgb(9, 28, 104);
   ;
 
@@ -86,7 +86,7 @@
   .Dg {
 
 
-    font-size: 1.8vw;
+    font-size: 1vw;
     padding: 25px;
     color: rgb(9, 28, 104);
     
@@ -119,15 +119,15 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    width: 80%;
 
   }
 
   .Dg {
 
 
-    font-size: 15px;
-    padding: 10px;
+    font-size: 10px;
+    padding: 8px;
     color: rgb(9, 28, 104);
     margin-bottom: 30px;
 
@@ -139,7 +139,7 @@
   }
 
   .resultDg {
-    margin: 4vh 0 0 0;
+    margin: 1.5vw 0 0 0;
     font-size: 15px;
     color: rgb(9, 28, 104);
 
