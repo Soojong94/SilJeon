@@ -35,9 +35,9 @@ function NewMainPg() {
         <div className='voiceContent'>
           <h2 className='voiceDsEg'>딥러닝 기반 기침소리 분석</h2>
           <span className="expln ">AI가 당신의</span>
-          <span className="expln expln1"> 기침소리를 분석 하여</span>
-          <br/>
-          <span className="expln expln2"> 호흡기 질환 유무를 진단</span>
+          <span className="expln expln1"> 기침 소리를 분석</span>
+          <br />
+          <span className="expln expln2">하여 호흡기 질환 유무를 진단</span>
           <span className="expln">합니다</span>
           <div className='mainBtn-box'>
             <Covidbtn />
