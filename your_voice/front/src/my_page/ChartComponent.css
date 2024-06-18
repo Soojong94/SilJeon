@@ -1,0 +1,27 @@
+.chart-container {
+    height: 53vh;
+    display: flex;
+    justify-content: center;
+  }
+  
+
+  .chart-container.line {
+    width: 40vw;
+  }
+  
+
+  .chart-container.bar {
+    width: 80vw;
+  }
+  
+
+  @media (max-width: 768px) {
+    .chart-container.line {
+      width: 80vw;
+    }
+  
+    .chart-container.bar {
+      width: 90vw;
+    }
+  }
+  

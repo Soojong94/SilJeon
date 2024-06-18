@@ -25,7 +25,7 @@ function MenuBar({ onLoginStatusChange }) {
     const token = credentialResponse.credential;
 
     try {
-      const response = await axios.post('https://yourcough.site/api/login', { token }, { withCredentials: true });
+      const response = await axios.post('http://localhost:5000/api/login', { token }, { withCredentials: true });
 
       
       if (response.data.user) {
@@ -71,7 +71,15 @@ function MenuBar({ onLoginStatusChange }) {
             )}
 
 
-            <div className='login_menu'>
+        
+            {isLoggedIn && (
+              <button className="nav-button my_page_btn" onClick={() => navigate('/MyPage')}>
+                <Tooltip title="마이페이지">
+                  <span className="icon">Mypage</span>
+                </Tooltip>
+              </button>
+            )}
+                <div className='login_menu'>
               <GoogleOAuthProvider clientId={CLIENT_ID}>
                 {isLoggedIn ? (
                   <button className="nav-button" onClick={handleLogout}>
@@ -84,13 +92,6 @@ function MenuBar({ onLoginStatusChange }) {
                 )}
               </GoogleOAuthProvider>
             </div>
-            {isLoggedIn && (
-              <button className="nav-button my_page_btn" onClick={() => navigate('/MyPage')}>
-                <Tooltip title="마이페이지">
-                  <span className="icon">Mypage</span>
-                </Tooltip>
-              </button>
-            )}
           </div>
 
         </div>
