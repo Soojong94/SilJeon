@@ -7,7 +7,6 @@ chart_bp = Blueprint("chart", __name__)
 @chart_bp.route("/api/dailyChart", methods=["POST"])
 def dailyChart():
     userId = request.json.get("userId")
-    print("userId 1 : ", userId)
 
     today = dt.datetime.now().date()
     week_ago = today - dt.timedelta(days=7)
@@ -25,7 +24,6 @@ def dailyChart():
         (userId, week_ago),
     )
     allData = cursor.fetchall()
-    print("allData: ", allData)
 
     cursor.close()
     conn.close()
@@ -89,7 +87,6 @@ def dailyChart():
 @chart_bp.route("/api/monthChart", methods=["POST"])
 def monthChart():
     userId = request.json.get("userId")
-    print("userId 2 : ", userId)
 
     # 30일 전의 날짜를 계산
     thirty_days_ago = dt.datetime.now() - dt.timedelta(days=30)
