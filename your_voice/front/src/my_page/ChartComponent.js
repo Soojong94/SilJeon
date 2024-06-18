@@ -123,12 +123,12 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
 
   const options = {
     maintainAspectRatio: false,
-    aspectRatio: showMonthly ? 2 : 3, // showMonthly일 때는 비율을 2로, 일간 차트일 때는 비율을 1.5로 설정
+    responsive: true,
+    aspectRatio: showMonthly ? 2 : 3, // showMonthly일 때는 비율을 2로, 일간 차트일 때는 비율을 3으로 설정
     scales: {
       x: {
         stacked: showMonthly,
         ticks: {
-          stepSize: 10,
           callback: function (value, index, values) {
             return labels[index];
           },
