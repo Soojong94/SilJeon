@@ -79,17 +79,14 @@ function My_page() {
               <table>
                 <thead>
                   <tr>
-                    <th className='firstTh'>
-                      <div className="filter-container">
-                        <label htmlFor="time-select">시간 </label>
-                        <select id="time-select" value={selectedTime} onChange={handleTimeChange}>
-                          <option value="">시간 선택</option>
-                          {timeOptions.map((time, index) => (
-                            <option key={index} value={time}>{time}</option>
-                          ))}
-                        </select>
-                      </div>
-                    </th>
+                    <th> <div className="filter-container">
+                      <label htmlFor="time-select">시간 </label>
+                      <select id="time-select" value={selectedTime} onChange={handleTimeChange}>
+                        {timeOptions.map((time, index) => (
+                          <option key={index} value={time}>{time}</option>
+                        ))}
+                      </select>
+                    </div></th>
                     <th>질병</th>
                     <th>상태 값 (%)</th>
                   </tr>

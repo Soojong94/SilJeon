@@ -6,7 +6,7 @@ import logo from '../Route/your_cough.png';
 import axios from 'axios';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
-const CLIENT_ID = '848922845081-tubjkh6u80t5lleilc4r4bts1rrc1na6.apps.googleusercontent.com';
+const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 function MenuBar({ onLoginStatusChange }) {
   const navigate = useNavigate();
@@ -63,11 +63,16 @@ function MenuBar({ onLoginStatusChange }) {
         </div>
         <div className="nav-items">
           <div className='menu_bar'>
-            {isLoggedIn && (
+
+            {isLoggedIn ? (
               <button className='icon nav-button' onClick={navchange_member}>
                 Setting
               </button>
+            ) : (
+              <></>
             )}
+
+
             <div className='login_menu'>
               <GoogleOAuthProvider clientId={CLIENT_ID}>
                 {isLoggedIn ? (
@@ -89,6 +94,7 @@ function MenuBar({ onLoginStatusChange }) {
               </button>
             )}
           </div>
+
         </div>
       </nav>
     </div>
