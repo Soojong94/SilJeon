@@ -22,14 +22,12 @@ function MenuBar({ onLoginStatusChange }) {
   }, [onLoginStatusChange]);
 
   const handleLoginSuccess = async (credentialResponse) => {
-    console.log('Login Success:', credentialResponse);
     const token = credentialResponse.credential;
 
     try {
       const response = await axios.post('https://yourcough.site/api/login', { token }, { withCredentials: true });
 
-      console.log('Server response:', response.data);
-
+      
       if (response.data.user) {
         sessionStorage.setItem('user_info', JSON.stringify(response.data.user));
         setIsLoggedIn(true);

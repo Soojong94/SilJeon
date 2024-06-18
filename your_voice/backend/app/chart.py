@@ -42,8 +42,7 @@ def dailyChart():
                 "time": time_str  # 시간을 추가
             }
         )
-    print("grouped_all_data: ", grouped_all_data)
-
+    
     # 각 날짜별 평균 데이터를 계산하고 JSON 응답에 추가
     daily_averages = []
     today_data = []
@@ -78,9 +77,6 @@ def dailyChart():
             "date": date_str,
             "average_data": average_data,
         })
-
-    print("daily_averages: ", daily_averages)
-    print("today_data: ", today_data)
 
     return jsonify({"daily_averages": daily_averages, "today_data": today_data}), 200
 
