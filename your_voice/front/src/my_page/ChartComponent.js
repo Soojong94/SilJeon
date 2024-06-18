@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const fetchDailyChart = async (userId) => {
   try {
-    const response = await axios.post('https://yourcogh.site/api/dailyChart', { userId }, { withCredentials: true });
+    const response = await axios.post('https://yourcough.site/api/dailyChart', { userId }, { withCredentials: true });
 
     return response.data;
   } catch (error) {
