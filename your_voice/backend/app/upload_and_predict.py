@@ -1,4 +1,5 @@
 import os
+
 os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 import numpy as np
 import librosa
@@ -15,6 +16,7 @@ duration = 10  # 각 오디오 파일의 길이 설정
 sr = 22050  # 통일된 샘플링 레이트
 fixed_sequence_length = int(np.ceil(duration * sr / hop_length))
 
+
 def process_file(file):
     print("process_file 함수 호출됨")
 
@@ -28,6 +30,7 @@ def process_file(file):
 
     # WAV 파일이 아니면 변환 작업 수행
     return convert_to_wav(file_bytes, file_extension)
+
 
 def convert_to_wav(file_bytes, file_extension):
     supported_formats = ["mp3", "m4a", "mp4", "webm", "ogg", "flac", "weba"]
@@ -49,13 +52,16 @@ def convert_to_wav(file_bytes, file_extension):
     except Exception as e:
         raise Exception(f"파일 변환 중 오류 발생: {e}")
 
-def preprocess_audio_model1(file_bytes, duration=10, sr=22050, n_mfcc=20, n_fft=2048, hop_length=512):
+
+def preprocess_audio_model1(
+    file_bytes, duration=10, sr=22050, n_mfcc=20, n_fft=2048, hop_length=512
+):
     print(f"preprocess_audio_model1 함수 호출됨")
 
     file_bytes.seek(0)
     with open("temp_audio.wav", "wb") as f:
         f.write(file_bytes.read())
-    
+
     audio_data, samplerate = librosa.load("temp_audio.wav", sr=sr, duration=duration)
     os.remove("temp_audio.wav")
 
@@ -69,11 +75,15 @@ def preprocess_audio_model1(file_bytes, duration=10, sr=22050, n_mfcc=20, n_fft=
 
     # 오디오 데이터를 설정된 길이로 자르거나 패딩
     if len(audio_data) < duration * sr:
-        audio_data = np.pad(audio_data, (0, duration * sr - len(audio_data)), mode='constant')
+        audio_data = np.pad(
+            audio_data, (0, duration * sr - len(audio_data)), mode="constant"
+        )
     else:
-        audio_data = audio_data[:duration * sr]
+        audio_data = audio_data[: duration * sr]
 
-    mfcc = librosa.feature.mfcc(y=audio_data, sr=sr, n_mfcc=n_mfcc, n_fft=n_fft, hop_length=hop_length)
+    mfcc = librosa.feature.mfcc(
+        y=audio_data, sr=sr, n_mfcc=n_mfcc, n_fft=n_fft, hop_length=hop_length
+    )
 
     # mfcc 배열의 차원 확인
     if mfcc.ndim != 2:
@@ -90,13 +100,14 @@ def preprocess_audio_model1(file_bytes, duration=10, sr=22050, n_mfcc=20, n_fft=
 
     return mfcc
 
+
 def preprocess_audio_model2(file_bytes):
     print(f"preprocess_audio_model2 함수 호출됨")
 
     file_bytes.seek(0)
     with open("temp_audio.wav", "wb") as f:
         f.write(file_bytes.read())
-    
+
     audio_data, sr = librosa.load("temp_audio.wav", sr=None)
     os.remove("temp_audio.wav")
 
@@ -107,7 +118,7 @@ def preprocess_audio_model2(file_bytes):
     # MFCC 특징 추출
     mfccs = librosa.feature.mfcc(y=audio_data, sr=sr, n_mfcc=40)
     features = np.mean(mfccs.T, axis=0)
-    
+
     # 특성 배열의 차원 확인
     if features.ndim != 1:
         raise ValueError(f"특성 배열의 차원이 올바르지 않습니다: {features.ndim}차원")
@@ -116,19 +127,21 @@ def preprocess_audio_model2(file_bytes):
 
     return features
 
+
 def is_audio_present(file_bytes, threshold=0.01):
     """오디오 신호에 소리가 있는지 여부를 확인합니다."""
     file_bytes.seek(0)
     with open("temp_audio.wav", "wb") as f:
         f.write(file_bytes.read())
-    
+
     audio_data, sr = librosa.load("temp_audio.wav", sr=None)
     os.remove("temp_audio.wav")
-    
+
     rms = librosa.feature.rms(y=audio_data)
     rms_energy = rms.mean()
     print(f"RMS 에너지: {rms_energy}")
     return rms_energy > threshold, file_bytes
+
 
 def load_model1():
     # 현재 파일의 디렉토리 경로 설정
@@ -141,6 +154,7 @@ def load_model1():
         return model
     except Exception as e:
         raise RuntimeError("모델을 로드하는 중 오류 발생") from e
+
 
 def load_model2():
     # 현재 파일의 디렉토리 경로 설정
