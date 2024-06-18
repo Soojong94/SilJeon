@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const fetchDailyChart = async (userId) => {
   try {
-    const response = await axios.post('https://yourcough.site/api/dailyChart', { userId }, { withCredentials: true });
+    const response = await axios.post('http://localhost:5000/api/dailyChart', { userId }, { withCredentials: true });
     console.log(response.data);
     return response.data;
   } catch (error) {
@@ -82,9 +82,9 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
 
   const diseases = [1, 2, 3, 4]; // 질병 번호 리스트 // 1. 정상 2. 심부전, 3.천식, 4.코로나
   const diseaseNames = {
-    1: '정상',
+    1: '정 상',
     2: '심부전',
-    3: '천식',
+    3: '천 식',
     4: '코로나'
   };
 
