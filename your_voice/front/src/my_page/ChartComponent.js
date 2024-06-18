@@ -146,11 +146,11 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div className="chart-container">
       <button className="chart-button" onClick={toggleChart}>
         {showMonthly ? '일간 차트 보기' : '월간 차트 보기'}
       </button>
-      <div style={{ height: showMonthly ? '53vh' : '53vh', width: showMonthly ? '80vw' : '40vw', display: 'flex', justifyContent: 'center' }}>
+      <div className={`chart-wrapper ${showMonthly ? 'monthly' : 'daily'}`}>
         {showMonthly ? <Bar data={data} options={options} /> : <Line data={data} options={options} />}
       </div>
     </div>

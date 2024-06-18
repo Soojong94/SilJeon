@@ -75,8 +75,9 @@ body {
 
 
 }
-.firstTh{
-width: 30%;
+
+.firstTh {
+  width: 30%;
 
 }
 
@@ -144,6 +145,21 @@ width: 30%;
   /* 마지막 열의 보더 라인 제거 */
 }
 
+.chart-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.chart-wrapper.daily {
+  height: 53vh;
+  width: 40vw;
+}
+
+.chart-wrapper.monthly {
+  height: 53vh;
+  width: 80vw;
+}
+
 
 @media screen and (max-width: 1000px) {
   .my_page_container {
@@ -157,7 +173,7 @@ width: 30%;
     margin-top: 15%;
     height: 70vh;
     width: 90vw;
- 
+
   }
 
   .my_page_body {
@@ -169,8 +185,8 @@ width: 30%;
     width: 100%;
   }
 
-  
-/* 
+
+  /* 
   .my_page_chart canvas {
     width: 300%;
 
@@ -191,10 +207,11 @@ width: 30%;
     padding: 10px;
 
   }
-canvas{
-width: 80%;
 
-}
+  canvas {
+    width: 80%;
+
+  }
 
   .chart-button {
     position: relative;
@@ -207,7 +224,7 @@ width: 80%;
     border-radius: 20px;
     padding: 8px;
     margin: 10px 5px 10px 5px;
-  
+
   }
 
 }
@@ -235,7 +252,8 @@ width: 80%;
   .my_page_chart {
     width: 100%;
   }
-/* 
+
+  /* 
   .my_page_chart canvas {
     width: 300%;
     align-items: center;
