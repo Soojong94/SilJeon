@@ -57,15 +57,15 @@ function MenuBar() {
         <div className="nav-items">
           <div className='menu_bar'>
 
-            {isLoggedIn ? (
-              <button className='icon nav-button' onClick={navchange_member}>
-                Setting
-              </button>
-            ) : (
-              <></>
-            )}
+           {isLoggedIn ? (
+                    <button className='icon nav-button' onClick={navchange_member}>
+                    Setting
+                    </button>
+                ) : (
+                 <></>
+                )}
 
-
+        
             <div className='login_menu'>
               <GoogleOAuthProvider clientId={CLIENT_ID}>
                 {isLoggedIn ? (
@@ -88,7 +88,7 @@ function MenuBar() {
               </button>
             )}
           </div>
-
+        
         </div>
       </nav>
     </div>
