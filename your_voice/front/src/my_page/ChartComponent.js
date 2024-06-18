@@ -156,7 +156,7 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
 };
 
 const getColorForDisease = (disease_id) => {
-  const colors = ['#8CD700', 'red', 'orange', 'yellow'];
+  const colors = ['#8CD700', '#83c8ee', 'orange', '#f388af'];
   return colors[disease_id - 1] || 'black';
 };
 

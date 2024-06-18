@@ -97,6 +97,7 @@ const Record_voice = () => {
           <div className='right_box'>
             <audio ref={audioRef} controls />
             <div className="record-container">
+            {audioBlob && <p className='file-name'>녹음 파일: {fileName}</p>}
               <button className='record-btn' onClick={recording ? stopRecording : startRecording}>
                 {recording ? (
                   <>녹음 중지
@@ -110,7 +111,7 @@ const Record_voice = () => {
                   </>
                 ) : '1. 기침 녹음 시작   ▶'}
               </button>
-              {audioBlob && <p className='file-name'>녹음 파일: {fileName}</p>}
+             
               <button className='btnUd' onClick={downloadAudio} disabled={!audioBlob}>2. 녹음 파일 다운로드</button>
               <button className='btnBack' onClick={() => navigate('/coughUd')}>3. 녹음 파일 업로드⬆️</button>
             </div>
