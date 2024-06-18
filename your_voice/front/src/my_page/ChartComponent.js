@@ -82,9 +82,9 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
 
   const diseases = [1, 2, 3, 4]; // 질병 번호 리스트 // 1. 정상 2. 심부전, 3.천식, 4.코로나
   const diseaseNames = {
-    1: '정  상',
+    1: '정 상',
     2: '심부전',
-    3: '천  식',
+    3: '천 식',
     4: '코로나'
   };
 
@@ -123,8 +123,6 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
 
   const options = {
     maintainAspectRatio: false,
-    responsive: true,
-    aspectRatio: showMonthly ? 2 : 3, // showMonthly일 때는 비율을 2로, 일간 차트일 때는 비율을 3으로 설정
     scales: {
       x: {
         stacked: showMonthly,
@@ -146,11 +144,11 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
   };
 
   return (
-    <div className="chart-container">
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <button className="chart-button" onClick={toggleChart}>
         {showMonthly ? '일간 차트 보기' : '월간 차트 보기'}
       </button>
-      <div className={`chart-wrapper ${showMonthly ? 'monthly' : 'daily'}`}>
+      <div style={{ height: showMonthly ? '53vh' : '53vh', width: showMonthly ? '80vw' : '40vw', display: 'flex', justifyContent: 'center' }}>
         {showMonthly ? <Bar data={data} options={options} /> : <Line data={data} options={options} />}
       </div>
     </div>

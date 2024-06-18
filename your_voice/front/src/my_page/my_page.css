@@ -145,21 +145,6 @@ body {
   /* 마지막 열의 보더 라인 제거 */
 }
 
-.chart-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.chart-wrapper.daily {
-  height: 53vh;
-  width: 40vw;
-}
-
-.chart-wrapper.monthly {
-  height: 53vh;
-  width: 80vw;
-}
-
 
 @media screen and (max-width: 1000px) {
   .my_page_container {
