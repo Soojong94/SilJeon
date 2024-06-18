@@ -39,23 +39,44 @@ def dailyChart():
             {
                 "disease_id": disease_id,
                 "cough_status": cough_status,
-                "time": time_str,  # 시간을 추가
+                "time": time_str  # 시간을 추가
             }
         )
 
-    # 각 날짜별 최신 데이터를 선택
+    # 각 날짜별 평균 데이터를 계산하고 JSON 응답에 추가
     daily_averages = []
     for date_str, data in grouped_all_data.items():
-        latest_data_sorted = sorted(data, key=lambda x: x['time'], reverse=True)
-        latest_data = latest_data_sorted[:4] if len(latest_data_sorted) >= 4 else latest_data_sorted
+        # 평균값 계산
+        disease_sum = {}
+        disease_count = {}
+
+        for record in data:
+            disease_id = record['disease_id']
+            cough_status = record['cough_status']
+            
+            if disease_id not in disease_sum:
+                disease_sum[disease_id] = 0
+                disease_count[disease_id] = 0
+            
+            disease_sum[disease_id] += cough_status
+            disease_count[disease_id] += 1
+
+        average_data = [
+            {
+                "disease_id": disease_id,
+                "average_cough_status": disease_sum[disease_id] / disease_count[disease_id]
+            }
+            for disease_id in disease_sum
+        ]
 
         daily_averages.append({
             "date": date_str,
-            "latest_data": latest_data,
-            "all_data": data,
+            "average_data": average_data,
+            "all_data": data
         })
 
     return jsonify(daily_averages), 200
+
 
 @chart_bp.route("/api/monthChart", methods=["POST"])
 def monthChart():

@@ -6,7 +6,7 @@ import logo from '../Route/your_cough.png';
 import axios from 'axios';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
-const CLIENT_ID = '848922845081-tubjkh6u80t5lleilc4r4bts1rrc1na6.apps.googleusercontent.com';
+const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 function MenuBar() {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ function MenuBar() {
 
     try {
       // 인증 토큰을 백엔드로 전달
-      const response = await axios.post('http://localhost:5000/api/login', { token }, {withCredentials: true });
+      const response = await axios.post('https://yourcough.site/api/login', { token }, {withCredentials: true });
 
       console.log('Server response:', response.data);
 

@@ -18,7 +18,7 @@ app = Flask(__name__, static_folder="static")
 CORS(
     app,
     supports_credentials=True,
-    resources={r"/api/*": {"origins": "http://localhost:3000"}},
+    resources={r"/api/*": {"origins": "https://yourcough.site"}},
 )
 # Flask 시크릿 키 설정
 secret_key = secrets.token_hex(32)
@@ -32,4 +32,4 @@ app.register_blueprint(deleteAccount_bp)
 app.register_blueprint(resetChart_bp)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=False)
+    app.run(host="0.0.0.0", port=5000, debug=True)
