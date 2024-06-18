@@ -128,6 +128,7 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
       x: {
         stacked: showMonthly,
         ticks: {
+          stepSize: 10,
           callback: function (value, index, values) {
             return labels[index];
           },
