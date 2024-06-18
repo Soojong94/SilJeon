@@ -8,7 +8,8 @@ import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
-function MenuBar({ onLoginStatusChange }) {
+function MenuBar({ onLoginStatusChange }){
+
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -25,7 +26,7 @@ function MenuBar({ onLoginStatusChange }) {
     const token = credentialResponse.credential;
 
     try {
-      const response = await axios.post('https://yourcough.site/api/login', { token }, { withCredentials: true });
+      const response = await axios.post('http://localhost:5000/api/login', { token }, { withCredentials: true });
 
       
       if (response.data.user) {
@@ -52,6 +53,7 @@ function MenuBar({ onLoginStatusChange }) {
   const navchange_member = () => {
     navigate('/initial_member');
   };
+  
 
   return (
     <div className='menu_bar_container nav_header'>
@@ -61,7 +63,7 @@ function MenuBar({ onLoginStatusChange }) {
         </div>
         <div className="nav-items">
           <div className='menu_bar'>
-
+              <div className='Setting'>
             {isLoggedIn ? (
               <button className='icon nav-button' onClick={navchange_member}>
                 Setting
@@ -69,9 +71,9 @@ function MenuBar({ onLoginStatusChange }) {
             ) : (
               <></>
             )}
+              </div>
 
-
-        
+            <div></div>
             {isLoggedIn && (
               <button className="nav-button my_page_btn" onClick={() => navigate('/MyPage')}>
                 <Tooltip title="마이페이지">
@@ -92,6 +94,7 @@ function MenuBar({ onLoginStatusChange }) {
                 )}
               </GoogleOAuthProvider>
             </div>
+
           </div>
 
         </div>
