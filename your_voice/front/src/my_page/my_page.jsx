@@ -72,42 +72,44 @@ function My_page() {
             onTodayDataChange={setTodayData}
           />
         </div>
-        <div className='my_page_body'>
-          <h3>오늘의 건강 상태</h3>
-          <div className="table-container">
-            <table>
-              <thead>
-                <tr>
-                  <th>
-                    <div className="filter-container">
-                      <label htmlFor="time-select">시간 </label>
-                      <select id="time-select" value={selectedTime} onChange={handleTimeChange}>
-                        <option value="">시간 선택</option>
-                        {timeOptions.map((time, index) => (
-                          <option key={index} value={time}>{time}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </th>
-                  <th>질병</th>
-                  <th>상태 값 (%)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[1, 2, 3, 4].map(disease_id => {
-                  const entry = sortedTodayData.find(data => data.disease_id === disease_id) || { time: selectedTime, disease_id, cough_status: 0 };
-                  return (
-                    <tr key={disease_id}>
-                      <td>{entry.time}</td>
-                      <td>{diseaseNames[disease_id]}</td>
-                      <td>{(entry.cough_status * 100).toFixed(2)}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+        {!showMonthly && (
+          <div className='my_page_body'>
+            <h3>오늘의 건강 상태</h3>
+            <div className="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>
+                      <div className="filter-container">
+                        <label htmlFor="time-select">시간 </label>
+                        <select id="time-select" value={selectedTime} onChange={handleTimeChange}>
+                          <option value="">시간 선택</option>
+                          {timeOptions.map((time, index) => (
+                            <option key={index} value={time}>{time}</option>
+                          ))}
+                        </select>
+                      </div>
+                    </th>
+                    <th>질병</th>
+                    <th>상태 값 (%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[1, 2, 3, 4].map(disease_id => {
+                    const entry = sortedTodayData.find(data => data.disease_id === disease_id) || { time: selectedTime, disease_id, cough_status: 0 };
+                    return (
+                      <tr key={disease_id}>
+                        <td>{entry.time}</td>
+                        <td>{diseaseNames[disease_id]}</td>
+                        <td>{(entry.cough_status * 100).toFixed(2)}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
