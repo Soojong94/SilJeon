@@ -51,7 +51,7 @@ const DiagnosisPage = () => {
           </div>
           <div className='backBox'>
           <p className="backTo">다시 받아보고 싶다면, 진단받기를 눌러주세요!</p>
-          <p className="backTo"><Covidbtn  /></p>
+          <p className="backTo"><Covidbtn className="backDg"  /></p>
           </div>
         </div>
       )}
