@@ -3,13 +3,15 @@ from db.db import connect_db
 import datetime as dt
 
 chart_bp = Blueprint("chart", __name__)
+chart_bp = Blueprint("chart", __name__)
 
 @chart_bp.route("/api/dailyChart", methods=["POST"])
 def dailyChart():
     userId = request.json.get("userId")
     print("userId 1 : ", userId)
 
-    week_ago = dt.datetime.now() - dt.timedelta(days=7)
+    today = dt.datetime.now().date()
+    week_ago = today - dt.timedelta(days=7)
     conn = connect_db()
     cursor = conn.cursor()
 
@@ -24,6 +26,7 @@ def dailyChart():
         (userId, week_ago),
     )
     allData = cursor.fetchall()
+    print("allData: ", allData)
 
     cursor.close()
     conn.close()
@@ -42,9 +45,11 @@ def dailyChart():
                 "time": time_str  # 시간을 추가
             }
         )
+    print("grouped_all_data: ", grouped_all_data)
 
     # 각 날짜별 평균 데이터를 계산하고 JSON 응답에 추가
     daily_averages = []
+    today_data = []
     for date_str, data in grouped_all_data.items():
         # 평균값 계산
         disease_sum = {}
@@ -69,14 +74,18 @@ def dailyChart():
             for disease_id in disease_sum
         ]
 
+        if date_str == today.strftime("%Y-%m-%d"):
+            today_data = data
+
         daily_averages.append({
             "date": date_str,
             "average_data": average_data,
-            "all_data": data
         })
 
-    return jsonify(daily_averages), 200
+    print("daily_averages: ", daily_averages)
+    print("today_data: ", today_data)
 
+    return jsonify({"daily_averages": daily_averages, "today_data": today_data}), 200
 
 @chart_bp.route("/api/monthChart", methods=["POST"])
 def monthChart():

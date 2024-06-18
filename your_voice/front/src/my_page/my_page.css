@@ -68,7 +68,7 @@ body {
 
 
 .my_page_chart canvas {
-  max-width: 75%;
+  max-width: 70%;
   max-height: 75%;
   object-fit: contain;
 
@@ -188,16 +188,16 @@ body {
 
   .chart-button {
     position: relative;
-    font-size: 15px;
+    font-size: 10px;
     color: black;
     background-color: whitesmoke;
     border: 1px solid lightgray;
     cursor: pointer;
     transition: background-color 0.3s ease;
     border-radius: 20px;
-    padding: 10px;
-    margin-bottom: 2vh;
-    margin-left: 2%;
+    padding: 8px;
+    margin:10px 0 2vh 2%;
+  
   }
 
 }

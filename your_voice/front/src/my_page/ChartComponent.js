@@ -7,18 +7,18 @@ import axios from 'axios';
 
 const fetchDailyChart = async (userId) => {
   try {
-    const response = await axios.post('https://yourcough.site/api/dailyChart', { userId }, {withCredentials: true });
+    const response = await axios.post('https://yourcough.site/api/dailyChart', { userId }, { withCredentials: true });
     console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error fetching daily chart data:', error);
-    return [];
+    return { daily_averages: [], today_data: [] };
   }
 };
 
 const fetchMonthlyChart = async (userId) => {
   try {
-    const response = await axios.post('https://yourcough.site/api/monthChart', { userId }, {withCredentials: true });
+    const response = await axios.post('https://yourcough.site/api/monthChart', { userId }, { withCredentials: true });
     console.log(response.data);
     return response.data;
   } catch (error) {
@@ -55,23 +55,14 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
   const fetchData = async (id) => {
     setLoading(true);
     try {
-      const [dailyResponse, monthlyResponse] = await Promise.all([
-        fetchDailyChart(id),
-        fetchMonthlyChart(id)
-      ]);
+      const dailyResponse = await fetchDailyChart(id);
+      const monthlyResponse = await fetchMonthlyChart(id);
 
-      setDailyData(dailyResponse);
+      setDailyData(dailyResponse.daily_averages);
       setMonthlyData(monthlyResponse);
 
       if (!showMonthly) {
-        // 오늘 날짜 데이터 설정
-        const today = moment().format('MM-DD');
-        const todayEntry = dailyResponse.find(entry => moment(entry.date).format('MM-DD') === today);
-        if (todayEntry) {
-          onTodayDataChange(todayEntry.all_data); // 오늘 데이터를 부모 컴포넌트로 전달
-        } else {
-          onTodayDataChange([]);
-        }
+        onTodayDataChange(dailyResponse.today_data);
       } else {
         onTodayDataChange([]);
       }
@@ -102,7 +93,7 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
       label: diseaseNames[disease_id] || `질병 ${disease_id}`,
       data: labels.map(label => {
         const record = chartData.find(d => moment(d.date).format('MM-DD') === label);
-        if (record) {
+        if (record && record.data) {
           const diseaseRecord = record.data.find(r => r.disease_id === disease_id);
           return diseaseRecord ? diseaseRecord.average_cough_status * 100 : 0;
         }
@@ -114,9 +105,9 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
       label: diseaseNames[disease_id] || `질병 ${disease_id}`,
       data: labels.map(label => {
         const record = chartData.find(d => moment(d.date).format('MM-DD') === label);
-        if (record) {
-          const diseaseRecord = record.latest_data.find(r => r.disease_id === disease_id);
-          return diseaseRecord ? diseaseRecord.cough_status * 100 : 0;
+        if (record && record.average_data) {
+          const diseaseRecord = record.average_data.find(r => r.disease_id === disease_id);
+          return diseaseRecord ? diseaseRecord.average_cough_status * 100 : 0;
         }
         return 0;
       }),
@@ -162,7 +153,6 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
       </div>
     </div>
   );
-
 };
 
 const getColorForDisease = (disease_id) => {
