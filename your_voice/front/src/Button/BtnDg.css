@@ -4,8 +4,7 @@
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5vw;
-  font-size: 1vw;
-  margin-top: 50px;
+  font-size: 15px;
   color: rgb(9, 28, 104);
   box-shadow: 5px 5px 20px;
   width: 10vw;
@@ -47,7 +46,7 @@
     width:120px;
     padding: 10px 15px;
     border-radius: 10px;
-    font-size: 2vw;
+    font-size: 1vw;
 
 
   }
