@@ -9,7 +9,8 @@ def dailyChart():
     userId = request.json.get("userId")
     print("userId 1 : ", userId)
 
-    week_ago = dt.datetime.now() - dt.timedelta(days=7)
+    today = dt.datetime.now().date()
+    week_ago = today - dt.timedelta(days=7)
     conn = connect_db()
     cursor = conn.cursor()
 
@@ -24,6 +25,7 @@ def dailyChart():
         (userId, week_ago),
     )
     allData = cursor.fetchall()
+    print("allData: ", allData)
 
     cursor.close()
     conn.close()
@@ -39,23 +41,50 @@ def dailyChart():
             {
                 "disease_id": disease_id,
                 "cough_status": cough_status,
-                "time": time_str,  # 시간을 추가
+                "time": time_str  # 시간을 추가
             }
         )
+    print("grouped_all_data: ", grouped_all_data)
 
-    # 각 날짜별 최신 데이터를 선택
+    # 각 날짜별 평균 데이터를 계산하고 JSON 응답에 추가
     daily_averages = []
+    today_data = []
     for date_str, data in grouped_all_data.items():
-        latest_data_sorted = sorted(data, key=lambda x: x['time'], reverse=True)
-        latest_data = latest_data_sorted[:4] if len(latest_data_sorted) >= 4 else latest_data_sorted
+        # 평균값 계산
+        disease_sum = {}
+        disease_count = {}
+
+        for record in data:
+            disease_id = record['disease_id']
+            cough_status = record['cough_status']
+            
+            if disease_id not in disease_sum:
+                disease_sum[disease_id] = 0
+                disease_count[disease_id] = 0
+            
+            disease_sum[disease_id] += cough_status
+            disease_count[disease_id] += 1
+
+        average_data = [
+            {
+                "disease_id": disease_id,
+                "average_cough_status": disease_sum[disease_id] / disease_count[disease_id]
+            }
+            for disease_id in disease_sum
+        ]
+
+        if date_str == today.strftime("%Y-%m-%d"):
+            today_data = data
 
         daily_averages.append({
             "date": date_str,
-            "latest_data": latest_data,
-            "all_data": data,
+            "average_data": average_data,
         })
 
-    return jsonify(daily_averages), 200
+    print("daily_averages: ", daily_averages)
+    print("today_data: ", today_data)
+
+    return jsonify({"daily_averages": daily_averages, "today_data": today_data}), 200
 
 @chart_bp.route("/api/monthChart", methods=["POST"])
 def monthChart():

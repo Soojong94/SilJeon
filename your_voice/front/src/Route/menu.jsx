@@ -8,32 +8,35 @@ import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 const CLIENT_ID = '848922845081-tubjkh6u80t5lleilc4r4bts1rrc1na6.apps.googleusercontent.com';
 
-function MenuBar() {
+function MenuBar({ onLoginStatusChange }) {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const userInfo = sessionStorage.getItem('user_info');
-    setIsLoggedIn(!!userInfo);
-  }, []);
+    const loggedIn = !!userInfo;
+    setIsLoggedIn(loggedIn);
+    if (onLoginStatusChange) {
+      onLoginStatusChange(loggedIn); // Notify the parent component
+    }
+  }, [onLoginStatusChange]);
 
   const handleLoginSuccess = async (credentialResponse) => {
     console.log('Login Success:', credentialResponse);
     const token = credentialResponse.credential;
 
     try {
-      // 인증 토큰을 백엔드로 전달
       const response = await axios.post('https://yourcough.site/api/login', { token }, { withCredentials: true });
 
       console.log('Server response:', response.data);
 
-      // 세션 스토리지에 user_info 저장
       if (response.data.user) {
         sessionStorage.setItem('user_info', JSON.stringify(response.data.user));
         setIsLoggedIn(true);
+        if (onLoginStatusChange) {
+          onLoginStatusChange(true); // Notify the parent component
+        }
       }
-
-      // 필요에 따라 추가 작업 수행
     } catch (error) {
       console.error('Error sending token to backend:', error);
     }
@@ -42,8 +45,12 @@ function MenuBar() {
   const handleLogout = () => {
     sessionStorage.removeItem('user_info');
     setIsLoggedIn(false);
-    navigate('/');  // 로그아웃 후 리디렉션
+    if (onLoginStatusChange) {
+      onLoginStatusChange(false); // Notify the parent component
+    }
+    navigate('/');
   };
+
   const navchange_member = () => {
     navigate('/initial_member');
   };
@@ -56,16 +63,11 @@ function MenuBar() {
         </div>
         <div className="nav-items">
           <div className='menu_bar'>
-
-            {isLoggedIn ? (
+            {isLoggedIn && (
               <button className='icon nav-button' onClick={navchange_member}>
                 Setting
               </button>
-            ) : (
-              <></>
             )}
-
-
             <div className='login_menu'>
               <GoogleOAuthProvider clientId={CLIENT_ID}>
                 {isLoggedIn ? (
@@ -82,13 +84,11 @@ function MenuBar() {
             {isLoggedIn && (
               <button className="nav-button my_page_btn" onClick={() => navigate('/MyPage')}>
                 <Tooltip title="마이페이지">
-                  <span className="icon">Mypage </span>
-                  {/* <MedicalServicesOutlinedIcon className='icon' /> */}
+                  <span className="icon">Mypage</span>
                 </Tooltip>
               </button>
             )}
           </div>
-
         </div>
       </nav>
     </div>
