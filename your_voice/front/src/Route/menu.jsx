@@ -8,7 +8,7 @@ import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 const CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
-function MenuBar({ onLoginStatusChange }){
+function MenuBar({ onLoginStatusChange }) {
 
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,9 +26,9 @@ function MenuBar({ onLoginStatusChange }){
     const token = credentialResponse.credential;
 
     try {
-      const response = await axios.post('http://localhost:5000/api/login', { token }, { withCredentials: true });
+      const response = await axios.post('https://yourcough.site/api/login', { token }, { withCredentials: true });
 
-      
+
       if (response.data.user) {
         sessionStorage.setItem('user_info', JSON.stringify(response.data.user));
         setIsLoggedIn(true);
@@ -53,7 +53,7 @@ function MenuBar({ onLoginStatusChange }){
   const navchange_member = () => {
     navigate('/initial_member');
   };
-  
+
 
   return (
     <div className='menu_bar_container nav_header'>
@@ -63,15 +63,15 @@ function MenuBar({ onLoginStatusChange }){
         </div>
         <div className="nav-items">
           <div className='menu_bar'>
-              <div className='Setting'>
-            {isLoggedIn ? (
-              <button className='icon nav-button' onClick={navchange_member}>
-                Setting
-              </button>
-            ) : (
-              <></>
-            )}
-              </div>
+            <div className='Setting'>
+              {isLoggedIn ? (
+                <button className='icon nav-button' onClick={navchange_member}>
+                  Setting
+                </button>
+              ) : (
+                <></>
+              )}
+            </div>
 
             <div></div>
             {isLoggedIn && (
@@ -81,7 +81,7 @@ function MenuBar({ onLoginStatusChange }){
                 </Tooltip>
               </button>
             )}
-                <div className='login_menu'>
+            <div className='login_menu'>
               <GoogleOAuthProvider clientId={CLIENT_ID}>
                 {isLoggedIn ? (
                   <button className="nav-button" onClick={handleLogout}>
