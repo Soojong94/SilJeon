@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Line, Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
 import moment from 'moment';
-import './my_page.css';
+import './my_page.css';  // CSS 파일 임포트
 import axios from 'axios';
 
 const fetchDailyChart = async (userId) => {
   try {
     const response = await axios.post('https:///yourcough.site/api/dailyChart', { userId }, { withCredentials: true });
-
     return response.data;
   } catch (error) {
     console.error('Error fetching daily chart data:', error);
@@ -19,7 +18,6 @@ const fetchDailyChart = async (userId) => {
 const fetchMonthlyChart = async (userId) => {
   try {
     const response = await axios.post('https://yourcough.site/api/monthChart', { userId }, { withCredentials: true });
-
     return response.data;
   } catch (error) {
     console.error('Error fetching monthly chart data:', error);
@@ -82,9 +80,9 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
 
   const diseases = [1, 2, 3, 4]; // 질병 번호 리스트 // 1. 정상 2. 심부전, 3.천식, 4.코로나
   const diseaseNames = {
-    1: '정  상',
+    1: '정 상',
     2: '심부전',
-    3: '천  식',
+    3: '천 식',
     4: '코로나'
   };
 
@@ -146,11 +144,11 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div className="chart-container">
       <button className="chart-button" onClick={toggleChart}>
         {showMonthly ? '일간 차트 보기' : '월간 차트 보기'}
       </button>
-      <div style={{ height: showMonthly ? '53vh' : '53vh', width: showMonthly ? '80vw' : '40vw', display: 'flex', justifyContent: 'center' }}>
+      <div className={`chart-wrapper ${showMonthly ? 'monthly' : 'daily'}`}>
         {showMonthly ? <Bar data={data} options={options} /> : <Line data={data} options={options} />}
       </div>
     </div>
