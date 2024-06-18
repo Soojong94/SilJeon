@@ -7,8 +7,13 @@
   background: linear-gradient(to right, #b6ddee, whitesmoke);
 }
 
+.backTo{
+margin-top: 30px;
+align-items: center!important;
+}
 
 .diagnosis_body_container {
+  padding : 10px;
   display: flex;
   flex-direction: column;
   width: 70%;
@@ -36,7 +41,7 @@
 }
 
 .resultDg {
-  margin: 1.5vw 0 0 0;
+  margin: 2vw 0 0 0;
   font-size: 4vw;
   color: rgb(9, 28, 104);
 
@@ -63,7 +68,7 @@
 .Dg {
 
   flex: 3;
-  font-size: 20px;
+  font-size: 22px;
   padding: 3vw;
   color: rgb(9, 28, 104);
   ;
@@ -86,7 +91,7 @@
   .Dg {
 
 
-    font-size: 1vw;
+    font-size: 2vw;
     padding: 25px;
     color: rgb(9, 28, 104);
     
@@ -105,6 +110,7 @@
 
   .contentDg {
 
+    margin-top: 50px;
     font-size: 20px;
     margin-bottom: 30px;
 
@@ -119,7 +125,9 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 100%;
+    height: 70%;
+    margin: 2vw 0 0 0vw;
 
   }
 
@@ -148,7 +156,7 @@
   }
 
   .contentDg {
-    margin-top: 8vh;
+    margin-top: 12vh;
     font-size: 20px;
     margin-bottom: 20px;
   }

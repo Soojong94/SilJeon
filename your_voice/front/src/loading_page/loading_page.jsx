@@ -30,7 +30,7 @@ function LoadingPage() {
 
         if (response.status === 200) {
           const analysisResult = response.data;
-          console.log(analysisResult);
+
           navigate('/diagnosis_page', { state: { analysisResult } });
         } else if (response.status === 400) {
           alert('분석할 수 없는 소리입니다. 기침 소리를 다시 녹음해 주세요');
