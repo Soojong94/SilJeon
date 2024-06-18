@@ -25,7 +25,7 @@ function MenuBar({ onLoginStatusChange }) {
     const token = credentialResponse.credential;
 
     try {
-      const response = await axios.post('http://localhost:5000/api/login', { token }, { withCredentials: true });
+      const response = await axios.post('https://yourcough.site/api/login', { token }, { withCredentials: true });
 
       
       if (response.data.user) {

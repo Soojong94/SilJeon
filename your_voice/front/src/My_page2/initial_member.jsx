@@ -20,7 +20,7 @@ const Initial = () => {
       if (!confirmDelete) return;
 
       try {
-        const response = await axios.post('http://localhost:5000/api/deleteAccount', { userId }, {withCredentials: true });
+        const response = await axios.post('https://yourcough.site/api/deleteAccount', { userId }, {withCredentials: true });
         if (response.status === 200) {
           alert('회원탈퇴가 완료되었습니다.');
           sessionStorage.removeItem('user_info');
@@ -42,7 +42,7 @@ const Initial = () => {
       if (!confirmReset) return;
 
       try {
-        await axios.post('http://localhost:5000/api/resetChart', { userId }, {withCredentials: true });
+        await axios.post('https://yourcough.site/api/resetChart', { userId }, {withCredentials: true });
         alert('차트 초기화가 완료되었습니다.');
         // 추가로 필요한 작업 수행
       } catch (error) {

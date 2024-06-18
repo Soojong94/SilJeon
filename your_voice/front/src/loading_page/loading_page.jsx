@@ -19,9 +19,9 @@ function LoadingPage() {
       formData.append('file', file);
       formData.append('userId', userId);
       formData.append('analysisType', analysisType); // 분석 유형 추가
-
+ 
       try {
-        const response = await axios.post('http://localhost:3000/api/coughUpload', formData, {
+        const response = await axios.post('https://yourcough.site/api/coughUpload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           },
