@@ -82,9 +82,9 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
 
   const diseases = [1, 2, 3, 4]; // 질병 번호 리스트 // 1. 정상 2. 심부전, 3.천식, 4.코로나
   const diseaseNames = {
-    1: '정 상',
+    1: '정  상',
     2: '심부전',
-    3: '천 식',
+    3: '천  식',
     4: '코로나'
   };
 
@@ -123,7 +123,7 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
 
   const options = {
     maintainAspectRatio: false,
-    aspectRatio: showMonthly ? 2 : 1.5, // showMonthly일 때는 비율을 2로, 일간 차트일 때는 비율을 1.5로 설정
+    aspectRatio: showMonthly ? 2 : 3, // showMonthly일 때는 비율을 2로, 일간 차트일 때는 비율을 1.5로 설정
     scales: {
       x: {
         stacked: showMonthly,
