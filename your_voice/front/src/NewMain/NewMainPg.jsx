@@ -24,7 +24,7 @@ function NewMainPg() {
           <RingLoader
             className='Mainbounce'
             color="#36d7b7"
-            size={290}
+            size={250}
             speedMultiplier={1} />
         </div>
         <div className='voiceContent'>
