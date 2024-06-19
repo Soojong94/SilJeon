@@ -16,9 +16,7 @@ duration = 10  # 각 오디오 파일의 길이 설정
 sr = 22050  # 통일된 샘플링 레이트
 fixed_sequence_length = int(np.ceil(duration * sr / hop_length))
 
-
 def process_file(file):
-    print("process_file 함수 호출됨")
 
     # 파일을 메모리로 읽어들임
     file_bytes = io.BytesIO(file.read())
@@ -30,7 +28,6 @@ def process_file(file):
 
     # WAV 파일이 아니면 변환 작업 수행
     return convert_to_wav(file_bytes, file_extension)
-
 
 def convert_to_wav(file_bytes, file_extension):
     supported_formats = ["mp3", "m4a", "mp4", "webm", "ogg", "flac", "weba"]
@@ -47,16 +44,14 @@ def convert_to_wav(file_bytes, file_extension):
         wav_bytes = io.BytesIO()
         audio.export(wav_bytes, format="wav")
         wav_bytes.seek(0)  # 시작 위치로 되돌림
-        print(f"WAV 파일 변환 완료")
+
         return wav_bytes
     except Exception as e:
         raise Exception(f"파일 변환 중 오류 발생: {e}")
 
-
 def preprocess_audio_model1(
     file_bytes, duration=10, sr=22050, n_mfcc=20, n_fft=2048, hop_length=512
 ):
-    print(f"preprocess_audio_model1 함수 호출됨")
 
     file_bytes.seek(0)
     with open("temp_audio.wav", "wb") as f:
@@ -100,7 +95,6 @@ def preprocess_audio_model1(
 
     return mfcc
 
-
 def preprocess_audio_model2(file_bytes):
     print(f"preprocess_audio_model2 함수 호출됨")
 
@@ -127,7 +121,6 @@ def preprocess_audio_model2(file_bytes):
 
     return features
 
-
 def is_audio_present(file_bytes, threshold=0.01):
     """오디오 신호에 소리가 있는지 여부를 확인합니다."""
     file_bytes.seek(0)
@@ -142,11 +135,10 @@ def is_audio_present(file_bytes, threshold=0.01):
     print(f"RMS 에너지: {rms_energy}")
     return rms_energy > threshold, file_bytes
 
-
 def load_model1():
     # 현재 파일의 디렉토리 경로 설정
     base_dir = os.path.dirname(__file__)
-    model_path = os.path.join(base_dir, "..", "models", "0615_(2413,0.1).keras")
+    model_path = os.path.join(base_dir, "..", "models", "0619_batchmax(2143).keras")
 
     try:
         model = tf.keras.models.load_model(model_path)
@@ -154,7 +146,6 @@ def load_model1():
         return model
     except Exception as e:
         raise RuntimeError("모델을 로드하는 중 오류 발생") from e
-
 
 def load_model2():
     # 현재 파일의 디렉토리 경로 설정

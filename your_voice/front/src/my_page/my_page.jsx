@@ -9,7 +9,7 @@ const diseaseNames = {
   1: '정상',
   2: '심부전',
   3: '천식',
-  4: '코로나'
+  4: 'others'
 };
 
 function My_page() {

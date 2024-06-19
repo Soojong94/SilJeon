@@ -85,7 +85,7 @@ const ChartComponent = ({ showMonthly, toggleChart, userId, onTodayDataChange })
     1: '정  상',
     2: '심부전',
     3: '천  식',
-    4: '코로나'
+    4: 'others'
   };
 
   const datasets = showMonthly
